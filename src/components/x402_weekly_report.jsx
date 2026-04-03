@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect, useRef } from "react";
 
 const DUNE_KEY="dP3RddcVjGFkvz1crqcPCeh2oWBCA3l8",DUNE_QID=6934571,SNAP="Apr 3 2026";

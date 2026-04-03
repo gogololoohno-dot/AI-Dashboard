@@ -1,5 +1,5 @@
-import X402Dashboard from '@/components/X402Dashboard';
+import App from '@/components/x402_weekly_report';
 
 export default function Home() {
-  return <X402Dashboard />;
+  return <App />;
 }

@@ -194,7 +194,7 @@ function BittensorDashboard({data,loading,error}){
   if(loading)return<Spin/>;
   if(error||data?.error)return(
     <div style={{padding:"16px",background:"rgba(239,68,68,0.06)",border:`1px solid rgba(239,68,68,0.2)`,borderRadius:"8px",fontSize:"11px",color:C.neg,fontFamily:MONO}}>
-      Error: {error||data?.error}. The web search tool could not fetch Taostats data. Try refreshing.
+      Error: {error||data?.error}. Could not fetch Taostats data. Try refreshing in a moment.
     </div>
   );
   if(!data)return<Spin/>;

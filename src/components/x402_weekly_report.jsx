@@ -183,18 +183,37 @@ function Pct({v}){
 
 function BittensorDashboard({data,loading,error}){
   const[sub,setSub]=useState("subnets");
-  const[sortCol,setSortCol]=useState("emission_pct");
+  const[sortCol,setSortCol]=useState("market_cap_tao");
   const[sortAsc,setSortAsc]=useState(false);
+  const[owners,setOwners]=useState(null);
+  const[ownersLoad,setOwnersLoad]=useState(false);
+  const ownersFetched=useRef(false);
 
-  const Spin=()=><div style={{display:"flex",alignItems:"center",gap:"10px",padding:"32px 0"}}>
+  // Fetch owner sell/buy data when Owner Activity tab is selected
+  useEffect(()=>{
+    if(sub==="owners"&&!ownersFetched.current&&data?.subnets?.length){
+      ownersFetched.current=true;
+      setOwnersLoad(true);
+      const ids=data.subnets.slice(0,20).map(s=>s.sn).join(",");
+      fetch(`/api/tao/owners?netuids=${ids}`).then(r=>r.json()).then(d=>{
+        if(d.owners){
+          const map={};d.owners.forEach(o=>{map[o.sn]=o;});
+          setOwners(map);
+        }
+        setOwnersLoad(false);
+      }).catch(()=>setOwnersLoad(false));
+    }
+  },[sub,data]);
+
+  const Spin=({msg})=><div style={{display:"flex",alignItems:"center",gap:"10px",padding:"32px 0"}}>
     {[0,1,2].map(i=><div key={i} style={{width:"6px",height:"6px",borderRadius:"50%",background:C.tao,animation:`pulse 1.2s ease-in-out ${i*0.2}s infinite`}}/>)}
-    <span style={{fontSize:"11px",color:C.muted,fontFamily:MONO}}>Searching taostats.io via Claude web search…</span>
+    <span style={{fontSize:"11px",color:C.muted,fontFamily:MONO}}>{msg||"Fetching from taostats.io…"}</span>
   </div>;
 
   if(loading)return<Spin/>;
   if(error||data?.error)return(
     <div style={{padding:"16px",background:"rgba(239,68,68,0.06)",border:`1px solid rgba(239,68,68,0.2)`,borderRadius:"8px",fontSize:"11px",color:C.neg,fontFamily:MONO}}>
-      Error: {error||data?.error}. Could not fetch Taostats data. Try refreshing in a moment.
+      Error: {error||data?.error}. Could not fetch Taostats data. Try refreshing.
     </div>
   );
   if(!data)return<Spin/>;
@@ -202,96 +221,166 @@ function BittensorDashboard({data,loading,error}){
   const subnets=(data.subnets||[]);
   const sorted=[...subnets].sort((a,b)=>{
     const av=a[sortCol]??-Infinity,bv=b[sortCol]??-Infinity;
+    if(typeof av==="string")return sortAsc?av.localeCompare(bv):bv.localeCompare(av);
     return sortAsc?av-bv:bv-av;
   });
-  const validators=(data.validators||[]);
 
+  const td0={padding:"6px 10px",borderBottom:"1px solid rgba(255,255,255,0.03)",fontSize:"10px",fontFamily:MONO};
   const thStyle=(col)=>({
-    textAlign:"right",padding:"8px 12px",fontSize:"9px",letterSpacing:"0.1em",textTransform:"uppercase",
+    textAlign:"right",padding:"7px 10px",fontSize:"8px",letterSpacing:"0.08em",textTransform:"uppercase",
     color:sortCol===col?C.tao:C.muted,borderBottom:`1px solid ${C.bdr}`,fontWeight:600,fontFamily:MONO,
     cursor:"pointer",whiteSpace:"nowrap",userSelect:"none"
   });
-  const thStyleL=(col)=>({...thStyle(col),textAlign:"left"});
+  const thL=(col)=>({...thStyle(col),textAlign:"left"});
   const sort=(col)=>{if(sortCol===col)setSortAsc(!sortAsc);else{setSortCol(col);setSortAsc(false);}};
+  const arrow=(col)=>sortCol===col?(sortAsc?"↑":"↓"):"";
+  const fTao2=n=>n==null?"—":`τ${Number(n).toLocaleString(undefined,{maximumFractionDigits:0})}`;
+
+  const totalMcap=subnets.reduce((s,x)=>s+(x.market_cap_tao||0),0);
+  const totalVol=subnets.reduce((s,x)=>s+(x.volume_24h_tao||0),0);
+  const netFlow=subnets.reduce((s,x)=>s+(x.net_tao_flow_1d||0),0);
+
+  const tabs=["subnets","owners","movers"];
 
   return(<>
-    <div style={{display:"grid",gridTemplateColumns:"repeat(4,minmax(0,1fr))",gap:"10px",marginBottom:"16px"}}>
-      <div style={{padding:"14px 16px",background:C.surf,border:`1px solid rgba(230,200,117,0.2)`,borderRadius:"8px"}}>
-        <div style={{fontSize:"11px",color:C.muted,marginBottom:"6px",fontFamily:SANS}}>TAO Price</div>
-        <div style={{fontSize:"20px",fontWeight:700,color:C.tao,fontFamily:MONO}}>
-          {data.tao_price!=null?`$${Number(data.tao_price).toFixed(2)}`:"—"}
-        </div>
+    {/* KPI row */}
+    <div style={{display:"grid",gridTemplateColumns:"repeat(5,minmax(0,1fr))",gap:"8px",marginBottom:"14px"}}>
+      <div style={{padding:"12px 14px",background:C.surf,border:"1px solid rgba(230,200,117,0.2)",borderRadius:"8px"}}>
+        <div style={{fontSize:"10px",color:C.muted,marginBottom:"4px",fontFamily:SANS}}>TAO Price</div>
+        <div style={{fontSize:"18px",fontWeight:700,color:C.tao,fontFamily:MONO}}>${Number(data.tao_price).toFixed(2)}</div>
+        {data.tao_price_change_24h!=null&&<div style={{fontSize:"10px",color:pclr(data.tao_price_change_24h),fontFamily:MONO}}>{fP(data.tao_price_change_24h)} 24h</div>}
       </div>
-      <KV l="Subnets Tracked" v={subnets.length?`${subnets.length}+`:"—"}/>
-      <KV l="Top Emission SN" v={sorted[0]?`SN${sorted[0].sn}`:"—"}/>
-      <KV l="Validators" v={validators.length?`${validators.length} tracked`:"—"}/>
+      <KV l="Subnets" v={`${subnets.length} tracked`}/>
+      <KV l="Total MCap" v={fTao2(totalMcap)} accent={C.tao}/>
+      <KV l="24h Volume" v={fTao2(totalVol)}/>
+      <KV l="Net TAO Flow 24h" v={fTao2(netFlow)} accent={netFlow>=0?C.green:C.neg}/>
     </div>
 
-    <div style={{display:"flex",gap:"6px",marginBottom:"14px"}}>
-      {["subnets","validators"].map(s=>(
+    {/* Sub-tabs */}
+    <div style={{display:"flex",gap:"6px",marginBottom:"12px"}}>
+      {tabs.map(s=>(
         <button key={s} onClick={()=>setSub(s)} style={{background:sub===s?"rgba(230,200,117,0.12)":"transparent",border:`1px solid ${sub===s?"rgba(230,200,117,0.3)":C.bdr}`,color:sub===s?C.tao:C.muted,padding:"5px 14px",borderRadius:"6px",fontSize:"10px",cursor:"pointer",fontFamily:MONO,letterSpacing:"0.06em",fontWeight:sub===s?600:400}}>
-          {s.charAt(0).toUpperCase()+s.slice(1)}
+          {s==="subnets"?"Subnets":s==="owners"?"Owner Activity":"Top Movers"}
         </button>
       ))}
     </div>
 
+    {/* SUBNETS TAB */}
     {sub==="subnets"&&(
       <div style={{background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",overflow:"auto"}}>
-        <table style={{width:"100%",borderCollapse:"collapse",minWidth:"700px"}}>
+        <table style={{width:"100%",borderCollapse:"collapse",minWidth:"1050px"}}>
           <thead><tr>
-            <th style={thStyleL("sn")} onClick={()=>sort("sn")}>SN {sortCol==="sn"?(sortAsc?"↑":"↓"):"·"}</th>
-            <th style={thStyleL("name")} onClick={()=>sort("name")}>Name</th>
-            <th style={thStyleL("symbol")}>Symbol</th>
-            <th style={thStyle("price_tao")} onClick={()=>sort("price_tao")}>Price τ {sortCol==="price_tao"?(sortAsc?"↑":"↓"):"·"}</th>
-            <th style={thStyle("change_1d")} onClick={()=>sort("change_1d")}>1D {sortCol==="change_1d"?(sortAsc?"↑":"↓"):"·"}</th>
-            <th style={thStyle("change_7d")} onClick={()=>sort("change_7d")}>7D {sortCol==="change_7d"?(sortAsc?"↑":"↓"):"·"}</th>
-            <th style={thStyle("change_30d")} onClick={()=>sort("change_30d")}>30D {sortCol==="change_30d"?(sortAsc?"↑":"↓"):"·"}</th>
-            <th style={thStyle("emission_pct")} onClick={()=>sort("emission_pct")}>Emission% {sortCol==="emission_pct"?(sortAsc?"↑":"↓"):"·"}</th>
-            <th style={thStyle("alpha_per_day")} onClick={()=>sort("alpha_per_day")}>α/day {sortCol==="alpha_per_day"?(sortAsc?"↑":"↓"):"·"}</th>
+            <th style={thL("sn")} onClick={()=>sort("sn")}>SN {arrow("sn")}</th>
+            <th style={thL("name")} onClick={()=>sort("name")}>Name</th>
+            <th style={thStyle("price_tao")} onClick={()=>sort("price_tao")}>Price τ {arrow("price_tao")}</th>
+            <th style={thStyle("change_1d")} onClick={()=>sort("change_1d")}>1D {arrow("change_1d")}</th>
+            <th style={thStyle("change_7d")} onClick={()=>sort("change_7d")}>7D {arrow("change_7d")}</th>
+            <th style={thStyle("change_30d")} onClick={()=>sort("change_30d")}>30D {arrow("change_30d")}</th>
+            <th style={thStyle("net_tao_flow_1d")} onClick={()=>sort("net_tao_flow_1d")}>Net Flow {arrow("net_tao_flow_1d")}</th>
+            <th style={thStyle("emission_pct")} onClick={()=>sort("emission_pct")}>Emis% {arrow("emission_pct")}</th>
+            <th style={thStyle("market_cap_tao")} onClick={()=>sort("market_cap_tao")}>MCap τ {arrow("market_cap_tao")}</th>
+            <th style={thStyle("volume_24h_tao")} onClick={()=>sort("volume_24h_tao")}>Vol 24h {arrow("volume_24h_tao")}</th>
+            <th style={thStyle("fear_greed")} onClick={()=>sort("fear_greed")}>F&G {arrow("fear_greed")}</th>
           </tr></thead>
-          <tbody>{sorted.map((s,i)=>(
-            <tr key={s.sn} style={{background:i%2===0?"transparent":"rgba(255,255,255,0.01)"}}>
-              <td style={{padding:"7px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.tao,fontFamily:MONO,fontWeight:600}}>SN{s.sn}</td>
-              <td style={{padding:"7px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"11px",color:C.txt,fontFamily:SANS,maxWidth:"140px",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{s.name||"—"}</td>
-              <td style={{padding:"7px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"9px",color:C.muted,fontFamily:MONO}}>{s.symbol||"—"}</td>
-              <td style={{padding:"7px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.txt,fontFamily:MONO,textAlign:"right"}}>{s.price_tao!=null?`τ${Number(s.price_tao).toFixed(4)}`:"—"}</td>
-              <td style={{padding:"7px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,textAlign:"right"}}><Pct v={s.change_1d}/></td>
-              <td style={{padding:"7px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,textAlign:"right"}}><Pct v={s.change_7d}/></td>
-              <td style={{padding:"7px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,textAlign:"right"}}><Pct v={s.change_30d}/></td>
-              <td style={{padding:"7px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:s.emission_pct>5?C.tao:C.muted,fontFamily:MONO,textAlign:"right",fontWeight:s.emission_pct>5?600:400}}>{s.emission_pct!=null?`${Number(s.emission_pct).toFixed(2)}%`:"—"}</td>
-              <td style={{padding:"7px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.muted,fontFamily:MONO,textAlign:"right"}}>{s.alpha_per_day!=null?Number(s.alpha_per_day).toLocaleString(undefined,{maximumFractionDigits:0}):"—"}</td>
-            </tr>
-          ))}</tbody>
+          <tbody>{sorted.map((s,i)=>{
+            const flow=s.net_tao_flow_1d||0;
+            return(
+            <tr key={s.sn} style={{background:i%2===0?"transparent":"rgba(255,255,255,0.015)"}}>
+              <td style={{...td0,color:C.tao,fontWeight:600}}>SN{s.sn}</td>
+              <td style={{...td0,color:C.txt,fontFamily:SANS,fontSize:"11px",maxWidth:"130px",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{s.name||"—"}</td>
+              <td style={{...td0,color:C.txt,textAlign:"right"}}>{s.price_tao!=null?`τ${Number(s.price_tao).toFixed(4)}`:"—"}</td>
+              <td style={{...td0,textAlign:"right"}}><Pct v={s.change_1d}/></td>
+              <td style={{...td0,textAlign:"right"}}><Pct v={s.change_7d}/></td>
+              <td style={{...td0,textAlign:"right"}}><Pct v={s.change_30d}/></td>
+              <td style={{...td0,textAlign:"right",color:flow>=0?C.green:C.neg,fontWeight:Math.abs(flow)>100?600:400}}>{flow>=0?"+":""}{flow.toFixed(0)}τ</td>
+              <td style={{...td0,textAlign:"right",color:s.emission_pct>5?C.tao:C.muted,fontWeight:s.emission_pct>5?600:400}}>{s.emission_pct!=null?`${Number(s.emission_pct).toFixed(2)}%`:"—"}</td>
+              <td style={{...td0,textAlign:"right",color:C.muted}}>{fTao2(s.market_cap_tao)}</td>
+              <td style={{...td0,textAlign:"right",color:C.muted}}>{fTao2(s.volume_24h_tao)}</td>
+              <td style={{...td0,textAlign:"right",fontSize:"9px",color:s.fear_greed>=60?C.green:s.fear_greed<=40?C.neg:C.muted}}>{s.fear_greed?`${s.fear_greed.toFixed(0)}`:"—"}</td>
+            </tr>);
+          })}</tbody>
         </table>
       </div>
     )}
 
-    {sub==="validators"&&(
-      validators.length===0
-        ?<div style={{padding:"20px",textAlign:"center",color:C.muted,fontSize:"11px",fontFamily:MONO}}>No validator data returned. Try refreshing.</div>
-        :<div style={{background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",overflow:"auto"}}>
-          <table style={{width:"100%",borderCollapse:"collapse",minWidth:"600px"}}>
-            <thead><tr>
-              {["Rank","Name","Hotkey","Stake τ","Daily Reward τ","Subnets"].map((h,i)=>(
-                <th key={h} style={{textAlign:i>1?"right":"left",padding:"8px 12px",fontSize:"9px",letterSpacing:"0.1em",textTransform:"uppercase",color:C.muted,borderBottom:`1px solid ${C.bdr}`,fontWeight:500,fontFamily:MONO}}>{h}</th>
-              ))}
-            </tr></thead>
-            <tbody>{validators.map((v,i)=>(
-              <tr key={i} style={{background:i%2===0?"transparent":"rgba(255,255,255,0.01)"}}>
-                <td style={{padding:"7px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.muted,fontFamily:MONO}}>#{v.rank||i+1}</td>
-                <td style={{padding:"7px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"11px",color:C.txt,fontFamily:SANS}}>{v.name||"—"}</td>
-                <td style={{padding:"7px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"9px",color:"rgba(74,103,133,0.7)",fontFamily:MONO,maxWidth:"120px",overflow:"hidden",textOverflow:"ellipsis"}}>{v.hotkey||"—"}</td>
-                <td style={{padding:"7px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.tao,fontFamily:MONO,textAlign:"right",fontWeight:600}}>{v.stake_tao!=null?`τ${Number(v.stake_tao).toLocaleString(undefined,{maximumFractionDigits:0})}`:"—"}</td>
-                <td style={{padding:"7px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.green,fontFamily:MONO,textAlign:"right"}}>{v.daily_reward_tao!=null?`τ${Number(v.daily_reward_tao).toFixed(1)}`:"—"}</td>
-                <td style={{padding:"7px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.muted,fontFamily:MONO,textAlign:"right"}}>{v.subnet_count!=null?v.subnet_count:"—"}</td>
-              </tr>
-            ))}</tbody>
-          </table>
-        </div>
+    {/* OWNER ACTIVITY TAB */}
+    {sub==="owners"&&(
+      ownersLoad?<Spin msg="Fetching owner sell/buy data for top 20 subnets…"/>:
+      !owners?<div style={{padding:"20px",textAlign:"center",color:C.muted,fontSize:"11px",fontFamily:MONO}}>No owner data loaded. Switch tabs and try again.</div>:
+      <div style={{background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",overflow:"auto"}}>
+        <table style={{width:"100%",borderCollapse:"collapse",minWidth:"900px"}}>
+          <thead><tr>
+            <th style={thL("sn")}>SN</th>
+            <th style={thL("name")}>Name</th>
+            <th style={{...thStyle(""),cursor:"default"}}>Owner</th>
+            <th style={{...thStyle(""),cursor:"default",color:"#f87171"}}>Sells 7D</th>
+            <th style={{...thStyle(""),cursor:"default",color:"#f87171"}}>Sells 30D</th>
+            <th style={{...thStyle(""),cursor:"default",color:"#f87171"}}>Sells 90D</th>
+            <th style={{...thStyle(""),cursor:"default",color:C.green}}>Buys 7D</th>
+            <th style={{...thStyle(""),cursor:"default",color:C.green}}>Buys 30D</th>
+            <th style={{...thStyle(""),cursor:"default",color:C.green}}>Buys 90D</th>
+            <th style={{...thStyle(""),cursor:"default"}}>Net 30D</th>
+            <th style={{...thStyle(""),cursor:"default"}}>Signal</th>
+          </tr></thead>
+          <tbody>{subnets.slice(0,20).map((s,i)=>{
+            const o=owners[s.sn];
+            const sp=o?.sell_pressure||{};
+            const bb=o?.buyback||{};
+            const nf=o?.net_flow||{};
+            const net30=nf.d30||0;
+            const aligned=net30>0;
+            const ck=o?.owner_coldkey||"";
+            return(
+            <tr key={s.sn} style={{background:i%2===0?"transparent":"rgba(255,255,255,0.015)"}}>
+              <td style={{...td0,color:C.tao,fontWeight:600}}>SN{s.sn}</td>
+              <td style={{...td0,color:C.txt,fontFamily:SANS,fontSize:"11px",maxWidth:"120px",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{s.name||"—"}</td>
+              <td style={{...td0,textAlign:"right",color:"rgba(74,103,133,0.6)",fontSize:"9px",maxWidth:"80px",overflow:"hidden",textOverflow:"ellipsis"}}>{ck?`${ck.slice(0,6)}…${ck.slice(-4)}`:"—"}</td>
+              <td style={{...td0,textAlign:"right",color:sp.d7?C.neg:C.muted}}>{sp.d7?`-τ${sp.d7.toLocaleString()}`:"—"}</td>
+              <td style={{...td0,textAlign:"right",color:sp.d30?C.neg:C.muted}}>{sp.d30?`-τ${sp.d30.toLocaleString()}`:"—"}</td>
+              <td style={{...td0,textAlign:"right",color:sp.d90?C.neg:C.muted}}>{sp.d90?`-τ${sp.d90.toLocaleString()}`:"—"}</td>
+              <td style={{...td0,textAlign:"right",color:bb.d7?C.green:C.muted}}>{bb.d7?`+τ${bb.d7.toLocaleString()}`:"—"}</td>
+              <td style={{...td0,textAlign:"right",color:bb.d30?C.green:C.muted}}>{bb.d30?`+τ${bb.d30.toLocaleString()}`:"—"}</td>
+              <td style={{...td0,textAlign:"right",color:bb.d90?C.green:C.muted}}>{bb.d90?`+τ${bb.d90.toLocaleString()}`:"—"}</td>
+              <td style={{...td0,textAlign:"right",color:net30>=0?C.green:C.neg,fontWeight:600}}>{net30!==0?`${net30>=0?"+":""}τ${Math.abs(net30).toLocaleString()}`:"—"}</td>
+              <td style={{...td0,textAlign:"right"}}>
+                {net30>0?<span style={{padding:"2px 6px",borderRadius:"4px",fontSize:"8px",fontWeight:600,background:"rgba(29,233,182,0.15)",color:C.green,border:"1px solid rgba(29,233,182,0.3)"}}>ALIGNED</span>:
+                 sp.d30>0?<span style={{padding:"2px 6px",borderRadius:"4px",fontSize:"8px",fontWeight:600,background:"rgba(248,113,113,0.15)",color:C.neg,border:"1px solid rgba(248,113,113,0.3)"}}>SELLING</span>:
+                 <span style={{fontSize:"9px",color:C.muted}}>—</span>}
+              </td>
+            </tr>);
+          })}</tbody>
+        </table>
+      </div>
     )}
 
+    {/* TOP MOVERS TAB */}
+    {sub==="movers"&&(()=>{
+      const top1d=[...subnets].sort((a,b)=>(b.change_1d||0)-(a.change_1d||0));
+      const bot1d=[...subnets].sort((a,b)=>(a.change_1d||0)-(b.change_1d||0));
+      const topFlow=[...subnets].sort((a,b)=>(b.net_tao_flow_1d||0)-(a.net_tao_flow_1d||0));
+      const MoverRow=({items,label,valFn,colorFn})=>(
+        <div style={{background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",padding:"14px",marginBottom:"10px"}}>
+          <div style={{fontSize:"10px",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase",color:C.muted,marginBottom:"10px",fontFamily:MONO}}>{label}</div>
+          {items.slice(0,5).map((s,i)=>(
+            <div key={s.sn} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"6px 0",borderBottom:i<4?`1px solid rgba(255,255,255,0.03)`:"none"}}>
+              <div style={{display:"flex",alignItems:"center",gap:"8px"}}>
+                <span style={{fontSize:"10px",color:C.tao,fontFamily:MONO,fontWeight:600,width:"40px"}}>SN{s.sn}</span>
+                <span style={{fontSize:"11px",color:C.txt,fontFamily:SANS}}>{s.name}</span>
+              </div>
+              <span style={{fontSize:"11px",fontWeight:600,fontFamily:MONO,color:colorFn(s)}}>{valFn(s)}</span>
+            </div>
+          ))}
+        </div>
+      );
+      return(<div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"10px"}}>
+        <MoverRow items={top1d} label="Biggest Gainers 24h" valFn={s=>`${s.change_1d>=0?"+":""}${(s.change_1d||0).toFixed(1)}%`} colorFn={s=>s.change_1d>=0?C.green:C.neg}/>
+        <MoverRow items={bot1d} label="Biggest Losers 24h" valFn={s=>`${(s.change_1d||0).toFixed(1)}%`} colorFn={()=>C.neg}/>
+        <MoverRow items={topFlow} label="Highest Net TAO Inflow" valFn={s=>`${(s.net_tao_flow_1d||0)>=0?"+":""}${(s.net_tao_flow_1d||0).toFixed(0)}τ`} colorFn={s=>(s.net_tao_flow_1d||0)>=0?C.green:C.neg}/>
+      </div>);
+    })()}
+
     <div style={{marginTop:"12px",padding:"10px 14px",background:"rgba(230,200,117,0.05)",border:`1px solid rgba(230,200,117,0.15)`,borderRadius:"6px",fontSize:"10px",color:"rgba(230,200,117,0.6)",fontFamily:SANS,lineHeight:1.6}}>
-      Data sourced via Claude web search → taostats.io · Real-time fetch via Anthropic API (no CORS restriction)
+      Data sourced live from taostats.io API · Top {subnets.length} subnets by market cap · Owner activity tracks coldkey delegation events
     </div>
   </>);
 }
@@ -598,7 +687,7 @@ export default function App(){
 
         {/* BITTENSOR */}
         {tab==="bittensor"&&(<>
-          <SH c="Bittensor Network · Live Data via Taostats · Web Search"/>
+          <SH c="Bittensor Network · Live Data via Taostats API · Top 50 Subnets"/>
           <BittensorDashboard data={tao} loading={taoLoad} error={taoErr}/>
         </>)}
 

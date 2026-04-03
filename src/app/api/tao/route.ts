@@ -1,57 +1,79 @@
 import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
-export const maxDuration = 60;
+export const maxDuration = 30;
 
-const PROMPT = `Use web search to find current Bittensor TAO data from taostats.io and coingecko.
+const API = 'https://api.taostats.io';
 
-Search for: "TAO price USD today", "bittensor top subnets by market cap taostats", "bittensor top validators taostats"
-
-From what you find, construct and return ONLY a JSON object (no markdown, no explanation, no preamble) with this exact shape:
-{"tao_price":number,"subnets":[{"sn":number,"name":"string","price_tao":number,"change_1d":number,"emission_pct":number,"market_cap_tao":number}],"validators":[{"rank":number,"name":"string","stake_tao":number}],"last_block":number}
-
-Include at least 10 subnets and 5 validators. Use real numbers from search results. If you cannot find an exact value, use your best estimate from the data available. Return ONLY the JSON.`;
+async function taoFetch(path: string, params: Record<string, string> = {}) {
+  const key = process.env.TAOSTATS_API_KEY;
+  if (!key) throw new Error('Missing TAOSTATS_API_KEY');
+  const qs = new URLSearchParams(params).toString();
+  const url = `${API}/${path}${qs ? '?' + qs : ''}`;
+  const res = await fetch(url, { headers: { Authorization: key }, next: { revalidate: 300 } });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`taostats ${res.status}: ${text.slice(0, 200)}`);
+  }
+  return res.json();
+}
 
 export async function GET() {
-  const key = process.env.ANTHROPIC_API_KEY;
-  if (!key) {
-    return NextResponse.json({ error: 'Missing ANTHROPIC_API_KEY' }, { status: 500 });
-  }
-
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': key,
-        'anthropic-version': '2023-06-01',
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 4000,
-        tool_choice: { type: 'auto' },
-        tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 5 }],
-        messages: [{ role: 'user', content: PROMPT }],
-      }),
+    // Phase 1: TAO price + top 50 subnet pools in parallel
+    const [priceData, poolData] = await Promise.all([
+      taoFetch('api/price/history/v1', { asset: 'tao', period: '1d', limit: '1' }),
+      taoFetch('api/dtao/pool/latest/v1', { limit: '50', order: 'market_cap_desc' }),
+    ]);
+
+    const taoInfo = priceData.data?.[0] || {};
+    const tao_price = parseFloat(taoInfo.price) || 0;
+    const tao_price_change_24h = parseFloat(taoInfo.percent_change_24h) || 0;
+
+    const pools = poolData.data || [];
+    const R = 1e9; // RAO to TAO conversion
+    const subnets = pools.map((p: any) => {
+      const mcap = parseFloat(p.market_cap) || 0;
+      const liq = parseFloat(p.liquidity) || 0;
+      const vol = parseFloat(p.tao_volume_24_hr) || 0;
+      const buyVol = parseFloat(p.tao_buy_volume_24_hr) || 0;
+      const sellVol = parseFloat(p.tao_sell_volume_24_hr) || 0;
+      // Values > 1M are in RAO, convert to TAO
+      const toTao = (v: number) => v > 1e6 ? v / R : v;
+      return {
+        sn: p.netuid,
+        name: p.name || `SN${p.netuid}`,
+        symbol: p.symbol || '',
+        price_tao: parseFloat(p.price) || 0,
+        price_usd: (parseFloat(p.price) || 0) * tao_price,
+        change_1h: parseFloat(String(p.price_change_1_hour).replace('%', '')) || 0,
+        change_1d: parseFloat(String(p.price_change_1_day).replace('%', '')) || 0,
+        change_7d: parseFloat(String(p.price_change_1_week).replace('%', '')) || 0,
+        change_30d: parseFloat(String(p.price_change_1_month).replace('%', '')) || 0,
+        emission_pct: parseFloat(p.root_prop) * 100 || 0,
+        market_cap_tao: toTao(mcap),
+        market_cap_usd: toTao(mcap) * tao_price,
+        liquidity_tao: toTao(liq),
+        volume_24h_tao: toTao(vol),
+        net_tao_flow_1d: toTao(buyVol) - toTao(sellVol),
+        buys_24h: p.buys_24_hr || 0,
+        sells_24h: p.sells_24_hr || 0,
+        buyers_24h: p.buyers_24_hr || 0,
+        sellers_24h: p.sellers_24_hr || 0,
+        fear_greed: parseFloat(p.fear_and_greed_index) || 0,
+        fear_greed_label: p.fear_and_greed_sentiment || '',
+        alpha_in_pool: parseFloat(p.alpha_in_pool) || 0,
+        alpha_staked: parseFloat(p.alpha_staked) || 0,
+      };
     });
 
-    const data = await res.json();
-    if (!res.ok) {
-      return NextResponse.json({ error: data.error?.message || res.statusText }, { status: res.status });
-    }
-
-    // Extract text blocks from response
-    const textBlocks = (data.content || []).filter((b: any) => b.type === 'text');
-    const finalText = textBlocks.map((b: any) => b.text).join('');
-
-    // Parse JSON from response
-    const clean = finalText.replace(/```json|```/g, '').trim();
-    const match = clean.match(/\{[\s\S]*\}/);
-    if (!match) {
-      return NextResponse.json({ error: 'No JSON in response', raw: finalText.slice(0, 500) }, { status: 502 });
-    }
-
-    return NextResponse.json(JSON.parse(match[0]));
+    return NextResponse.json({
+      tao_price,
+      tao_price_change_24h,
+      last_block: pools[0]?.block_number || 0,
+      timestamp: pools[0]?.timestamp || new Date().toISOString(),
+      subnets,
+    });
   } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: 500 });
   }

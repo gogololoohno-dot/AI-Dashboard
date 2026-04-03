@@ -30,7 +30,8 @@ async function getOwnerTrades(coldkey: string, netuid: number, action: string, d
   if (days > 0) params.timestamp_start = tsAgo(days);
   const res = await taoFetch('api/delegation/v1', params);
   const trades = res.data || [];
-  return trades.reduce((sum: number, t: any) => sum + (parseFloat(t.amount) || 0), 0);
+  // amount is in RAO (1e9 RAO = 1 TAO)
+  return trades.reduce((sum: number, t: any) => sum + ((parseFloat(t.amount) || 0) / 1e9), 0);
 }
 
 export async function GET(request: Request) {

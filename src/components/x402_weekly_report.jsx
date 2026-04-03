@@ -307,8 +307,9 @@ function BittensorDashboard({data,loading,error}){
     {sub==="owners"&&(
       ownersLoad?<Spin msg="Fetching owner sell/buy data for top 20 subnets…"/>:
       !owners?<div style={{padding:"20px",textAlign:"center",color:C.muted,fontSize:"11px",fontFamily:MONO}}>No owner data loaded. Switch tabs and try again.</div>:
+      <>{/* Owner Activity table */}
       <div style={{background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",overflow:"auto"}}>
-        <table style={{width:"100%",borderCollapse:"collapse",minWidth:"900px"}}>
+        <table style={{width:"100%",borderCollapse:"collapse",minWidth:"1200px"}}>
           <thead><tr>
             <th style={thL("sn")}>SN</th>
             <th style={thL("name")}>Name</th>
@@ -316,10 +317,13 @@ function BittensorDashboard({data,loading,error}){
             <th style={{...thStyle(""),cursor:"default",color:"#f87171"}}>Sells 7D</th>
             <th style={{...thStyle(""),cursor:"default",color:"#f87171"}}>Sells 30D</th>
             <th style={{...thStyle(""),cursor:"default",color:"#f87171"}}>Sells 90D</th>
+            <th style={{...thStyle(""),cursor:"default",color:"#f87171"}}>Sells All</th>
             <th style={{...thStyle(""),cursor:"default",color:C.green}}>Buys 7D</th>
             <th style={{...thStyle(""),cursor:"default",color:C.green}}>Buys 30D</th>
             <th style={{...thStyle(""),cursor:"default",color:C.green}}>Buys 90D</th>
+            <th style={{...thStyle(""),cursor:"default",color:C.green}}>Buys All</th>
             <th style={{...thStyle(""),cursor:"default"}}>Net 30D</th>
+            <th style={{...thStyle(""),cursor:"default"}}>Net All</th>
             <th style={{...thStyle(""),cursor:"default"}}>Signal</th>
           </tr></thead>
           <tbody>{subnets.slice(0,20).map((s,i)=>{
@@ -328,29 +332,37 @@ function BittensorDashboard({data,loading,error}){
             const bb=o?.buyback||{};
             const nf=o?.net_flow||{};
             const net30=nf.d30||0;
-            const aligned=net30>0;
+            const netAll=nf.lifetime||0;
             const ck=o?.owner_coldkey||"";
+            const fTv=(v,neg)=>{if(v==null)return"—";const n=Math.round(v);if(n===0)return<span style={{color:C.muted}}>0</span>;return<span>{neg?"-":"+"}{`τ${Math.abs(n).toLocaleString()}`}</span>;};
             return(
             <tr key={s.sn} style={{background:i%2===0?"transparent":"rgba(255,255,255,0.015)"}}>
               <td style={{...td0,color:C.tao,fontWeight:600}}>SN{s.sn}</td>
               <td style={{...td0,color:C.txt,fontFamily:SANS,fontSize:"11px",maxWidth:"120px",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{s.name||"—"}</td>
               <td style={{...td0,textAlign:"right",color:"rgba(74,103,133,0.6)",fontSize:"9px",maxWidth:"80px",overflow:"hidden",textOverflow:"ellipsis"}}>{ck?`${ck.slice(0,6)}…${ck.slice(-4)}`:"—"}</td>
-              <td style={{...td0,textAlign:"right",color:sp.d7?C.neg:C.muted}}>{sp.d7?`-τ${sp.d7.toLocaleString()}`:"—"}</td>
-              <td style={{...td0,textAlign:"right",color:sp.d30?C.neg:C.muted}}>{sp.d30?`-τ${sp.d30.toLocaleString()}`:"—"}</td>
-              <td style={{...td0,textAlign:"right",color:sp.d90?C.neg:C.muted}}>{sp.d90?`-τ${sp.d90.toLocaleString()}`:"—"}</td>
-              <td style={{...td0,textAlign:"right",color:bb.d7?C.green:C.muted}}>{bb.d7?`+τ${bb.d7.toLocaleString()}`:"—"}</td>
-              <td style={{...td0,textAlign:"right",color:bb.d30?C.green:C.muted}}>{bb.d30?`+τ${bb.d30.toLocaleString()}`:"—"}</td>
-              <td style={{...td0,textAlign:"right",color:bb.d90?C.green:C.muted}}>{bb.d90?`+τ${bb.d90.toLocaleString()}`:"—"}</td>
-              <td style={{...td0,textAlign:"right",color:net30>=0?C.green:C.neg,fontWeight:600}}>{net30!==0?`${net30>=0?"+":""}τ${Math.abs(net30).toLocaleString()}`:"—"}</td>
+              <td style={{...td0,textAlign:"right",color:sp.d7?C.neg:C.muted}}>{fTv(sp.d7,true)}</td>
+              <td style={{...td0,textAlign:"right",color:sp.d30?C.neg:C.muted}}>{fTv(sp.d30,true)}</td>
+              <td style={{...td0,textAlign:"right",color:sp.d90?C.neg:C.muted}}>{fTv(sp.d90,true)}</td>
+              <td style={{...td0,textAlign:"right",color:sp.lifetime?C.neg:C.muted,fontWeight:sp.lifetime?600:400}}>{fTv(sp.lifetime,true)}</td>
+              <td style={{...td0,textAlign:"right",color:bb.d7?C.green:C.muted}}>{fTv(bb.d7)}</td>
+              <td style={{...td0,textAlign:"right",color:bb.d30?C.green:C.muted}}>{fTv(bb.d30)}</td>
+              <td style={{...td0,textAlign:"right",color:bb.d90?C.green:C.muted}}>{fTv(bb.d90)}</td>
+              <td style={{...td0,textAlign:"right",color:bb.lifetime?C.green:C.muted,fontWeight:bb.lifetime?600:400}}>{fTv(bb.lifetime)}</td>
+              <td style={{...td0,textAlign:"right",color:net30>=0?C.green:C.neg,fontWeight:600}}>{fTv(net30,net30<0)}</td>
+              <td style={{...td0,textAlign:"right",color:netAll>=0?C.green:C.neg,fontWeight:600}}>{fTv(netAll,netAll<0)}</td>
               <td style={{...td0,textAlign:"right"}}>
-                {net30>0?<span style={{padding:"2px 6px",borderRadius:"4px",fontSize:"8px",fontWeight:600,background:"rgba(29,233,182,0.15)",color:C.green,border:"1px solid rgba(29,233,182,0.3)"}}>ALIGNED</span>:
-                 sp.d30>0?<span style={{padding:"2px 6px",borderRadius:"4px",fontSize:"8px",fontWeight:600,background:"rgba(248,113,113,0.15)",color:C.neg,border:"1px solid rgba(248,113,113,0.3)"}}>SELLING</span>:
+                {netAll>0?<span style={{padding:"2px 6px",borderRadius:"4px",fontSize:"8px",fontWeight:600,background:"rgba(29,233,182,0.15)",color:C.green,border:"1px solid rgba(29,233,182,0.3)"}}>ALIGNED</span>:
+                 sp.lifetime>0?<span style={{padding:"2px 6px",borderRadius:"4px",fontSize:"8px",fontWeight:600,background:"rgba(248,113,113,0.15)",color:C.neg,border:"1px solid rgba(248,113,113,0.3)"}}>SELLING</span>:
                  <span style={{fontSize:"9px",color:C.muted}}>—</span>}
               </td>
             </tr>);
           })}</tbody>
         </table>
       </div>
+      <div style={{marginTop:"10px",padding:"10px 14px",background:"rgba(230,200,117,0.05)",border:`1px solid rgba(230,200,117,0.15)`,borderRadius:"6px",fontSize:"10px",color:"rgba(230,200,117,0.5)",fontFamily:SANS,lineHeight:1.6}}>
+        Tracks subnet owner coldkey delegation events (buy=delegate, sell=undelegate) · Signal based on lifetime net flow · ALIGNED = owner buys back more than sells
+      </div>
+      </>
     )}
 
     {/* TOP MOVERS TAB */}
@@ -385,10 +397,12 @@ function BittensorDashboard({data,loading,error}){
   </>);
 }
 
-const TABS=[{id:"overview",l:"Overview"},{id:"trends",l:"Charts"},{id:"facilitators",l:"Facilitators"},{id:"servers",l:"Servers"},{id:"erc8004",l:"ERC-8004"},{id:"analysis",l:"Analysis"},{id:"bittensor",l:"Bittensor ◈"}];
+const TABS=[{id:"agentic",l:"Agentic Payments"},{id:"bittensor",l:"Bittensor ◈"}];
+const AP_SUBS=[{id:"overview",l:"Overview"},{id:"trends",l:"Charts"},{id:"facilitators",l:"Facilitators"},{id:"servers",l:"Servers"},{id:"erc8004",l:"ERC-8004"},{id:"analysis",l:"Analysis"}];
 
 export default function App(){
-  const[tab,setTab]=useState("overview");
+  const[tab,setTab]=useState("agentic");
+  const[apSub,setApSub]=useState("overview");
   const[dune,setDune]=useState(null);
   const[degen,setDegen]=useState(null);
   const[an,setAn]=useState(null);
@@ -470,10 +484,15 @@ export default function App(){
       {/* Content */}
       <div style={{flex:1,overflow:"auto",padding:"20px"}}>
 
-        {an?.key_insight&&<div style={{padding:"10px 16px",background:"rgba(33,114,229,0.08)",border:`1px solid rgba(33,114,229,0.2)`,borderRadius:"8px",marginBottom:"16px",fontSize:"12px",color:"#93c5fd",lineHeight:1.5,fontFamily:SANS}}><span style={{fontWeight:700,marginRight:"8px",color:C.accent,fontFamily:MONO,fontSize:"9px",letterSpacing:"0.1em"}}>INSIGHT </span>{an.key_insight}</div>}
+        {/* Agentic Payments sub-nav */}
+        {tab==="agentic"&&<div style={{display:"flex",gap:"4px",marginBottom:"16px",flexWrap:"wrap"}}>
+          {AP_SUBS.map(s=><button key={s.id} onClick={()=>setApSub(s.id)} style={{background:apSub===s.id?"rgba(33,114,229,0.12)":"transparent",border:`1px solid ${apSub===s.id?"rgba(33,114,229,0.3)":C.bdr}`,color:apSub===s.id?C.accent:C.muted,padding:"4px 12px",borderRadius:"5px",fontSize:"10px",cursor:"pointer",fontFamily:MONO,letterSpacing:"0.04em",fontWeight:apSub===s.id?600:400}}>{s.l}</button>)}
+        </div>}
+
+        {an?.key_insight&&tab==="agentic"&&<div style={{padding:"10px 16px",background:"rgba(33,114,229,0.08)",border:`1px solid rgba(33,114,229,0.2)`,borderRadius:"8px",marginBottom:"16px",fontSize:"12px",color:"#93c5fd",lineHeight:1.5,fontFamily:SANS}}><span style={{fontWeight:700,marginRight:"8px",color:C.accent,fontFamily:MONO,fontSize:"9px",letterSpacing:"0.1em"}}>INSIGHT </span>{an.key_insight}</div>}
 
         {/* OVERVIEW */}
-        {tab==="overview"&&(<>
+        {tab==="agentic"&&apSub==="overview"&&(<>
           <SH c="x402 · 30d Average / Day · Artemis"/>
           <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:"10px",marginBottom:"10px"}}>
             <KV l="Daily Transactions" v={fN(SUM.daily_txns)} delta={SUM.txns_d}/>
@@ -519,7 +538,7 @@ export default function App(){
         </>)}
 
         {/* TRENDS */}
-        {tab==="trends"&&(<>
+        {tab==="agentic"&&apSub==="trends"&&(<>
           {!cjs&&<div style={{color:C.muted,fontSize:"12px"}}>Loading Chart.js…</div>}
           {cjs&&[
             {id:"t-tx",title:"Daily Transactions · 26w",sub:`Jan peak ~1.35M → now ${fN(SUM.daily_txns)}/day (${fP(SUM.txns_d)})`,ds:[{label:"Txns/day",data:TS.map(r=>r.tx)}],note:"Jan peak = dev/bot testing. Feb collapse as testing cohort churned. Mar–Apr stabilization ~55K organic/day."},
@@ -541,7 +560,7 @@ export default function App(){
         </>)}
 
         {/* FACILITATORS */}
-        {tab==="facilitators"&&(<>
+        {tab==="agentic"&&apSub==="facilitators"&&(<>
           <SH c="Real Volume by Facilitator · 30d Adjusted — Artemis"/>
           <div style={{background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",marginBottom:"14px",overflow:"hidden"}}>
             <table style={{width:"100%",borderCollapse:"collapse"}}>
@@ -574,7 +593,7 @@ export default function App(){
         </>)}
 
         {/* SERVERS */}
-        {tab==="servers"&&(<>
+        {tab==="agentic"&&apSub==="servers"&&(<>
           <SH c="Top x402 Servers · Last 30 Days · Artemis Deep Dive"/>
           <div style={{background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",overflow:"auto",marginBottom:"12px"}}>
             <table style={{width:"100%",borderCollapse:"collapse",minWidth:"700px"}}>
@@ -583,7 +602,7 @@ export default function App(){
                 <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"9px",color:i===0?C.accent:C.muted,fontFamily:MONO,maxWidth:"160px",wordBreak:"break-all"}}>{s.url}</td>
                 {[s.pTx!=null?`${s.pTx.toFixed(1)}%`:"—",s.pVol!=null?`${s.pVol.toFixed(1)}%`:"—"].map((v,j)=><td key={j} style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.muted,fontFamily:MONO,textAlign:"right"}}>{v}</td>)}
                 <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.txt,fontFamily:MONO,textAlign:"right"}}>{fN(s.rTx)}</td>
-                <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.txt,fontFamily:MONO,textAlign:"right"}}>{fU(s.rVol)}</td>
+                <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.txt,fontFamily:MONO,textAlign:"right"}}>{fU(s.rVol/1e3)}</td>
                 <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:s.avg>10000?C.warn:s.avg>100?C.green:C.muted,fontFamily:MONO,textAlign:"right",fontWeight:s.avg>10000?600:400}}>{fU(s.avg)}</td>
                 <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.muted,fontFamily:MONO,textAlign:"right"}}>{s.buyers!=null?fN(s.buyers):"—"}</td>
                 <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:s.note.includes("OUTLIER")?C.warn:s.note.includes("★")?C.green:C.muted,fontFamily:SANS}}>{s.note}</td>
@@ -597,7 +616,7 @@ export default function App(){
         </>)}
 
         {/* ERC-8004 */}
-        {tab==="erc8004"&&(<>
+        {tab==="agentic"&&apSub==="erc8004"&&(<>
           <SH c="ERC-8004 Registry · 8004scan.io (Live)"/>
           <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:"10px",marginBottom:"14px"}}>
             <KV l="Registered Agents"  v="120,772+"/>
@@ -652,7 +671,7 @@ export default function App(){
         </>)}
 
         {/* ANALYSIS */}
-        {tab==="analysis"&&(<>
+        {tab==="agentic"&&apSub==="analysis"&&(<>
           {anLoad&&<div style={{display:"flex",alignItems:"center",gap:"10px",padding:"14px 16px",background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",marginBottom:"12px"}}>{[0,1,2].map(i=><div key={i} style={{width:"6px",height:"6px",borderRadius:"50%",background:C.accent,animation:`pulse 1.2s ease-in-out ${i*0.2}s infinite`}}/>)}<span style={{fontSize:"11px",color:C.muted,fontFamily:MONO}}>Generating analysis…</span></div>}
           {an&&(<>
             <SH c="Signals This Week"/>

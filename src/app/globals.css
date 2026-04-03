@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+:root {
+  --color-background-primary: #0a0a0a;
+  --color-background-secondary: #141414;
+  --color-background-tertiary: #1a1a1a;
+  --color-background-success: rgba(34, 197, 94, 0.1);
+  --color-background-danger: rgba(239, 68, 68, 0.1);
+  --color-background-warning: rgba(234, 179, 8, 0.1);
+  --color-background-info: rgba(59, 130, 246, 0.1);
+  --color-text-primary: #ededed;
+  --color-text-secondary: #a1a1a1;
+  --color-text-tertiary: #6b6b6b;
+  --color-text-success: #22c55e;
+  --color-text-danger: #ef4444;
+  --color-text-warning: #eab308;
+  --color-text-info: #3b82f6;
+  --color-border-primary: #333;
+  --color-border-secondary: #444;
+  --color-border-tertiary: #2a2a2a;
+  --color-border-success: rgba(34, 197, 94, 0.3);
+  --color-border-danger: rgba(239, 68, 68, 0.3);
+  --color-border-warning: rgba(234, 179, 8, 0.3);
+  --color-border-info: rgba(59, 130, 246, 0.3);
+  --border-radius-sm: 4px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 10px;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  background: var(--color-background-tertiary);
+  color: var(--color-text-primary);
+}
+
+button {
+  background: var(--color-background-secondary);
+  color: var(--color-text-primary);
+  border: 0.5px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+}

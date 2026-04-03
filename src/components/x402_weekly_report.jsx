@@ -82,26 +82,12 @@ async function fetchAnalysis(degen){
   return JSON.parse(text);
 }
 
-// KEY FIX: uses web_search tool instead of mcp_servers (no connector needed)
+// Fetches live Bittensor data via server-side API route (handles web_search loop)
 async function fetchBittensorData(){
   try{
-    const r=await fetch("https://api.anthropic.com/v1/messages",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({
-        model:"claude-sonnet-4-20250514",
-        max_tokens:2500,
-        tools:[{type:"web_search_20250305",name:"web_search"}],
-        messages:[{role:"user",content:`Search taostats.io right now for current Bittensor live data. I need subnet data and top validators. Return ONLY valid JSON with no markdown fences, no preamble, no explanation:
-{"tao_price":number,"subnets":[{"sn":number,"name":"string","symbol":"string","price_tao":number,"change_1d":number,"change_7d":number,"change_30d":number,"emission_pct":number,"alpha_per_day":number,"market_cap_tao":number}],"validators":[{"rank":number,"name":"string","hotkey":"string","stake_tao":number,"daily_reward_tao":number,"subnet_count":number}],"last_block":number}
-Include at least 15 subnets sorted by emission_pct descending. Include top 10 validators by stake.`}]
-      })
-    });
-    const d=await r.json();
-    const text=(d.content||[]).filter(b=>b.type==="text").map(b=>b.text).join("").replace(/```json[\s\S]*?```|```/g,"").trim();
-    const jsonMatch=text.match(/\{[\s\S]*\}/);
-    if(!jsonMatch)throw new Error("No JSON found in response");
-    return JSON.parse(jsonMatch[0]);
+    const r=await fetch("/api/tao");
+    if(!r.ok)throw new Error(`API ${r.status}`);
+    return await r.json();
   }catch(e){return{error:e.message};}
 }
 

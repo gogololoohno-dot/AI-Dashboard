@@ -183,25 +183,57 @@ function Pct({v}){
 
 function BittensorDashboard({data,loading,error}){
   const[sub,setSub]=useState("subnets");
-  const[sortCol,setSortCol]=useState("market_cap_tao");
+  const[sortCol,setSortCol]=useState("market_cap_usd");
   const[sortAsc,setSortAsc]=useState(false);
+  const[ownerSort,setOwnerSort]=useState({col:"net_all",asc:false});
   const[owners,setOwners]=useState(null);
   const[ownersLoad,setOwnersLoad]=useState(false);
+  const[ownersUpdated,setOwnersUpdated]=useState(null);
+  const[extraData,setExtraData]=useState(null);
   const ownersFetched=useRef(false);
+  const extraFetched=useRef(false);
 
-  // Fetch owner sell/buy data when Owner Activity tab is selected
+  // Load subnets-extra.json (flow 1W/1M data from daily script)
   useEffect(()=>{
-    if(sub==="owners"&&!ownersFetched.current&&data?.subnets?.length){
+    if(!extraFetched.current){
+      extraFetched.current=true;
+      fetch("/data/subnets-extra.json").then(r=>r.ok?r.json():null).then(d=>{
+        if(d?.subnets){const map={};d.subnets.forEach(s=>{map[s.sn]=s;});setExtraData(map);}
+      }).catch(()=>{});
+    }
+  },[]);
+
+  // Load owner data from static JSON (refreshed daily by GitHub Actions)
+  useEffect(()=>{
+    if(sub==="owners"&&!ownersFetched.current){
       ownersFetched.current=true;
       setOwnersLoad(true);
-      const ids=data.subnets.slice(0,20).map(s=>s.sn).join(",");
-      fetch(`/api/tao/owners?netuids=${ids}`).then(r=>r.json()).then(d=>{
+      fetch("/data/owners.json").then(r=>{
+        if(!r.ok)throw new Error("no cache");
+        return r.json();
+      }).then(d=>{
         if(d.owners){
           const map={};d.owners.forEach(o=>{map[o.sn]=o;});
           setOwners(map);
+          setOwnersUpdated(d.updated_at||null);
         }
         setOwnersLoad(false);
-      }).catch(()=>setOwnersLoad(false));
+      }).catch(()=>{
+        // Fallback: live API if static cache missing
+        if(!data?.subnets?.length){
+          ownersFetched.current=false; // allow retry once subnet data arrives
+          setOwnersLoad(false);
+          return;
+        }
+        const ids=data.subnets.map(s=>s.sn).filter(n=>n>0).join(",");
+        fetch(`/api/tao/owners?netuids=${ids}`).then(r=>r.json()).then(d=>{
+          if(d.owners){
+            const map={};d.owners.forEach(o=>{map[o.sn]=o;});
+            setOwners(map);
+          }
+          setOwnersLoad(false);
+        }).catch(()=>setOwnersLoad(false));
+      });
     }
   },[sub,data]);
 
@@ -235,10 +267,14 @@ function BittensorDashboard({data,loading,error}){
   const sort=(col)=>{if(sortCol===col)setSortAsc(!sortAsc);else{setSortCol(col);setSortAsc(false);}};
   const arrow=(col)=>sortCol===col?(sortAsc?"↑":"↓"):"";
   const fTao2=n=>n==null?"—":`τ${Number(n).toLocaleString(undefined,{maximumFractionDigits:0})}`;
+  const fUsd=n=>{if(n==null)return"—";const a=Math.abs(n);if(a>=1e6)return`$${(n/1e6).toFixed(2)}M`;if(a>=1e3)return`$${(n/1e3).toFixed(1)}K`;return`$${n.toFixed(2)}`;};
+  const taoP=data.tao_price||1;
 
   const totalMcap=subnets.reduce((s,x)=>s+(x.market_cap_tao||0),0);
   const totalVol=subnets.reduce((s,x)=>s+(x.volume_24h_tao||0),0);
   const netFlow=subnets.reduce((s,x)=>s+(x.net_tao_flow_1d||0),0);
+  // Sum of all alpha prices for TAO emission % calculation (price_i / sum_prices = subnet's share)
+  const sumPrices=subnets.reduce((s,x)=>s+(x.price_tao||0),0);
 
   const tabs=["subnets","owners","movers"];
 
@@ -268,35 +304,53 @@ function BittensorDashboard({data,loading,error}){
     {/* SUBNETS TAB */}
     {sub==="subnets"&&(
       <div style={{background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",overflow:"auto"}}>
-        <table style={{width:"100%",borderCollapse:"collapse",minWidth:"1050px"}}>
+        <table style={{width:"100%",borderCollapse:"collapse",minWidth:"1600px"}}>
           <thead><tr>
-            <th style={thL("sn")} onClick={()=>sort("sn")}>SN {arrow("sn")}</th>
-            <th style={thL("name")} onClick={()=>sort("name")}>Name</th>
-            <th style={thStyle("price_tao")} onClick={()=>sort("price_tao")}>Price τ {arrow("price_tao")}</th>
-            <th style={thStyle("change_1d")} onClick={()=>sort("change_1d")}>1D {arrow("change_1d")}</th>
-            <th style={thStyle("change_7d")} onClick={()=>sort("change_7d")}>7D {arrow("change_7d")}</th>
-            <th style={thStyle("change_30d")} onClick={()=>sort("change_30d")}>30D {arrow("change_30d")}</th>
-            <th style={thStyle("net_tao_flow_1d")} onClick={()=>sort("net_tao_flow_1d")}>Net Flow {arrow("net_tao_flow_1d")}</th>
-            <th style={thStyle("emission_pct")} onClick={()=>sort("emission_pct")}>Emis% {arrow("emission_pct")}</th>
-            <th style={thStyle("market_cap_tao")} onClick={()=>sort("market_cap_tao")}>MCap τ {arrow("market_cap_tao")}</th>
-            <th style={thStyle("volume_24h_tao")} onClick={()=>sort("volume_24h_tao")}>Vol 24h {arrow("volume_24h_tao")}</th>
-            <th style={thStyle("fear_greed")} onClick={()=>sort("fear_greed")}>F&G {arrow("fear_greed")}</th>
+            <th style={{...thStyle("sn"),textAlign:"center",width:"30px"}} onClick={()=>sort("sn")}># {arrow("sn")}</th>
+            <th style={thL("name")} onClick={()=>sort("name")}>Subnet {arrow("name")}</th>
+            <th style={thStyle("tao_emission_pct")} onClick={()=>sort("tao_emission_pct")} title="% of daily TAO emission this subnet receives. Computed from alpha price weight: price_i / sum(all_prices). ~7,200 TAO/day total. Subnets compete for this share.">Emission {arrow("tao_emission_pct")}</th>
+            <th style={thStyle("price_usd")} onClick={()=>sort("price_usd")}>Price {arrow("price_usd")}</th>
+            <th style={thStyle("change_1h")} onClick={()=>sort("change_1h")}>1H {arrow("change_1h")}</th>
+            <th style={thStyle("change_1d")} onClick={()=>sort("change_1d")}>24H {arrow("change_1d")}</th>
+            <th style={thStyle("change_7d")} onClick={()=>sort("change_7d")}>1W {arrow("change_7d")}</th>
+            <th style={thStyle("change_30d")} onClick={()=>sort("change_30d")}>1M {arrow("change_30d")}</th>
+            <th style={thStyle("market_cap_usd")} onClick={()=>sort("market_cap_usd")}>MCap {arrow("market_cap_usd")}</th>
+            <th style={thStyle("volume_24h_tao")} onClick={()=>sort("volume_24h_tao")}>Vol (24h) {arrow("volume_24h_tao")}</th>
+            <th style={thStyle("vol_cap")} onClick={()=>sort("vol_cap")}>Vol/Cap {arrow("vol_cap")}</th>
+            <th style={thStyle("net_tao_flow_1d")} onClick={()=>sort("net_tao_flow_1d")}>Flow (24H) {arrow("net_tao_flow_1d")}</th>
+            <th style={thStyle("flow_7d")} onClick={()=>sort("flow_7d")}>Flow (1W) {arrow("flow_7d")}</th>
+            <th style={thStyle("flow_30d")} onClick={()=>sort("flow_30d")}>Flow (1M) {arrow("flow_30d")}</th>
           </tr></thead>
           <tbody>{sorted.map((s,i)=>{
-            const flow=s.net_tao_flow_1d||0;
+            const flow24=s.net_tao_flow_1d||0;
+            const volCap=s.market_cap_tao>0?((s.volume_24h_tao||0)/s.market_cap_tao*100):0;
+            const ex=extraData?.[s.sn];
+            const f7d=ex?.flow_7d!=null?ex.flow_7d*taoP:null;
+            const f30d=ex?.flow_30d!=null?ex.flow_30d*taoP:null;
+            // TAO Emission % = price_i / sum(all_prices) — live from API data
+            const emPct=sumPrices>0?((s.price_tao||0)/sumPrices*100):0;
+            const taoPerDay=Math.round(emPct/100*7200*100)/100;
+            // Attach computed fields for sorting
+            s.vol_cap=volCap;
+            s.flow_7d=ex?.flow_7d??null;
+            s.flow_30d=ex?.flow_30d??null;
+            s.tao_emission_pct=emPct;
             return(
             <tr key={s.sn} style={{background:i%2===0?"transparent":"rgba(255,255,255,0.015)"}}>
-              <td style={{...td0,color:C.tao,fontWeight:600}}>SN{s.sn}</td>
-              <td style={{...td0,color:C.txt,fontFamily:SANS,fontSize:"11px",maxWidth:"130px",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{s.name||"—"}</td>
-              <td style={{...td0,color:C.txt,textAlign:"right"}}>{s.price_tao!=null?`τ${Number(s.price_tao).toFixed(4)}`:"—"}</td>
+              <td style={{...td0,textAlign:"center",color:C.muted,fontSize:"9px"}}>{i+1}</td>
+              <td style={{...td0,color:C.txt,fontFamily:SANS,fontSize:"11px",maxWidth:"150px",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}><span style={{color:C.tao,fontFamily:MONO,fontSize:"9px",marginRight:"6px"}}>SN{s.sn}</span>{s.name||"—"}</td>
+              <td style={{...td0,textAlign:"right",color:emPct>3?C.tao:C.muted}} title={`≈ τ${taoPerDay}/day (${emPct.toFixed(2)}% of ~7,200 TAO/day)\nComputed from alpha price weight: price / sum(all prices)\nHigher alpha price → more TAO emission share`}>{emPct.toFixed(2)}%</td>
+              <td style={{...td0,color:C.txt,textAlign:"right"}}>${(s.price_usd||0).toFixed(2)}</td>
+              <td style={{...td0,textAlign:"right"}}><Pct v={s.change_1h}/></td>
               <td style={{...td0,textAlign:"right"}}><Pct v={s.change_1d}/></td>
               <td style={{...td0,textAlign:"right"}}><Pct v={s.change_7d}/></td>
               <td style={{...td0,textAlign:"right"}}><Pct v={s.change_30d}/></td>
-              <td style={{...td0,textAlign:"right",color:flow>=0?C.green:C.neg,fontWeight:Math.abs(flow)>100?600:400}}>{flow>=0?"+":""}{flow.toFixed(0)}τ</td>
-              <td style={{...td0,textAlign:"right",color:s.emission_pct>5?C.tao:C.muted,fontWeight:s.emission_pct>5?600:400}}>{s.emission_pct!=null?`${Number(s.emission_pct).toFixed(2)}%`:"—"}</td>
-              <td style={{...td0,textAlign:"right",color:C.muted}}>{fTao2(s.market_cap_tao)}</td>
-              <td style={{...td0,textAlign:"right",color:C.muted}}>{fTao2(s.volume_24h_tao)}</td>
-              <td style={{...td0,textAlign:"right",fontSize:"9px",color:s.fear_greed>=60?C.green:s.fear_greed<=40?C.neg:C.muted}}>{s.fear_greed?`${s.fear_greed.toFixed(0)}`:"—"}</td>
+              <td style={{...td0,textAlign:"right",color:C.muted}}>{fUsd(s.market_cap_usd)}</td>
+              <td style={{...td0,textAlign:"right",color:C.muted}}>{fUsd((s.volume_24h_tao||0)*taoP)}</td>
+              <td style={{...td0,textAlign:"right",color:volCap>10?C.accent:C.muted,fontWeight:volCap>10?600:400}}>{volCap.toFixed(2)}%</td>
+              <td style={{...td0,textAlign:"right",color:flow24>=0?C.green:C.neg}}>{fUsd(flow24*taoP)}</td>
+              <td style={{...td0,textAlign:"right",color:f7d!=null?(f7d>=0?C.green:C.neg):C.muted}}>{f7d!=null?fUsd(f7d):"—"}</td>
+              <td style={{...td0,textAlign:"right",color:f30d!=null?(f30d>=0?C.green:C.neg):C.muted}}>{f30d!=null?fUsd(f30d):"—"}</td>
             </tr>);
           })}</tbody>
         </table>
@@ -304,37 +358,65 @@ function BittensorDashboard({data,loading,error}){
     )}
 
     {/* OWNER ACTIVITY TAB */}
-    {sub==="owners"&&(
-      ownersLoad?<Spin msg="Fetching owner sell/buy data for top 20 subnets…"/>:
+    {sub==="owners"&&(()=>{
+      const oSort=(col)=>{setOwnerSort(p=>p.col===col?{col,asc:!p.asc}:{col,asc:false});};
+      const oArrow=(col)=>ownerSort.col===col?(ownerSort.asc?"↑":"↓"):"";
+      const oTh=(col,extra)=>({...thStyle(col),color:ownerSort.col===col?C.tao:(extra?.color||C.muted),cursor:"pointer"});
+      // Get owner value for sorting
+      const getOv=(sn,col)=>{
+        const o=owners?.[sn];if(!o)return-Infinity;
+        const map={
+          sell_7d:o.sell_pressure?.d7,sell_30d:o.sell_pressure?.d30,sell_90d:o.sell_pressure?.d90,sell_all:o.sell_pressure?.lifetime,
+          buy_7d:o.buyback?.d7,buy_30d:o.buyback?.d30,buy_90d:o.buyback?.d90,buy_all:o.buyback?.lifetime,
+          net_7d:o.net_flow?.d7,net_30d:o.net_flow?.d30,net_90d:o.net_flow?.d90,net_all:o.net_flow?.lifetime,
+          xfer_all:o.transferred?.lifetime,indirect_all:o.indirect_sells?.lifetime,
+          tao_out:o.transfers_out?.d30,
+          signal:o.net_flow?.lifetime>0?1:(o.sell_pressure?.lifetime>0||o.indirect_sells?.lifetime>0?-1:0),
+        };
+        return map[col]??-Infinity;
+      };
+      const ownerSorted=[...subnets].sort((a,b)=>{
+        if(ownerSort.col==="sn")return ownerSort.asc?a.sn-b.sn:b.sn-a.sn;
+        if(ownerSort.col==="name")return ownerSort.asc?(a.name||"").localeCompare(b.name||""):(b.name||"").localeCompare(a.name||"");
+        const av=getOv(a.sn,ownerSort.col)??-Infinity,bv=getOv(b.sn,ownerSort.col)??-Infinity;
+        return ownerSort.asc?av-bv:bv-av;
+      });
+      const fTv=(v,neg)=>{if(v==null)return"—";const n=Math.round(v);if(n===0)return<span style={{color:C.muted}}>0</span>;return<span>{neg?"-":"+"}{`τ${Math.abs(n).toLocaleString()}`}</span>;};
+      return ownersLoad?<Spin msg="Loading owner activity data…"/>:
       !owners?<div style={{padding:"20px",textAlign:"center",color:C.muted,fontSize:"11px",fontFamily:MONO}}>No owner data loaded. Switch tabs and try again.</div>:
-      <>{/* Owner Activity table */}
-      <div style={{background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",overflow:"auto"}}>
-        <table style={{width:"100%",borderCollapse:"collapse",minWidth:"1200px"}}>
+      <><div style={{background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",overflow:"auto"}}>
+        <table style={{width:"100%",borderCollapse:"collapse",minWidth:"1800px"}}>
           <thead><tr>
-            <th style={thL("sn")}>SN</th>
-            <th style={thL("name")}>Name</th>
-            <th style={{...thStyle(""),cursor:"default"}}>Owner</th>
-            <th style={{...thStyle(""),cursor:"default",color:"#f87171"}}>Sells 7D</th>
-            <th style={{...thStyle(""),cursor:"default",color:"#f87171"}}>Sells 30D</th>
-            <th style={{...thStyle(""),cursor:"default",color:"#f87171"}}>Sells 90D</th>
-            <th style={{...thStyle(""),cursor:"default",color:"#f87171"}}>Sells All</th>
-            <th style={{...thStyle(""),cursor:"default",color:C.green}}>Buys 7D</th>
-            <th style={{...thStyle(""),cursor:"default",color:C.green}}>Buys 30D</th>
-            <th style={{...thStyle(""),cursor:"default",color:C.green}}>Buys 90D</th>
-            <th style={{...thStyle(""),cursor:"default",color:C.green}}>Buys All</th>
-            <th style={{...thStyle(""),cursor:"default"}}>Net 30D</th>
-            <th style={{...thStyle(""),cursor:"default"}}>Net All</th>
-            <th style={{...thStyle(""),cursor:"default"}}>Signal</th>
+            <th style={thL("sn")} onClick={()=>oSort("sn")}>SN {oArrow("sn")}</th>
+            <th style={thL("name")} onClick={()=>oSort("name")}>Name {oArrow("name")}</th>
+            <th style={oTh("owner")}>Owner</th>
+            <th style={oTh("sell_7d",{color:"#f87171"})} onClick={()=>oSort("sell_7d")}>Sells 7D {oArrow("sell_7d")}</th>
+            <th style={oTh("sell_30d",{color:"#f87171"})} onClick={()=>oSort("sell_30d")}>Sells 30D {oArrow("sell_30d")}</th>
+            <th style={oTh("sell_90d",{color:"#f87171"})} onClick={()=>oSort("sell_90d")}>Sells 90D {oArrow("sell_90d")}</th>
+            <th style={oTh("sell_all",{color:"#f87171"})} onClick={()=>oSort("sell_all")}>Sells All {oArrow("sell_all")}</th>
+            <th style={oTh("buy_7d",{color:C.green})} onClick={()=>oSort("buy_7d")}>Buys 7D {oArrow("buy_7d")}</th>
+            <th style={oTh("buy_30d",{color:C.green})} onClick={()=>oSort("buy_30d")}>Buys 30D {oArrow("buy_30d")}</th>
+            <th style={oTh("buy_90d",{color:C.green})} onClick={()=>oSort("buy_90d")}>Buys 90D {oArrow("buy_90d")}</th>
+            <th style={oTh("buy_all",{color:C.green})} onClick={()=>oSort("buy_all")}>Buys All {oArrow("buy_all")}</th>
+            <th style={oTh("net_7d")} onClick={()=>oSort("net_7d")}>Net 7D {oArrow("net_7d")}</th>
+            <th style={oTh("net_30d")} onClick={()=>oSort("net_30d")}>Net 30D {oArrow("net_30d")}</th>
+            <th style={oTh("net_90d")} onClick={()=>oSort("net_90d")}>Net 90D {oArrow("net_90d")}</th>
+            <th style={oTh("net_all")} onClick={()=>oSort("net_all")}>Net All {oArrow("net_all")}</th>
+            <th style={oTh("xfer_all",{color:"#a78bfa"})} onClick={()=>oSort("xfer_all")} title="Alpha transferred to other addresses (not direct market sells)">Xfer'd All {oArrow("xfer_all")}</th>
+            <th style={oTh("indirect_all",{color:"#fb923c"})} onClick={()=>oSort("indirect_all")} title="Sells by addresses that received alpha transfers from the owner">Indirect Sells {oArrow("indirect_all")}</th>
+            <th style={oTh("tao_out",{color:"#fbbf24"})} onClick={()=>oSort("tao_out")}>TAO Out 30D {oArrow("tao_out")}</th>
+            <th style={oTh("signal")} onClick={()=>oSort("signal")}>Signal {oArrow("signal")}</th>
           </tr></thead>
-          <tbody>{subnets.slice(0,20).map((s,i)=>{
+          <tbody>{ownerSorted.map((s,i)=>{
             const o=owners[s.sn];
             const sp=o?.sell_pressure||{};
             const bb=o?.buyback||{};
             const nf=o?.net_flow||{};
-            const net30=nf.d30||0;
-            const netAll=nf.lifetime||0;
+            const tx=o?.transfers_out||{};
+            const xf=o?.transferred||{};
+            const ind=o?.indirect_sells||{};
+            const net7=nf.d7||0;const net30=nf.d30||0;const net90=nf.d90||0;const netAll=nf.lifetime||0;
             const ck=o?.owner_coldkey||"";
-            const fTv=(v,neg)=>{if(v==null)return"—";const n=Math.round(v);if(n===0)return<span style={{color:C.muted}}>0</span>;return<span>{neg?"-":"+"}{`τ${Math.abs(n).toLocaleString()}`}</span>;};
             return(
             <tr key={s.sn} style={{background:i%2===0?"transparent":"rgba(255,255,255,0.015)"}}>
               <td style={{...td0,color:C.tao,fontWeight:600}}>SN{s.sn}</td>
@@ -348,11 +430,16 @@ function BittensorDashboard({data,loading,error}){
               <td style={{...td0,textAlign:"right",color:bb.d30?C.green:C.muted}}>{fTv(bb.d30)}</td>
               <td style={{...td0,textAlign:"right",color:bb.d90?C.green:C.muted}}>{fTv(bb.d90)}</td>
               <td style={{...td0,textAlign:"right",color:bb.lifetime?C.green:C.muted,fontWeight:bb.lifetime?600:400}}>{fTv(bb.lifetime)}</td>
+              <td style={{...td0,textAlign:"right",color:net7>=0?C.green:C.neg,fontWeight:600}}>{fTv(net7,net7<0)}</td>
               <td style={{...td0,textAlign:"right",color:net30>=0?C.green:C.neg,fontWeight:600}}>{fTv(net30,net30<0)}</td>
+              <td style={{...td0,textAlign:"right",color:net90>=0?C.green:C.neg,fontWeight:600}}>{fTv(net90,net90<0)}</td>
               <td style={{...td0,textAlign:"right",color:netAll>=0?C.green:C.neg,fontWeight:600}}>{fTv(netAll,netAll<0)}</td>
+              <td style={{...td0,textAlign:"right",color:xf.lifetime?"#a78bfa":C.muted}} title={xf.lifetime?`Alpha transferred to other addresses (not sold directly)`:""}>{fTv(xf.lifetime,false)}</td>
+              <td style={{...td0,textAlign:"right",color:ind.lifetime?"#fb923c":C.muted}} title={ind.lifetime?`Sold by transfer recipients — indicates indirect selling via intermediary addresses`:""}>{fTv(ind.lifetime,true)}</td>
+              <td style={{...td0,textAlign:"right",color:tx.d30?"#fbbf24":C.muted}}>{fTv(tx.d30,true)}</td>
               <td style={{...td0,textAlign:"right"}}>
                 {netAll>0?<span style={{padding:"2px 6px",borderRadius:"4px",fontSize:"8px",fontWeight:600,background:"rgba(29,233,182,0.15)",color:C.green,border:"1px solid rgba(29,233,182,0.3)"}}>ALIGNED</span>:
-                 sp.lifetime>0?<span style={{padding:"2px 6px",borderRadius:"4px",fontSize:"8px",fontWeight:600,background:"rgba(248,113,113,0.15)",color:C.neg,border:"1px solid rgba(248,113,113,0.3)"}}>SELLING</span>:
+                 (sp.lifetime>0||ind.lifetime>0)?<span style={{padding:"2px 6px",borderRadius:"4px",fontSize:"8px",fontWeight:600,background:"rgba(248,113,113,0.15)",color:C.neg,border:"1px solid rgba(248,113,113,0.3)"}}>{ind.lifetime>0?"INDIRECT":"SELLING"}</span>:
                  <span style={{fontSize:"9px",color:C.muted}}>—</span>}
               </td>
             </tr>);
@@ -360,10 +447,10 @@ function BittensorDashboard({data,loading,error}){
         </table>
       </div>
       <div style={{marginTop:"10px",padding:"10px 14px",background:"rgba(230,200,117,0.05)",border:`1px solid rgba(230,200,117,0.15)`,borderRadius:"6px",fontSize:"10px",color:"rgba(230,200,117,0.5)",fontFamily:SANS,lineHeight:1.6}}>
-        Tracks subnet owner coldkey delegation events (buy=delegate, sell=undelegate) · Signal based on lifetime net flow · ALIGNED = owner buys back more than sells
+        Direct sells/buys only (alpha transfers to other addresses excluded) · Xfer'd = alpha moved to intermediary addresses · Indirect Sells = market sells by those intermediary addresses · INDIRECT signal = owner sells via proxy addresses{ownersUpdated&&<span style={{display:"block",marginTop:"4px",opacity:0.7}}>Last refreshed: {new Date(ownersUpdated).toLocaleString()}</span>}
       </div>
-      </>
-    )}
+      </>;
+    })()}
 
     {/* TOP MOVERS TAB */}
     {sub==="movers"&&(()=>{
@@ -416,7 +503,9 @@ export default function App(){
 
   useEffect(()=>{
     const s=document.createElement("script");s.src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js";s.onload=()=>setCJS(true);document.head.appendChild(s);
-    Promise.all([fetchDune(),fetchDegen()]).then(([d,g])=>{setDune(d);setDegen(g);setL(false);setAnL(true);fetchAnalysis(g).then(a=>{setAn(a);setAnL(false);}).catch(()=>setAnL(false));});
+    // Try cached agentic data first, fallback to live Dune query
+    const loadDune=()=>fetch("/data/agentic.json").then(r=>{if(!r.ok)throw new Error();return r.json();}).then(c=>c.data).catch(()=>fetchDune());
+    Promise.all([loadDune(),fetchDegen()]).then(([d,g])=>{setDune(d);setDegen(g);setL(false);setAnL(true);fetchAnalysis(g).then(a=>{setAn(a);setAnL(false);}).catch(()=>setAnL(false));});
   },[]);
 
   useEffect(()=>{

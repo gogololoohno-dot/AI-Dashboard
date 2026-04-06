@@ -10,7 +10,7 @@ async function taoFetch(path: string, params: Record<string, string> = {}) {
   if (!key) throw new Error('Missing TAOSTATS_API_KEY');
   const qs = new URLSearchParams(params).toString();
   const url = `${API}/${path}${qs ? '?' + qs : ''}`;
-  const res = await fetch(url, { headers: { Authorization: key }, next: { revalidate: 300 } });
+  const res = await fetch(url, { headers: { Authorization: key }, next: { revalidate: 60 } });
   if (!res.ok) {
     const text = await res.text().catch(() => '');
     throw new Error(`taostats ${res.status}: ${text.slice(0, 200)}`);

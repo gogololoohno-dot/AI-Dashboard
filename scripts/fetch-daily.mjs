@@ -188,6 +188,30 @@ async function main() {
     console.log(`    ${delegations.length} delegations, ${transfers.length} transfers`);
   }
 
+  // Retry pass: re-fetch owners that got 0 delegations (likely rate-limited)
+  const emptyOwners = uniqueOwners.filter(ck => ownerData[ck].delegations.length === 0);
+  if (emptyOwners.length > 0) {
+    console.log(`\n  Retrying ${emptyOwners.length} owners with 0 results (likely rate-limited)...`);
+    await sleep(10000); // Wait 10s for rate limits to cool
+    for (let i = 0; i < emptyOwners.length; i++) {
+      const ck = emptyOwners[i];
+      const sns = coldkeyToNetuids[ck];
+      console.log(`  [retry ${i + 1}/${emptyOwners.length}] ${ck.slice(0, 12)}... (SN${sns.join(',')})`);
+      const delegations = await taoFetchAll('api/delegation/v1', {
+        nominator: ck, action: 'all', limit: '200', order: 'timestamp_desc',
+      });
+      await sleep(5000);
+      const transfers = await taoFetchAll('api/transfer/v1', {
+        from: ck, limit: '200', order: 'timestamp_desc',
+      });
+      await sleep(5000);
+      ownerData[ck] = { delegations, transfers };
+      console.log(`    ${delegations.length} delegations, ${transfers.length} transfers`);
+    }
+    const stillEmpty = uniqueOwners.filter(ck => ownerData[ck].delegations.length === 0);
+    if (stillEmpty.length > 0) console.log(`  ${stillEmpty.length} owners still empty after retry`);
+  }
+
   // Step 4: Aggregate owner data
   console.log('\nAggregating owner data...');
   const ownerRows = subnets.map(netuid => {
@@ -202,10 +226,12 @@ async function main() {
     const { delegations, transfers } = ownerData[coldkey];
     const { sell_pressure, buyback, net_flow, transferred, transfer_recipients } = aggregateDelegations(delegations, netuid);
     const transfers_out = aggregateTransfers(transfers);
+    const incomplete = delegations.length === 0 && transfers.length === 0;
     return {
       sn: netuid, owner_coldkey: coldkey,
       sell_pressure, buyback, net_flow, transferred, transfers_out,
       transfer_recipients, indirect_sells: {},
+      ...(incomplete ? { _incomplete: true } : {}),
     };
   });
 

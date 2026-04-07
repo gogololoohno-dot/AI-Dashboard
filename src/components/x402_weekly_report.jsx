@@ -417,9 +417,10 @@ function BittensorDashboard({data,loading,error}){
             const ind=o?.indirect_sells||{};
             const net7=nf.d7||0;const net30=nf.d30||0;const net90=nf.d90||0;const netAll=nf.lifetime||0;
             const ck=o?.owner_coldkey||"";
+            const incomplete=o?._incomplete;
             return(
-            <tr key={s.sn} style={{background:i%2===0?"transparent":"rgba(255,255,255,0.015)"}}>
-              <td style={{...td0,color:C.tao,fontWeight:600}}>SN{s.sn}</td>
+            <tr key={s.sn} style={{background:i%2===0?"transparent":"rgba(255,255,255,0.015)",opacity:incomplete?0.5:1}} title={incomplete?"Data may be incomplete — API rate-limited during fetch":""}>
+              <td style={{...td0,color:C.tao,fontWeight:600}}>SN{s.sn}{incomplete&&<span style={{color:"#fbbf24",fontSize:"8px",marginLeft:"3px"}} title="Rate-limited">⚠</span>}</td>
               <td style={{...td0,color:C.txt,fontFamily:SANS,fontSize:"11px",maxWidth:"120px",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{s.name||"—"}</td>
               <td style={{...td0,textAlign:"right",color:"rgba(74,103,133,0.6)",fontSize:"9px",maxWidth:"80px",overflow:"hidden",textOverflow:"ellipsis"}}>{ck?`${ck.slice(0,6)}…${ck.slice(-4)}`:"—"}</td>
               <td style={{...td0,textAlign:"right",color:sp.d7?C.neg:C.muted}}>{fTv(sp.d7,true)}</td>

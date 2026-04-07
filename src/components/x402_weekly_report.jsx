@@ -491,6 +491,7 @@ export default function App(){
   const[tab,setTab]=useState("agentic");
   const[apSub,setApSub]=useState("overview");
   const[dune,setDune]=useState(null);
+  const[artemis,setArtemis]=useState(null);
   const[degen,setDegen]=useState(null);
   const[an,setAn]=useState(null);
   const[tao,setTao]=useState(null);
@@ -503,9 +504,14 @@ export default function App(){
 
   useEffect(()=>{
     const s=document.createElement("script");s.src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js";s.onload=()=>setCJS(true);document.head.appendChild(s);
-    // Try cached agentic data first, fallback to live Dune query
-    const loadDune=()=>fetch("/data/agentic.json").then(r=>{if(!r.ok)throw new Error();return r.json();}).then(c=>c.data).catch(()=>fetchDune());
-    Promise.all([loadDune(),fetchDegen()]).then(([d,g])=>{setDune(d);setDegen(g);setL(false);setAnL(true);fetchAnalysis(g).then(a=>{setAn(a);setAnL(false);}).catch(()=>setAnL(false));});
+    // Load Artemis cached data + Dune fallback + Degen status
+    const loadArtemis=()=>fetch("/data/agentic.json").then(r=>{if(!r.ok)throw new Error();return r.json();}).catch(()=>null);
+    const loadDune=()=>fetchDune();
+    Promise.all([loadArtemis(),loadDune(),fetchDegen()]).then(([a,d,g])=>{
+      if(a?.summary)setArtemis(a);
+      setDune(d);setDegen(g);setL(false);
+      setAnL(true);fetchAnalysis(g).then(an=>{setAn(an);setAnL(false);}).catch(()=>setAnL(false));
+    });
   },[]);
 
   useEffect(()=>{
@@ -581,27 +587,31 @@ export default function App(){
         {an?.key_insight&&tab==="agentic"&&<div style={{padding:"10px 16px",background:"rgba(33,114,229,0.08)",border:`1px solid rgba(33,114,229,0.2)`,borderRadius:"8px",marginBottom:"16px",fontSize:"12px",color:"#93c5fd",lineHeight:1.5,fontFamily:SANS}}><span style={{fontWeight:700,marginRight:"8px",color:C.accent,fontFamily:MONO,fontSize:"9px",letterSpacing:"0.1em"}}>INSIGHT </span>{an.key_insight}</div>}
 
         {/* OVERVIEW */}
-        {tab==="agentic"&&apSub==="overview"&&(<>
-          <SH c="x402 · 30d Average / Day · Artemis"/>
+        {tab==="agentic"&&apSub==="overview"&&(()=>{
+          const S=artemis?.summary||SUM;
+          const T=artemis?.timeseries||TS;
+          const updAt=artemis?.updated_at?new Date(artemis.updated_at).toLocaleString():SNAP;
+          return<>
+          <SH c={`x402 · 30d Average / Day · Artemis · Updated ${updAt}`}/>
           <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:"10px",marginBottom:"10px"}}>
-            <KV l="Daily Transactions" v={fN(SUM.daily_txns)} delta={SUM.txns_d}/>
-            <KV l="Daily Volume" v={fU(SUM.daily_vol,1)} delta={SUM.vol_d}/>
-            <KV l="Avg Tx Size" v={fU(SUM.avg_tx)} delta={SUM.avg_tx_d} accent={C.purple}/>
+            <KV l="Daily Transactions" v={fN(S.daily_txns)} delta={S.txns_d}/>
+            <KV l="Daily Volume" v={fU(S.daily_vol,1)} delta={S.vol_d}/>
+            <KV l="Avg Tx Size" v={fU(S.avg_tx)} delta={S.avg_tx_d} accent={C.purple}/>
           </div>
           <div style={{display:"grid",gridTemplateColumns:"repeat(4,minmax(0,1fr))",gap:"10px",marginBottom:"20px"}}>
-            <KV l="Cumulative Buyers"  v={fN(SUM.cum_buyers)}  delta={SUM.buyers_d}/>
-            <KV l="Cumulative Sellers" v={fN(SUM.cum_sellers)} delta={SUM.sellers_d}/>
+            <KV l="Cumulative Buyers"  v={fN(S.cum_buyers)}  delta={S.buyers_d}/>
+            <KV l="Cumulative Sellers" v={fN(S.cum_sellers)} delta={S.sellers_d}/>
             <KV l="USDC Market Share"  v="98.6%"/>
             <KV l="Chain Dominance"    v="Base ~95%"/>
           </div>
           {cjs&&<div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:"12px",marginBottom:"20px"}}>
             <div style={{padding:"14px 16px",background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px"}}>
               <div style={{fontSize:"10px",color:C.muted,marginBottom:"8px",fontFamily:MONO}}>Daily Txns · 26w</div>
-              <Chart id="ov-tx" labels={TS.map(r=>r.d)} datasets={[{label:"Txns",data:TS.map(r=>r.tx)}]} height={130}/>
+              <Chart id="ov-tx" labels={T.map(r=>r.d)} datasets={[{label:"Txns",data:T.map(r=>r.tx)}]} height={130}/>
             </div>
             <div style={{padding:"14px 16px",background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px"}}>
               <div style={{fontSize:"10px",color:C.muted,marginBottom:"8px",fontFamily:MONO}}>Daily Volume · 26w</div>
-              <Chart id="ov-vol" labels={TS.map(r=>r.d)} datasets={[{label:"Volume",data:TS.map(r=>r.vol)}]} height={130} yFmt="usd1"/>
+              <Chart id="ov-vol" labels={T.map(r=>r.d)} datasets={[{label:"Volume",data:T.map(r=>r.vol)}]} height={130} yFmt="usd1"/>
             </div>
           </div>}
           <SH c="Virtuals Degen Claw · Primary Volume Driver"/>
@@ -624,29 +634,32 @@ export default function App(){
             <span style={{fontFamily:MONO,fontSize:"9px",letterSpacing:"0.1em",textTransform:"uppercase",color:C.warn,marginRight:"8px"}}>DATA NOTE</span>
             Artemis aggregates all facilitators — ~50% of raw txns are wash/self-trading (PERCENT_GAMED). Strip api.100xconn.com outlier → true blended avg tx closer to $3–5.
           </div>
-        </>)}
+        </>;})()}
 
         {/* TRENDS */}
-        {tab==="agentic"&&apSub==="trends"&&(<>
+        {tab==="agentic"&&apSub==="trends"&&(()=>{
+          const S=artemis?.summary||SUM;
+          const T=artemis?.timeseries||TS;
+          return<>
           {!cjs&&<div style={{color:C.muted,fontSize:"12px"}}>Loading Chart.js…</div>}
           {cjs&&[
-            {id:"t-tx",title:"Daily Transactions · 26w",sub:`Jan peak ~1.35M → now ${fN(SUM.daily_txns)}/day (${fP(SUM.txns_d)})`,ds:[{label:"Txns/day",data:TS.map(r=>r.tx)}],note:"Jan peak = dev/bot testing. Feb collapse as testing cohort churned. Mar–Apr stabilization ~55K organic/day."},
-            {id:"t-vol",title:"Daily Volume USD · 26w",sub:`Jan 29 peak $4.1M → now ${fU(SUM.daily_vol,1)}/day (${fP(SUM.vol_d)})`,ds:[{label:"Volume USD",data:TS.map(r=>r.vol)}],yFmt:"usd1",note:"Jan 27-29 spike driven by api.100xconn.com ($60K avg tx). Volume stabilizing ~$1.9M/day via Virtuals ACP."},
-            {id:"t-avg",title:"Avg Transaction Size · 26w — KEY SIGNAL",sub:`$0.04 → ${fU(SUM.avg_tx)} (+2028% 30d)`,ds:[{label:"Avg Tx",data:TS.map(r=>r.tx>0?Math.round(r.vol/r.tx*100)/100:0)}],yFmt:"usd4",note:"2028% avg tx surge in 30d — micro-payment testing → real agent tasks. Strip 100xconn outlier → true median ~$3–5."},
+            {id:"t-tx",title:"Daily Transactions",sub:`Now ${fN(S.daily_txns)}/day (${fP(S.txns_d)} 30d)`,ds:[{label:"Txns/day",data:T.map(r=>r.tx)}],note:"Artemis daily transaction count across all x402 facilitators."},
+            {id:"t-vol",title:"Daily Volume USD",sub:`Now ${fU(S.daily_vol,1)}/day (${fP(S.vol_d)} 30d)`,ds:[{label:"Volume USD",data:T.map(r=>r.vol)}],yFmt:"usd1",note:"Total USD volume from all x402 payment events."},
+            {id:"t-avg",title:"Avg Transaction Size",sub:`${fU(S.avg_tx)} (${fP(S.avg_tx_d)} 30d)`,ds:[{label:"Avg Tx",data:T.map(r=>r.tx>0?Math.round(r.vol/r.tx*100)/100:0)}],yFmt:"usd4",note:"Strip 100xconn outlier → true median ~$3–5."},
           ].map(ch=><div key={ch.id} style={{padding:"16px",background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",marginBottom:"12px"}}>
             <div style={{marginBottom:"12px"}}>
               <div style={{fontSize:"12px",fontWeight:600,color:C.txt,marginBottom:"3px",fontFamily:MONO}}>{ch.title}</div>
               <div style={{fontSize:"10px",color:C.muted,fontFamily:SANS}}>{ch.sub}</div>
             </div>
-            <Chart id={ch.id} labels={TS.map(r=>r.d)} datasets={ch.ds} height={150} yFmt={ch.yFmt}/>
+            <Chart id={ch.id} labels={T.map(r=>r.d)} datasets={ch.ds} height={150} yFmt={ch.yFmt}/>
             <div style={{marginTop:"10px",fontSize:"10px",color:C.muted,lineHeight:1.6,borderTop:`1px solid ${C.bdr}`,paddingTop:"8px",fontFamily:SANS}}>{ch.note}</div>
           </div>)}
           {cjs&&<div style={{padding:"16px",background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px"}}>
             <div style={{fontSize:"12px",fontWeight:600,color:C.txt,marginBottom:"3px",fontFamily:MONO}}>Txns vs Volume · Divergence View</div>
-            <div style={{fontSize:"10px",color:C.muted,marginBottom:"12px",fontFamily:SANS}}>Jan 27 divergence — volume surged while txns collapsed, confirming quality-over-quantity shift</div>
-            <Chart id="t-both" labels={TS.map(r=>r.d)} datasets={[{label:"Txns/day",data:TS.map(r=>r.tx)},{label:"Volume",data:TS.map(r=>r.vol),y2:true}]} height={160} y2Fmt="usd1"/>
+            <div style={{fontSize:"10px",color:C.muted,marginBottom:"12px",fontFamily:SANS}}>Volume vs transaction count overlay</div>
+            <Chart id="t-both" labels={T.map(r=>r.d)} datasets={[{label:"Txns/day",data:T.map(r=>r.tx)},{label:"Volume",data:T.map(r=>r.vol),y2:true}]} height={160} y2Fmt="usd1"/>
           </div>}
-        </>)}
+        </>;})()}
 
         {/* FACILITATORS */}
         {tab==="agentic"&&apSub==="facilitators"&&(<>

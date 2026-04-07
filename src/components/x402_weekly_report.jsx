@@ -550,7 +550,7 @@ export default function App(){
         <div style={{display:"flex",alignItems:"center",gap:"16px"}}>
           <span style={{fontSize:"13px",fontWeight:700,fontFamily:MONO}}><span style={{color:C.accent}}>Onchain AI</span><span style={{color:C.muted,fontSize:"10px",margin:"0 6px",fontWeight:400}}>·</span><span style={{color:C.green}}>Dashboard</span></span>
           <div style={{width:"1px",height:"16px",background:C.bdr}}/>
-          <span style={{fontSize:"10px",color:C.muted,fontFamily:MONO}}>{SNAP}</span>
+          <span style={{fontSize:"10px",color:C.muted,fontFamily:MONO}}>{new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</span>
           <span style={{fontSize:"10px",color:C.muted,fontFamily:MONO}}>Degen: {degen==null?"…":<span style={{color:degen.active?C.green:C.neg}}>{degen.active?"ACTIVE":"inactive"}</span>}</span>
           {tao?.tao_price&&<span style={{fontSize:"10px",fontFamily:MONO}}>TAO: <span style={{color:C.tao,fontWeight:600}}>${Number(tao.tao_price).toFixed(2)}</span></span>}
         </div>

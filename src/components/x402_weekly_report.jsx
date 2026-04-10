@@ -670,20 +670,38 @@ export default function App(){
         </>;})()}
 
         {/* FACILITATORS */}
-        {tab==="agentic"&&apSub==="facilitators"&&(<>
-          <SH c="Real Volume by Facilitator · 30d Adjusted — Artemis"/>
+        {tab==="agentic"&&apSub==="facilitators"&&(()=>{
+          const liveFacs=artemis?.facilitators;
+          const facs=liveFacs&&liveFacs.length>0?liveFacs:FACS;
+          const updAt=artemis?.updated_at?new Date(artemis.updated_at).toLocaleString():null;
+          return <>
+          <SH c={`Real Volume by Facilitator · Artemis${updAt?` · Updated ${updAt}`:''}`}/>
           <div style={{background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",marginBottom:"14px",overflow:"hidden"}}>
             <table style={{width:"100%",borderCollapse:"collapse"}}>
-              <thead><tr>{["Facilitator","30d Real Vol","30d Txns","Avg Tx","Note"].map(h=><th key={h} style={{textAlign:"left",padding:"8px 12px",fontSize:"9px",letterSpacing:"0.1em",textTransform:"uppercase",color:C.muted,borderBottom:`1px solid ${C.bdr}`,fontWeight:500,fontFamily:MONO}}>{h}</th>)}</tr></thead>
-              <tbody>{FACS.map((f,i)=><tr key={i} style={{background:i%2===0?"transparent":"rgba(255,255,255,0.01)"}}>
+              <thead><tr>{["Facilitator","Real Vol","Txns","Avg Tx","Buyers","Servers","Note"].map(h=><th key={h} style={{textAlign:"left",padding:"8px 12px",fontSize:"9px",letterSpacing:"0.1em",textTransform:"uppercase",color:C.muted,borderBottom:`1px solid ${C.bdr}`,fontWeight:500,fontFamily:MONO}}>{h}</th>)}</tr></thead>
+              <tbody>{facs.map((f,i)=><tr key={i} style={{background:i%2===0?"transparent":"rgba(255,255,255,0.01)"}}>
                 <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"11px",color:i===0?C.txt:C.muted,fontFamily:MONO}}>{f.name}</td>
                 <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"11px",color:i===0?C.green:C.muted,fontFamily:MONO,textAlign:"right"}}>{fU(f.vol)}</td>
                 <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"11px",color:C.muted,fontFamily:MONO,textAlign:"right"}}>{fN(f.tx)}</td>
                 <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"11px",color:f.avg>100?C.warn:C.muted,fontFamily:MONO,textAlign:"right"}}>{fU(f.avg,2)}</td>
-                <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:"rgba(74,103,133,0.7)",fontFamily:SANS}}>{f.note}</td>
+                <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"11px",color:C.muted,fontFamily:MONO,textAlign:"right"}}>{f.buyers!=null?fN(f.buyers):"—"}</td>
+                <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"11px",color:C.muted,fontFamily:MONO,textAlign:"right"}}>{f.server_count!=null?f.server_count:"—"}</td>
+                <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:"rgba(74,103,133,0.7)",fontFamily:SANS}}>{f.note||""}</td>
               </tr>)}</tbody>
             </table>
           </div>
+          {artemis?.chains&&<div style={{background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",padding:"12px 14px",marginBottom:"14px"}}>
+            <div style={{fontSize:"10px",fontWeight:600,color:C.muted,marginBottom:"10px",fontFamily:MONO,letterSpacing:"0.08em",textTransform:"uppercase"}}>Real Volume by Chain · 30d</div>
+            {Object.entries(artemis.chains).filter(([k,v])=>(v.real_volume_30d||0)>0).sort((a,b)=>(b[1].real_volume_30d||0)-(a[1].real_volume_30d||0)).map(([chain,data])=><div key={chain} style={{marginBottom:"9px"}}>
+              <div style={{display:"flex",justifyContent:"space-between",marginBottom:"4px"}}>
+                <span style={{fontSize:"10px",color:C.muted,fontFamily:SANS}}>{chain} ({data.pct_of_volume}%)</span>
+                <span style={{fontSize:"10px",color:C.green,fontFamily:MONO,fontWeight:600}}>{fU(data.real_volume_30d)} / {fN(data.real_txns_30d||0)} txns</span>
+              </div>
+              <div style={{height:"3px",background:"rgba(255,255,255,0.06)",borderRadius:"2px"}}>
+                <div style={{height:"3px",background:C.green,borderRadius:"2px",width:`${data.pct_of_volume}%`}}/>
+              </div>
+            </div>)}
+          </div>}
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px"}}>
             {[{title:"Txns by Category · 30d",data:CAT_TX,fmt:fN,color:C.accent},{title:"Volume by Category · 30d",data:CAT_VOL,fmt:fU,color:C.green}].map(({title,data,fmt,color})=>(
               <div key={title} style={{padding:"14px 16px",background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px"}}>
@@ -700,16 +718,30 @@ export default function App(){
               </div>
             ))}
           </div>
-        </>)}
+        </>;})()}
 
         {/* SERVERS */}
-        {tab==="agentic"&&apSub==="servers"&&(<>
-          <SH c="Top x402 Servers · Last 30 Days · Artemis Deep Dive"/>
+        {tab==="agentic"&&apSub==="servers"&&(()=>{
+          const liveServers=artemis?.servers;
+          const useServers=liveServers&&liveServers.length>0;
+          const updAt=artemis?.updated_at?new Date(artemis.updated_at).toLocaleString():null;
+          return <>
+          <SH c={`Top x402 Servers · Artemis Deep Dive${updAt?` · Updated ${updAt}`:''}`}/>
           <div style={{background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",overflow:"auto",marginBottom:"12px"}}>
-            <table style={{width:"100%",borderCollapse:"collapse",minWidth:"700px"}}>
-              <thead><tr>{["Server","% Txns","% Vol","Real Txns","Real Volume","Avg Tx","Buyers","Notes"].map((h,i)=><th key={h} style={{textAlign:i>0&&i<7?"right":"left",padding:"8px 12px",fontSize:"9px",letterSpacing:"0.1em",textTransform:"uppercase",color:C.muted,borderBottom:`1px solid ${C.bdr}`,fontWeight:500,fontFamily:MONO,whiteSpace:"nowrap"}}>{h}</th>)}</tr></thead>
-              <tbody>{SERVERS.map((s,i)=><tr key={i} style={{background:s.note.includes("OUTLIER")?"rgba(251,191,36,0.04)":s.note.includes("★")?"rgba(29,233,182,0.03)":"transparent"}}>
+            <table style={{width:"100%",borderCollapse:"collapse",minWidth:"900px"}}>
+              <thead><tr>{["Server","Facilitator","% Gamed Tx","% Gamed Vol","Real Txns","Real Volume","Avg Tx","Buyers"].map((h,i)=><th key={h} style={{textAlign:i>1?"right":"left",padding:"8px 12px",fontSize:"9px",letterSpacing:"0.1em",textTransform:"uppercase",color:C.muted,borderBottom:`1px solid ${C.bdr}`,fontWeight:500,fontFamily:MONO,whiteSpace:"nowrap"}}>{h}</th>)}</tr></thead>
+              <tbody>{useServers?liveServers.map((s,i)=><tr key={i} style={{background:s.pct_gamed_vol>50?"rgba(251,191,36,0.04)":i===0?"rgba(29,233,182,0.03)":"transparent"}}>
+                <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"9px",color:i===0?C.accent:C.muted,fontFamily:MONO,maxWidth:"220px",wordBreak:"break-all"}}>{s.url?.replace(/^https?:\/\//,'')}</td>
+                <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.muted,fontFamily:MONO}}>{s.facilitator}</td>
+                <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:s.pct_gamed_txns>50?C.warn:C.muted,fontFamily:MONO,textAlign:"right"}}>{s.pct_gamed_txns?.toFixed(1)}%</td>
+                <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:s.pct_gamed_vol>50?C.warn:C.muted,fontFamily:MONO,textAlign:"right"}}>{s.pct_gamed_vol?.toFixed(1)}%</td>
+                <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.txt,fontFamily:MONO,textAlign:"right"}}>{fN(s.real_txns)}</td>
+                <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:i===0?C.green:C.txt,fontFamily:MONO,textAlign:"right",fontWeight:i===0?600:400}}>{fU(s.real_volume)}</td>
+                <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:s.avg_tx>100?C.green:C.muted,fontFamily:MONO,textAlign:"right"}}>{fU(s.avg_tx,2)}</td>
+                <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.muted,fontFamily:MONO,textAlign:"right"}}>{fN(s.buyers)}</td>
+              </tr>):SERVERS.map((s,i)=><tr key={i} style={{background:s.note.includes("OUTLIER")?"rgba(251,191,36,0.04)":s.note.includes("★")?"rgba(29,233,182,0.03)":"transparent"}}>
                 <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"9px",color:i===0?C.accent:C.muted,fontFamily:MONO,maxWidth:"160px",wordBreak:"break-all"}}>{s.url}</td>
+                <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.muted,fontFamily:MONO}}>—</td>
                 {[s.pTx!=null?`${s.pTx.toFixed(1)}%`:"—",s.pVol!=null?`${s.pVol.toFixed(1)}%`:"—"].map((v,j)=><td key={j} style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.muted,fontFamily:MONO,textAlign:"right"}}>{v}</td>)}
                 <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.txt,fontFamily:MONO,textAlign:"right"}}>{fN(s.rTx)}</td>
                 <td style={{padding:"8px 12px",borderBottom:`1px solid rgba(255,255,255,0.03)`,fontSize:"10px",color:C.txt,fontFamily:MONO,textAlign:"right"}}>{fU(s.rVol/1e3)}</td>
@@ -719,11 +751,10 @@ export default function App(){
               </tr>)}</tbody>
             </table>
           </div>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"10px"}}>
-            <div style={{padding:"12px 14px",background:"rgba(251,191,36,0.05)",border:`1px solid rgba(251,191,36,0.15)`,borderRadius:"8px",fontSize:"11px",color:"#fde68a",lineHeight:1.6,fontFamily:SANS}}><strong style={{fontFamily:MONO}}>api.100xconn.com</strong> — 72 txns, $4.3M vol = $60,275 avg. Massively skews overall avg tx. Likely single institutional agent.</div>
-            <div style={{padding:"12px 14px",background:"rgba(29,233,182,0.05)",border:`1px solid rgba(29,233,182,0.15)`,borderRadius:"8px",fontSize:"11px",color:"#a7f3d0",lineHeight:1.6,fontFamily:SANS}}><strong style={{fontFamily:MONO}}>x402.anyspend.com</strong> — $1,724 avg, 1,042 txns. Clearest signal of real high-value production agent tasks emerging.</div>
-          </div>
-        </>)}
+          {useServers&&<div style={{padding:"10px 14px",background:"rgba(230,200,117,0.05)",border:`1px solid rgba(230,200,117,0.15)`,borderRadius:"6px",fontSize:"10px",color:"rgba(230,200,117,0.5)",fontFamily:SANS,lineHeight:1.6,marginTop:"10px"}}>
+            Top {liveServers.length} servers by real volume · % Gamed shows share of artificial/test txns filtered by Artemis · Highlight: gold rows &gt; 50% gamed
+          </div>}
+        </>;})()}
 
         {/* ERC-8004 */}
         {tab==="agentic"&&apSub==="erc8004"&&(<>

@@ -1,162 +1,1348 @@
 {
-  "updated_at": "2026-04-10T07:36:46.378Z",
+  "updated_at": "2026-04-10T15:17:04.121Z",
   "summary": {
-    "daily_txns": 77903,
-    "daily_vol": 1744035,
-    "avg_tx": 22.39,
-    "txns_d": -19.620299379335524,
-    "vol_d": 9526.68242276263,
-    "avg_tx_d": 11876.50942766481,
-    "cum_buyers": 376905,
-    "cum_sellers": 5201,
-    "buyers_d": 7.856323204111593,
-    "sellers_d": 93.3457249070632
+    "daily_txns": 26941,
+    "daily_vol": 1762427,
+    "avg_tx": 65.42,
+    "txns_d": -20.635268346111722,
+    "vol_d": 8978.03048522153,
+    "avg_tx_d": 11338.3685247133,
+    "cum_buyers": 377611,
+    "cum_sellers": 5208,
+    "buyers_d": 8.058354390172012,
+    "sellers_d": 93.60594795539033
   },
   "timeseries": [
     {
+      "d": "10/12",
+      "tx": 12,
+      "vol": 0
+    },
+    {
+      "d": "10/13",
+      "tx": 10,
+      "vol": 0
+    },
+    {
+      "d": "10/14",
+      "tx": 12,
+      "vol": 0
+    },
+    {
+      "d": "10/15",
+      "tx": 7,
+      "vol": 0
+    },
+    {
+      "d": "10/16",
+      "tx": 22,
+      "vol": 0
+    },
+    {
+      "d": "10/17",
+      "tx": 26,
+      "vol": 0
+    },
+    {
+      "d": "10/18",
+      "tx": 0,
+      "vol": 0
+    },
+    {
+      "d": "10/19",
+      "tx": 25,
+      "vol": 0
+    },
+    {
+      "d": "10/20",
+      "tx": 47,
+      "vol": 0
+    },
+    {
+      "d": "10/21",
+      "tx": 23,
+      "vol": 0
+    },
+    {
+      "d": "10/22",
+      "tx": 86,
+      "vol": 0
+    },
+    {
+      "d": "10/23",
+      "tx": 255,
+      "vol": 0
+    },
+    {
+      "d": "10/24",
+      "tx": 251,
+      "vol": 0
+    },
+    {
+      "d": "10/25",
+      "tx": 1166,
+      "vol": 0
+    },
+    {
+      "d": "10/26",
+      "tx": 4827,
+      "vol": 0
+    },
+    {
+      "d": "10/27",
+      "tx": 4820,
+      "vol": 0
+    },
+    {
+      "d": "10/28",
+      "tx": 14597,
+      "vol": 0
+    },
+    {
+      "d": "10/29",
+      "tx": 14506,
+      "vol": 0
+    },
+    {
+      "d": "10/30",
+      "tx": 12156,
+      "vol": 0
+    },
+    {
+      "d": "10/31",
+      "tx": 283120,
+      "vol": 0
+    },
+    {
+      "d": "11/01",
+      "tx": 378918,
+      "vol": 0
+    },
+    {
+      "d": "11/02",
+      "tx": 1310754,
+      "vol": 0
+    },
+    {
+      "d": "11/03",
+      "tx": 2633547,
+      "vol": 0
+    },
+    {
+      "d": "11/04",
+      "tx": 857723,
+      "vol": 0
+    },
+    {
+      "d": "11/05",
+      "tx": 1736,
+      "vol": 0
+    },
+    {
+      "d": "11/06",
+      "tx": 651587,
+      "vol": 0
+    },
+    {
+      "d": "11/07",
+      "tx": 2329,
+      "vol": 0
+    },
+    {
+      "d": "11/08",
+      "tx": 1733,
+      "vol": 0
+    },
+    {
+      "d": "11/09",
+      "tx": 61620,
+      "vol": 0
+    },
+    {
+      "d": "11/10",
+      "tx": 29833,
+      "vol": 0
+    },
+    {
+      "d": "11/11",
+      "tx": 405,
+      "vol": 0
+    },
+    {
+      "d": "11/12",
+      "tx": 769000,
+      "vol": 0
+    },
+    {
+      "d": "11/13",
+      "tx": 2533930,
+      "vol": 0
+    },
+    {
+      "d": "11/14",
+      "tx": 2148651,
+      "vol": 0
+    },
+    {
+      "d": "11/15",
+      "tx": 2558212,
+      "vol": 0
+    },
+    {
+      "d": "11/16",
+      "tx": 2293747,
+      "vol": 0
+    },
+    {
+      "d": "11/17",
+      "tx": 2078558,
+      "vol": 0
+    },
+    {
+      "d": "11/18",
+      "tx": 1934678,
+      "vol": 0
+    },
+    {
+      "d": "11/19",
+      "tx": 2122020,
+      "vol": 0
+    },
+    {
+      "d": "11/20",
+      "tx": 1497287,
+      "vol": 0
+    },
+    {
+      "d": "11/21",
+      "tx": 437309,
+      "vol": 0
+    },
+    {
+      "d": "11/22",
+      "tx": 221583,
+      "vol": 0
+    },
+    {
+      "d": "11/23",
+      "tx": 387628,
+      "vol": 0
+    },
+    {
+      "d": "11/24",
+      "tx": 906236,
+      "vol": 0
+    },
+    {
+      "d": "11/25",
+      "tx": 1421041,
+      "vol": 0
+    },
+    {
+      "d": "11/26",
+      "tx": 2052330,
+      "vol": 0
+    },
+    {
+      "d": "11/27",
+      "tx": 1510144,
+      "vol": 0
+    },
+    {
+      "d": "11/28",
+      "tx": 505422,
+      "vol": 0
+    },
+    {
+      "d": "11/29",
+      "tx": 254011,
+      "vol": 0
+    },
+    {
+      "d": "11/30",
+      "tx": 279463,
+      "vol": 0
+    },
+    {
+      "d": "12/01",
+      "tx": 600230,
+      "vol": 0
+    },
+    {
+      "d": "12/02",
+      "tx": 632635,
+      "vol": 0
+    },
+    {
+      "d": "12/03",
+      "tx": 789071,
+      "vol": 0
+    },
+    {
+      "d": "12/04",
+      "tx": 913496,
+      "vol": 0
+    },
+    {
+      "d": "12/05",
+      "tx": 626438,
+      "vol": 0
+    },
+    {
+      "d": "12/06",
+      "tx": 513368,
+      "vol": 0
+    },
+    {
+      "d": "12/07",
+      "tx": 578221,
+      "vol": 0
+    },
+    {
+      "d": "12/08",
+      "tx": 551953,
+      "vol": 0
+    },
+    {
+      "d": "12/09",
+      "tx": 633728,
+      "vol": 0
+    },
+    {
+      "d": "12/10",
+      "tx": 662994,
+      "vol": 0
+    },
+    {
+      "d": "12/11",
+      "tx": 671539,
+      "vol": 0
+    },
+    {
+      "d": "12/12",
+      "tx": 647390,
+      "vol": 0
+    },
+    {
+      "d": "12/13",
+      "tx": 735760,
+      "vol": 0
+    },
+    {
+      "d": "12/14",
+      "tx": 840156,
+      "vol": 0
+    },
+    {
+      "d": "12/15",
+      "tx": 673684,
+      "vol": 0
+    },
+    {
+      "d": "12/16",
+      "tx": 815423,
+      "vol": 0
+    },
+    {
+      "d": "12/17",
+      "tx": 779055,
+      "vol": 0
+    },
+    {
+      "d": "12/18",
+      "tx": 844100,
+      "vol": 0
+    },
+    {
+      "d": "12/19",
+      "tx": 804330,
+      "vol": 0
+    },
+    {
+      "d": "12/20",
+      "tx": 717113,
+      "vol": 0
+    },
+    {
+      "d": "12/21",
+      "tx": 785912,
+      "vol": 0
+    },
+    {
+      "d": "12/22",
+      "tx": 764809,
+      "vol": 0
+    },
+    {
+      "d": "12/23",
+      "tx": 781533,
+      "vol": 0
+    },
+    {
+      "d": "12/24",
+      "tx": 842215,
+      "vol": 0
+    },
+    {
+      "d": "12/25",
+      "tx": 784380,
+      "vol": 0
+    },
+    {
+      "d": "12/26",
+      "tx": 760465,
+      "vol": 0
+    },
+    {
+      "d": "12/27",
+      "tx": 877901,
+      "vol": 0
+    },
+    {
+      "d": "12/28",
+      "tx": 502434,
+      "vol": 0
+    },
+    {
+      "d": "12/29",
+      "tx": 569688,
+      "vol": 0
+    },
+    {
+      "d": "12/30",
+      "tx": 637419,
+      "vol": 0
+    },
+    {
+      "d": "12/31",
+      "tx": 436592,
+      "vol": 0
+    },
+    {
+      "d": "01/01",
+      "tx": 579834,
+      "vol": 0
+    },
+    {
+      "d": "01/02",
+      "tx": 625698,
+      "vol": 0
+    },
+    {
+      "d": "01/03",
+      "tx": 572930,
+      "vol": 0
+    },
+    {
+      "d": "01/04",
+      "tx": 541128,
+      "vol": 0
+    },
+    {
+      "d": "01/05",
+      "tx": 540476,
+      "vol": 0
+    },
+    {
+      "d": "01/06",
+      "tx": 528901,
+      "vol": 0
+    },
+    {
+      "d": "01/07",
+      "tx": 532434,
+      "vol": 0
+    },
+    {
+      "d": "01/08",
+      "tx": 542165,
+      "vol": 0
+    },
+    {
+      "d": "01/09",
+      "tx": 381782,
+      "vol": 0
+    },
+    {
+      "d": "01/10",
+      "tx": 340608,
+      "vol": 0
+    },
+    {
+      "d": "01/11",
+      "tx": 518265,
+      "vol": 0
+    },
+    {
+      "d": "01/12",
+      "tx": 330313,
+      "vol": 0
+    },
+    {
+      "d": "01/13",
+      "tx": 256364,
+      "vol": 0
+    },
+    {
+      "d": "01/14",
+      "tx": 283152,
+      "vol": 0
+    },
+    {
+      "d": "01/15",
+      "tx": 278863,
+      "vol": 0
+    },
+    {
+      "d": "01/16",
+      "tx": 273332,
+      "vol": 0
+    },
+    {
+      "d": "01/17",
+      "tx": 278790,
+      "vol": 0
+    },
+    {
+      "d": "01/18",
+      "tx": 266675,
+      "vol": 0
+    },
+    {
+      "d": "01/19",
+      "tx": 260994,
+      "vol": 0
+    },
+    {
+      "d": "01/20",
+      "tx": 260897,
+      "vol": 0
+    },
+    {
+      "d": "01/21",
+      "tx": 269240,
+      "vol": 0
+    },
+    {
+      "d": "01/22",
+      "tx": 454208,
+      "vol": 0
+    },
+    {
+      "d": "01/23",
+      "tx": 511672,
+      "vol": 0
+    },
+    {
+      "d": "01/24",
+      "tx": 339538,
+      "vol": 0
+    },
+    {
+      "d": "01/25",
+      "tx": 341263,
+      "vol": 0
+    },
+    {
+      "d": "01/26",
+      "tx": 331210,
+      "vol": 0
+    },
+    {
+      "d": "01/27",
+      "tx": 324564,
+      "vol": 0
+    },
+    {
+      "d": "01/28",
+      "tx": 346051,
+      "vol": 0
+    },
+    {
+      "d": "01/29",
+      "tx": 343935,
+      "vol": 0
+    },
+    {
+      "d": "01/30",
+      "tx": 142348,
+      "vol": 0
+    },
+    {
+      "d": "01/31",
+      "tx": 31138,
+      "vol": 0
+    },
+    {
+      "d": "02/01",
+      "tx": 18206,
+      "vol": 0
+    },
+    {
+      "d": "02/02",
+      "tx": 43687,
+      "vol": 0
+    },
+    {
+      "d": "02/03",
+      "tx": 270423,
+      "vol": 0
+    },
+    {
+      "d": "02/04",
+      "tx": 267410,
+      "vol": 0
+    },
+    {
+      "d": "02/05",
+      "tx": 341960,
+      "vol": 0
+    },
+    {
+      "d": "02/06",
+      "tx": 96001,
+      "vol": 0
+    },
+    {
+      "d": "02/07",
+      "tx": 67264,
+      "vol": 0
+    },
+    {
+      "d": "02/08",
+      "tx": 67138,
+      "vol": 0
+    },
+    {
+      "d": "02/09",
+      "tx": 66899,
+      "vol": 0
+    },
+    {
+      "d": "02/10",
+      "tx": 69391,
+      "vol": 0
+    },
+    {
+      "d": "02/11",
+      "tx": 57103,
+      "vol": 0
+    },
+    {
+      "d": "02/12",
+      "tx": 52104,
+      "vol": 0
+    },
+    {
+      "d": "02/13",
+      "tx": 247,
+      "vol": 0
+    },
+    {
+      "d": "02/14",
+      "tx": 206,
+      "vol": 0
+    },
+    {
+      "d": "02/15",
+      "tx": 37,
+      "vol": 0
+    },
+    {
+      "d": "02/16",
+      "tx": 15,
+      "vol": 0
+    },
+    {
+      "d": "02/17",
+      "tx": 9,
+      "vol": 0
+    },
+    {
+      "d": "02/18",
+      "tx": 66276,
+      "vol": 0
+    },
+    {
+      "d": "02/19",
+      "tx": 58333,
+      "vol": 0
+    },
+    {
+      "d": "02/20",
+      "tx": 40978,
+      "vol": 0
+    },
+    {
+      "d": "02/21",
+      "tx": 54747,
+      "vol": 0
+    },
+    {
+      "d": "02/22",
+      "tx": 61828,
+      "vol": 0
+    },
+    {
+      "d": "02/23",
+      "tx": 36947,
+      "vol": 0
+    },
+    {
+      "d": "02/24",
+      "tx": 22075,
+      "vol": 0
+    },
+    {
+      "d": "02/25",
+      "tx": 57113,
+      "vol": 0
+    },
+    {
+      "d": "02/26",
+      "tx": 56727,
+      "vol": 0
+    },
+    {
+      "d": "02/27",
+      "tx": 50750,
+      "vol": 0
+    },
+    {
+      "d": "02/28",
+      "tx": 72151,
+      "vol": 0
+    },
+    {
+      "d": "03/01",
+      "tx": 60560,
+      "vol": 0
+    },
+    {
+      "d": "03/02",
+      "tx": 32647,
+      "vol": 0
+    },
+    {
+      "d": "03/03",
+      "tx": 19841,
+      "vol": 0
+    },
+    {
+      "d": "03/04",
+      "tx": 45086,
+      "vol": 0
+    },
+    {
+      "d": "03/05",
+      "tx": 83950,
+      "vol": 0
+    },
+    {
+      "d": "03/06",
+      "tx": 73373,
+      "vol": 0
+    },
+    {
+      "d": "03/07",
+      "tx": 31414,
+      "vol": 0
+    },
+    {
+      "d": "03/08",
+      "tx": 42811,
+      "vol": 0
+    },
+    {
+      "d": "03/09",
+      "tx": 45543,
+      "vol": 0
+    },
+    {
+      "d": "03/10",
+      "tx": 45613,
+      "vol": 0
+    },
+    {
       "d": "03/11",
-      "tx": 123255,
+      "tx": 59194,
       "vol": 25288
     },
     {
       "d": "03/12",
-      "tx": 105901,
+      "tx": 59902,
       "vol": 334190
     },
     {
       "d": "03/13",
-      "tx": 138312,
+      "tx": 62629,
       "vol": 2044259
     },
     {
       "d": "03/14",
-      "tx": 75585,
+      "tx": 23701,
       "vol": 1082847
     },
     {
       "d": "03/15",
-      "tx": 80316,
+      "tx": 33011,
       "vol": 825015
     },
     {
       "d": "03/16",
-      "tx": 82853,
+      "tx": 34572,
       "vol": 3503532
     },
     {
       "d": "03/17",
-      "tx": 74149,
+      "tx": 28736,
       "vol": 1969315
     },
     {
       "d": "03/18",
-      "tx": 168335,
+      "tx": 39493,
       "vol": 1726687
     },
     {
       "d": "03/19",
-      "tx": 89717,
+      "tx": 40994,
       "vol": 1948124
     },
     {
       "d": "03/20",
-      "tx": 84590,
+      "tx": 40499,
       "vol": 3101546
     },
     {
       "d": "03/21",
-      "tx": 76788,
+      "tx": 36713,
       "vol": 1756779
     },
     {
       "d": "03/22",
-      "tx": 71044,
+      "tx": 22110,
       "vol": 1265850
     },
     {
       "d": "03/23",
-      "tx": 68701,
+      "tx": 23547,
       "vol": 1794429
     },
     {
       "d": "03/24",
-      "tx": 62409,
+      "tx": 22950,
       "vol": 1926095
     },
     {
       "d": "03/25",
-      "tx": 62357,
+      "tx": 22428,
       "vol": 819912
     },
     {
       "d": "03/26",
-      "tx": 74904,
+      "tx": 22640,
       "vol": 2472027
     },
     {
       "d": "03/27",
-      "tx": 58239,
+      "tx": 20572,
       "vol": 1968350
     },
     {
       "d": "03/28",
-      "tx": 47676,
+      "tx": 21257,
       "vol": 1127113
     },
     {
       "d": "03/29",
-      "tx": 54048,
+      "tx": 19027,
       "vol": 1169243
     },
     {
       "d": "03/30",
-      "tx": 54938,
+      "tx": 20198,
       "vol": 1899120
     },
     {
       "d": "03/31",
-      "tx": 43819,
+      "tx": 12556,
       "vol": 2791216
     },
     {
       "d": "04/01",
-      "tx": 68860,
+      "tx": 19942,
       "vol": 2724168
     },
     {
       "d": "04/02",
-      "tx": 59525,
+      "tx": 13787,
       "vol": 2500613
     },
     {
       "d": "04/03",
-      "tx": 67262,
+      "tx": 12491,
       "vol": 1209673
     },
     {
       "d": "04/04",
-      "tx": 58417,
+      "tx": 10061,
       "vol": 922305
     },
     {
       "d": "04/05",
-      "tx": 49992,
+      "tx": 17078,
       "vol": 1157024
     },
     {
       "d": "04/06",
-      "tx": 89850,
+      "tx": 10518,
       "vol": 1342056
     },
     {
       "d": "04/07",
-      "tx": 68285,
-      "vol": 2735836
+      "tx": 12949,
+      "vol": 2739459
     },
     {
       "d": "04/08",
-      "tx": 99072,
-      "vol": 2434417
+      "tx": 23264,
+      "vol": 2430906
+    },
+    {
+      "d": "04/09",
+      "tx": 21411,
+      "vol": 2295673
     }
-  ]
+  ],
+  "servers": [
+    {
+      "url": "https://acp-x402.virtuals.io",
+      "facilitator": "Virtuals Protocol",
+      "real_txns": 104460,
+      "real_volume": 597152,
+      "avg_tx": 5.72,
+      "buyers": 4923,
+      "pct_gamed_txns": 68.08,
+      "pct_gamed_vol": 29.62
+    },
+    {
+      "url": "https://x402.twit.sh",
+      "facilitator": "Twit.sh",
+      "real_txns": 32418,
+      "real_volume": 20268,
+      "avg_tx": 0.63,
+      "buyers": 103,
+      "pct_gamed_txns": 33.76,
+      "pct_gamed_vol": 0.48
+    },
+    {
+      "url": "https://blockrun.ai",
+      "facilitator": "Blockrun",
+      "real_txns": 125295,
+      "real_volume": 8980,
+      "avg_tx": 0.07,
+      "buyers": 555,
+      "pct_gamed_txns": 2.47,
+      "pct_gamed_vol": 0.33
+    },
+    {
+      "url": "https://enrichx402.com",
+      "facilitator": "Enrichx402",
+      "real_txns": 106923,
+      "real_volume": 2900,
+      "avg_tx": 0.03,
+      "buyers": 560,
+      "pct_gamed_txns": 0.01,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://ainalyst-api.xyz",
+      "facilitator": "Ainalyst",
+      "real_txns": 75078,
+      "real_volume": 1501,
+      "avg_tx": 0.02,
+      "buyers": 2,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://x402endpoint-utiwoa54hq-uc.a.run.app",
+      "facilitator": "Other",
+      "real_txns": 378,
+      "real_volume": 1452,
+      "avg_tx": 3.84,
+      "buyers": 70,
+      "pct_gamed_txns": 4.79,
+      "pct_gamed_vol": 5.41
+    },
+    {
+      "url": "https://api.dexter.cash",
+      "facilitator": "Dexter",
+      "real_txns": 24635,
+      "real_volume": 1396,
+      "avg_tx": 0.06,
+      "buyers": 3657,
+      "pct_gamed_txns": 76.8,
+      "pct_gamed_vol": 75.49
+    },
+    {
+      "url": "https://x402.anyspend.com",
+      "facilitator": "Anyspend",
+      "real_txns": 632,
+      "real_volume": 1105,
+      "avg_tx": 1.75,
+      "buyers": 260,
+      "pct_gamed_txns": 84.27,
+      "pct_gamed_vol": 83.69
+    },
+    {
+      "url": "https://mcp-x402.vishwanetwork.xyz",
+      "facilitator": "Vishwa Network",
+      "real_txns": 233179,
+      "real_volume": 545,
+      "avg_tx": 0,
+      "buyers": 592,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 72.8
+    },
+    {
+      "url": "https://x402-api.aubr.ai",
+      "facilitator": "Aubr.ai",
+      "real_txns": 12110,
+      "real_volume": 420,
+      "avg_tx": 0.03,
+      "buyers": 63,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://basehub-alpha.vercel.app",
+      "facilitator": "Other",
+      "real_txns": 5242,
+      "real_volume": 319,
+      "avg_tx": 0.06,
+      "buyers": 256,
+      "pct_gamed_txns": 1.74,
+      "pct_gamed_vol": 2.07
+    },
+    {
+      "url": "https://api.nansen.ai",
+      "facilitator": "Other",
+      "real_txns": 8588,
+      "real_volume": 258,
+      "avg_tx": 0.03,
+      "buyers": 84,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://x402.sniperx.fun",
+      "facilitator": "Other",
+      "real_txns": 11693,
+      "real_volume": 234,
+      "avg_tx": 0.02,
+      "buyers": 14,
+      "pct_gamed_txns": 92.72,
+      "pct_gamed_vol": 92.72
+    },
+    {
+      "url": "https://x402.quicknode.com",
+      "facilitator": "Other",
+      "real_txns": 15,
+      "real_volume": 150,
+      "avg_tx": 10,
+      "buyers": 13,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "http://x4021.987659876.xyz",
+      "facilitator": "Other",
+      "real_txns": 159,
+      "real_volume": 114,
+      "avg_tx": 0.71,
+      "buyers": 10,
+      "pct_gamed_txns": 5.92,
+      "pct_gamed_vol": 0.17
+    },
+    {
+      "url": "https://x402-data-bazaar.vercel.app",
+      "facilitator": "Other",
+      "real_txns": 3160,
+      "real_volume": 81,
+      "avg_tx": 0.03,
+      "buyers": 32,
+      "pct_gamed_txns": 24.33,
+      "pct_gamed_vol": 41.92
+    },
+    {
+      "url": "https://x402.slinkylayer.ai",
+      "facilitator": "Other",
+      "real_txns": 1413,
+      "real_volume": 80,
+      "avg_tx": 0.06,
+      "buyers": 6,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://emc2ai.io",
+      "facilitator": "Other",
+      "real_txns": 100,
+      "real_volume": 69,
+      "avg_tx": 0.69,
+      "buyers": 7,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://www.netprotocol.app",
+      "facilitator": "Other",
+      "real_txns": 51,
+      "real_volume": 46,
+      "avg_tx": 0.9,
+      "buyers": 23,
+      "pct_gamed_txns": 1.92,
+      "pct_gamed_vol": 17.94
+    },
+    {
+      "url": "https://api.100xsoon.com",
+      "facilitator": "Other",
+      "real_txns": 12,
+      "real_volume": 44,
+      "avg_tx": 3.65,
+      "buyers": 6,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://api.neynar.com",
+      "facilitator": "Other",
+      "real_txns": 4026,
+      "real_volume": 40,
+      "avg_tx": 0.01,
+      "buyers": 50,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://pett-ai-plushie.vercel.app",
+      "facilitator": "Other",
+      "real_txns": 3,
+      "real_volume": 40,
+      "avg_tx": 13.34,
+      "buyers": 1,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://scout.hugen.tokyo",
+      "facilitator": "Other",
+      "real_txns": 1324,
+      "real_volume": 38,
+      "avg_tx": 0.03,
+      "buyers": 31,
+      "pct_gamed_txns": 97.14,
+      "pct_gamed_vol": 97.8
+    },
+    {
+      "url": "https://agenticpayments.artemisanalytics.com",
+      "facilitator": "Other",
+      "real_txns": 33,
+      "real_volume": 33,
+      "avg_tx": 1,
+      "buyers": 30,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://convrgent.ai",
+      "facilitator": "Other",
+      "real_txns": 182,
+      "real_volume": 25,
+      "avg_tx": 0.14,
+      "buyers": 6,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://api.the402.ai",
+      "facilitator": "Other",
+      "real_txns": 526,
+      "real_volume": 24,
+      "avg_tx": 0.05,
+      "buyers": 10,
+      "pct_gamed_txns": 10.09,
+      "pct_gamed_vol": 29.47
+    },
+    {
+      "url": "https://gg402.vercel.app",
+      "facilitator": "Other",
+      "real_txns": 2305,
+      "real_volume": 23,
+      "avg_tx": 0.01,
+      "buyers": 3,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://56e8ec99-70ab-4ac7-ac99-95eadb1013b6-00-4jxhwwfedokw.sisko.replit.dev",
+      "facilitator": "Other",
+      "real_txns": 4,
+      "real_volume": 22,
+      "avg_tx": 5.47,
+      "buyers": 3,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://api.xona-agent.com",
+      "facilitator": "Other",
+      "real_txns": 294,
+      "real_volume": 21,
+      "avg_tx": 0.07,
+      "buyers": 17,
+      "pct_gamed_txns": 61.57,
+      "pct_gamed_vol": 78.68
+    },
+    {
+      "url": "https://x402scan-j55w7ornb-merit-systems.vercel.app",
+      "facilitator": "Other",
+      "real_txns": 99,
+      "real_volume": 18,
+      "avg_tx": 0.18,
+      "buyers": 16,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    }
+  ],
+  "facilitators": [
+    {
+      "name": "Virtuals Protocol",
+      "vol": 597152,
+      "tx": 104460,
+      "avg": 5.72,
+      "buyers": 4923,
+      "server_count": 1,
+      "note": "Degen Claw ACP"
+    },
+    {
+      "name": "Twit.sh",
+      "vol": 20268,
+      "tx": 32418,
+      "avg": 0.63,
+      "buyers": 103,
+      "server_count": 1,
+      "note": ""
+    },
+    {
+      "name": "Blockrun",
+      "vol": 8980,
+      "tx": 125295,
+      "avg": 0.07,
+      "buyers": 555,
+      "server_count": 1,
+      "note": ""
+    },
+    {
+      "name": "Other",
+      "vol": 3310,
+      "tx": 56017,
+      "avg": 0.06,
+      "buyers": 1219,
+      "server_count": 167,
+      "note": ""
+    },
+    {
+      "name": "Enrichx402",
+      "vol": 2900,
+      "tx": 106923,
+      "avg": 0.03,
+      "buyers": 560,
+      "server_count": 1,
+      "note": ""
+    },
+    {
+      "name": "Ainalyst",
+      "vol": 1501,
+      "tx": 75078,
+      "avg": 0.02,
+      "buyers": 2,
+      "server_count": 1,
+      "note": ""
+    },
+    {
+      "name": "Dexter",
+      "vol": 1396,
+      "tx": 24635,
+      "avg": 0.06,
+      "buyers": 3657,
+      "server_count": 1,
+      "note": ""
+    },
+    {
+      "name": "Anyspend",
+      "vol": 1105,
+      "tx": 632,
+      "avg": 1.75,
+      "buyers": 260,
+      "server_count": 1,
+      "note": ""
+    },
+    {
+      "name": "Vishwa Network",
+      "vol": 545,
+      "tx": 233179,
+      "avg": 0,
+      "buyers": 592,
+      "server_count": 1,
+      "note": ""
+    },
+    {
+      "name": "Aubr.ai",
+      "vol": 420,
+      "tx": 12110,
+      "avg": 0.03,
+      "buyers": 63,
+      "server_count": 1,
+      "note": ""
+    }
+  ],
+  "chains": {
+    "base": {
+      "real_volume_30d": 47032139,
+      "real_txns_30d": 1343993,
+      "pct_of_volume": 99.96
+    },
+    "polygon": {
+      "real_volume_30d": 0,
+      "real_txns_30d": 0,
+      "pct_of_volume": 0
+    },
+    "solana": {
+      "real_volume_30d": 17698,
+      "real_txns_30d": 253771,
+      "pct_of_volume": 0.04
+    },
+    "arbitrum": {
+      "real_volume_30d": 0,
+      "real_txns_30d": 0,
+      "pct_of_volume": 0
+    },
+    "bsc": {
+      "real_volume_30d": 0,
+      "real_txns_30d": 0,
+      "pct_of_volume": 0
+    },
+    "avalanche": {
+      "real_volume_30d": 0,
+      "real_txns_30d": 0,
+      "pct_of_volume": 0
+    },
+    "sei": {
+      "real_volume_30d": 0,
+      "real_txns_30d": 0,
+      "pct_of_volume": 0
+    }
+  }
 }

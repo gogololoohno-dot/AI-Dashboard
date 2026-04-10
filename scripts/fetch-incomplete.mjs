@@ -59,27 +59,28 @@ const WINDOWS = [
   { key: 'd90', days: 90 },
 ];
 
-// Remove restake pairs (DELEGATE + UNDELEGATE on same extrinsic = validator move)
+// Any extrinsic with both DELEGATE + UNDELEGATE non-transfer events = validator
+// move (restake/consolidation). Exclude all non-transfer events in such
+// extrinsics. Real transfers (is_transfer=true) are never filtered.
 function filterRestakes(trades) {
   const byExtrinsic = {};
   for (const t of trades) {
     const eid = t.extrinsic_id;
-    if (!eid || t.is_transfer) continue;
+    if (!eid) continue;
     if (!byExtrinsic[eid]) byExtrinsic[eid] = [];
     byExtrinsic[eid].push(t);
   }
   const excludeIds = new Set();
   for (const [eid, events] of Object.entries(byExtrinsic)) {
-    const delegates = events.filter(e => e.action === 'DELEGATE');
-    const undelegates = events.filter(e => e.action === 'UNDELEGATE');
-    if (delegates.length > 0 && undelegates.length > 0) {
-      const delSum = delegates.reduce((s, e) => s + (parseFloat(e.amount) || 0), 0);
-      const undelSum = undelegates.reduce((s, e) => s + (parseFloat(e.amount) || 0), 0);
-      const diff = Math.abs(delSum - undelSum);
-      if (delSum > 0 && diff / delSum < 0.001) excludeIds.add(eid);
-    }
+    const nonTransfers = events.filter(e => !e.is_transfer);
+    const hasDelegate = nonTransfers.some(e => e.action === 'DELEGATE');
+    const hasUndelegate = nonTransfers.some(e => e.action === 'UNDELEGATE');
+    if (hasDelegate && hasUndelegate) excludeIds.add(eid);
   }
-  return trades.filter(t => !excludeIds.has(t.extrinsic_id));
+  return trades.filter(t => {
+    if (t.is_transfer) return true;
+    return !excludeIds.has(t.extrinsic_id);
+  });
 }
 
 function aggregateDelegations(trades, netuid) {

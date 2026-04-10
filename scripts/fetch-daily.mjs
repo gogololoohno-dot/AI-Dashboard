@@ -60,32 +60,36 @@ const WINDOWS = [
   { key: 'd90', days: 90 },
 ];
 
-// Identify restake pairs: DELEGATE + UNDELEGATE events in the same extrinsic
-// represent a single atomic validator move (owner unstakes from validator A,
-// restakes to validator B) — NOT a real buy or sell. Exclude both.
+// Identify restake operations: any extrinsic containing both DELEGATE and
+// UNDELEGATE events (non-transfer) represents a single atomic validator move
+// — owner unstakes from validator A, restakes to B, or consolidates multiple
+// stakes. Not real buy/sell activity. We exclude ALL non-transfer events in
+// such extrinsics. Includes single-block consolidations (3+ events per txn).
+// Real transfers (is_transfer=true) are NEVER filtered.
 function filterRestakes(trades) {
   const byExtrinsic = {};
   for (const t of trades) {
     const eid = t.extrinsic_id;
-    if (!eid || t.is_transfer) continue;
+    if (!eid) continue;
     if (!byExtrinsic[eid]) byExtrinsic[eid] = [];
     byExtrinsic[eid].push(t);
   }
   const excludeIds = new Set();
   for (const [eid, events] of Object.entries(byExtrinsic)) {
-    const delegates = events.filter(e => e.action === 'DELEGATE');
-    const undelegates = events.filter(e => e.action === 'UNDELEGATE');
-    if (delegates.length > 0 && undelegates.length > 0) {
-      const delSum = delegates.reduce((s, e) => s + (parseFloat(e.amount) || 0), 0);
-      const undelSum = undelegates.reduce((s, e) => s + (parseFloat(e.amount) || 0), 0);
-      // Amounts match within 0.1% → restake pair
-      const diff = Math.abs(delSum - undelSum);
-      if (delSum > 0 && diff / delSum < 0.001) {
-        excludeIds.add(eid);
-      }
+    // Look at only non-transfer events
+    const nonTransfers = events.filter(e => !e.is_transfer);
+    const hasDelegate = nonTransfers.some(e => e.action === 'DELEGATE');
+    const hasUndelegate = nonTransfers.some(e => e.action === 'UNDELEGATE');
+    // If both D and U exist in the same extrinsic, it's a validator move
+    if (hasDelegate && hasUndelegate) {
+      excludeIds.add(eid);
     }
   }
-  return trades.filter(t => !excludeIds.has(t.extrinsic_id));
+  // Keep transfer events (is_transfer=true) even if their extrinsic has a paired D/U
+  return trades.filter(t => {
+    if (t.is_transfer) return true;
+    return !excludeIds.has(t.extrinsic_id);
+  });
 }
 
 function aggregateDelegations(trades, netuid) {

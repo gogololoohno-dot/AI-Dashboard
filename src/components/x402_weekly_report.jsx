@@ -369,7 +369,8 @@ function BittensorDashboard({data,loading,error}){
           sell_7d:o.sell_pressure?.d7,sell_30d:o.sell_pressure?.d30,sell_90d:o.sell_pressure?.d90,sell_all:o.sell_pressure?.lifetime,
           buy_7d:o.buyback?.d7,buy_30d:o.buyback?.d30,buy_90d:o.buyback?.d90,buy_all:o.buyback?.lifetime,
           net_7d:o.net_flow?.d7,net_30d:o.net_flow?.d30,net_90d:o.net_flow?.d90,net_all:o.net_flow?.lifetime,
-          xfer_all:o.transferred?.lifetime,indirect_all:o.indirect_sells?.lifetime,
+          xfer_7d:o.transferred?.d7,xfer_30d:o.transferred?.d30,xfer_90d:o.transferred?.d90,xfer_all:o.transferred?.lifetime,
+          indirect_all:o.indirect_sells?.lifetime,
           tao_out:o.transfers_out?.d30,
           signal:o.net_flow?.lifetime>0?1:(o.sell_pressure?.lifetime>0||o.indirect_sells?.lifetime>0?-1:0),
         };
@@ -385,7 +386,7 @@ function BittensorDashboard({data,loading,error}){
       return ownersLoad?<Spin msg="Loading owner activity data…"/>:
       !owners?<div style={{padding:"20px",textAlign:"center",color:C.muted,fontSize:"11px",fontFamily:MONO}}>No owner data loaded. Switch tabs and try again.</div>:
       <><div style={{background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px",overflow:"auto"}}>
-        <table style={{width:"100%",borderCollapse:"collapse",minWidth:"1800px"}}>
+        <table style={{width:"100%",borderCollapse:"collapse",minWidth:"2050px"}}>
           <thead><tr>
             <th style={thL("sn")} onClick={()=>oSort("sn")}>SN {oArrow("sn")}</th>
             <th style={thL("name")} onClick={()=>oSort("name")}>Name {oArrow("name")}</th>
@@ -402,6 +403,9 @@ function BittensorDashboard({data,loading,error}){
             <th style={oTh("net_30d")} onClick={()=>oSort("net_30d")}>Net 30D {oArrow("net_30d")}</th>
             <th style={oTh("net_90d")} onClick={()=>oSort("net_90d")}>Net 90D {oArrow("net_90d")}</th>
             <th style={oTh("net_all")} onClick={()=>oSort("net_all")}>Net All {oArrow("net_all")}</th>
+            <th style={oTh("xfer_7d",{color:"#a78bfa"})} onClick={()=>oSort("xfer_7d")} title="Alpha transferred to other addresses (last 7 days)">Xfer'd 7D {oArrow("xfer_7d")}</th>
+            <th style={oTh("xfer_30d",{color:"#a78bfa"})} onClick={()=>oSort("xfer_30d")} title="Alpha transferred to other addresses (last 30 days)">Xfer'd 30D {oArrow("xfer_30d")}</th>
+            <th style={oTh("xfer_90d",{color:"#a78bfa"})} onClick={()=>oSort("xfer_90d")} title="Alpha transferred to other addresses (last 90 days)">Xfer'd 90D {oArrow("xfer_90d")}</th>
             <th style={oTh("xfer_all",{color:"#a78bfa"})} onClick={()=>oSort("xfer_all")} title="Alpha transferred to other addresses (not direct market sells)">Xfer'd All {oArrow("xfer_all")}</th>
             <th style={oTh("indirect_all",{color:"#fb923c"})} onClick={()=>oSort("indirect_all")} title="Sells by addresses that received alpha transfers from the owner">Indirect Sells {oArrow("indirect_all")}</th>
             <th style={oTh("tao_out",{color:"#fbbf24"})} onClick={()=>oSort("tao_out")}>TAO Out 30D {oArrow("tao_out")}</th>
@@ -435,7 +439,10 @@ function BittensorDashboard({data,loading,error}){
               <td style={{...td0,textAlign:"right",color:net30>=0?C.green:C.neg,fontWeight:600}}>{fTv(net30,net30<0)}</td>
               <td style={{...td0,textAlign:"right",color:net90>=0?C.green:C.neg,fontWeight:600}}>{fTv(net90,net90<0)}</td>
               <td style={{...td0,textAlign:"right",color:netAll>=0?C.green:C.neg,fontWeight:600}}>{fTv(netAll,netAll<0)}</td>
-              <td style={{...td0,textAlign:"right",color:xf.lifetime?"#a78bfa":C.muted}} title={xf.lifetime?`Alpha transferred to other addresses (not sold directly)`:""}>{fTv(xf.lifetime,false)}</td>
+              <td style={{...td0,textAlign:"right",color:xf.d7?"#a78bfa":C.muted}}>{fTv(xf.d7,false)}</td>
+              <td style={{...td0,textAlign:"right",color:xf.d30?"#a78bfa":C.muted}}>{fTv(xf.d30,false)}</td>
+              <td style={{...td0,textAlign:"right",color:xf.d90?"#a78bfa":C.muted}}>{fTv(xf.d90,false)}</td>
+              <td style={{...td0,textAlign:"right",color:xf.lifetime?"#a78bfa":C.muted,fontWeight:xf.lifetime?600:400}} title={xf.lifetime?`Alpha transferred to other addresses (not sold directly)`:""}>{fTv(xf.lifetime,false)}</td>
               <td style={{...td0,textAlign:"right",color:ind.lifetime?"#fb923c":C.muted}} title={ind.lifetime?`Sold by transfer recipients — indicates indirect selling via intermediary addresses`:""}>{fTv(ind.lifetime,true)}</td>
               <td style={{...td0,textAlign:"right",color:tx.d30?"#fbbf24":C.muted}}>{fTv(tx.d30,true)}</td>
               <td style={{...td0,textAlign:"right"}}>

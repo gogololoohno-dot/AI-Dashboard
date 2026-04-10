@@ -372,35 +372,8 @@ async function main() {
   };
   writeFileSync(EXTRA_PATH, JSON.stringify(extraResult, null, 2));
   console.log(`\nWritten to ${EXTRA_PATH}`);
-
-  // Step 6: Fetch Agentic Payments data from Dune
-  console.log('\n[5/5] Fetching Agentic Payments data from Dune...');
-  const DUNE_KEY = process.env.DUNE_API_KEY || 'dP3RddcVjGFkvz1crqcPCeh2oWBCA3l8';
-  const DUNE_QID = 6934571;
-  try {
-    const exRes = await fetch(`https://api.dune.com/api/v1/query/${DUNE_QID}/execute`, {
-      method: 'POST', headers: { 'X-DUNE-API-KEY': DUNE_KEY, 'Content-Type': 'application/json' },
-    });
-    if (exRes.ok) {
-      const { execution_id } = await exRes.json();
-      console.log(`  Execution started: ${execution_id}`);
-      for (let i = 0; i < 30; i++) {
-        await sleep(5000);
-        const r = await fetch(`https://api.dune.com/api/v1/execution/${execution_id}/results`, {
-          headers: { 'X-DUNE-API-KEY': DUNE_KEY },
-        });
-        const d = await r.json();
-        if (d.state === 'QUERY_STATE_COMPLETED') {
-          const summary = d.result?.rows?.find(r => r.t === 'summary') || null;
-          writeFileSync(AGENTIC_PATH, JSON.stringify({ updated_at: new Date().toISOString(), data: summary }, null, 2));
-          console.log(`  Written to ${AGENTIC_PATH}`);
-          break;
-        }
-        if (d.state === 'QUERY_STATE_FAILED') { console.log('  Dune query failed'); break; }
-        console.log(`  Waiting... (${d.state})`);
-      }
-    }
-  } catch (e) { console.log('  Dune fetch error:', e.message); }
+  // NOTE: x402 Agentic data is handled by scripts/fetch-artemis.mjs
+  // (scrapes live Artemis dashboard via headless browser — more accurate than Dune)
 
   console.log('\nDone!');
 }

@@ -5,17 +5,32 @@ export const maxDuration = 30;
 
 const API = 'https://api.taostats.io';
 
+// Multi-key rotation: pick first available key (simple round-robin via counter)
+const KEYS = (process.env.TAOSTATS_API_KEY || '')
+  .split(',').map(k => k.trim()).filter(k => k.length > 0);
+let keyIdx = 0;
+function nextKey(): string {
+  if (KEYS.length === 0) throw new Error('Missing TAOSTATS_API_KEY');
+  const k = KEYS[keyIdx % KEYS.length];
+  keyIdx++;
+  return k;
+}
+
 async function taoFetch(path: string, params: Record<string, string> = {}) {
-  const key = process.env.TAOSTATS_API_KEY;
-  if (!key) throw new Error('Missing TAOSTATS_API_KEY');
   const qs = new URLSearchParams(params).toString();
   const url = `${API}/${path}${qs ? '?' + qs : ''}`;
-  const res = await fetch(url, { headers: { Authorization: key }, next: { revalidate: 60 } });
-  if (!res.ok) {
-    const text = await res.text().catch(() => '');
-    throw new Error(`taostats ${res.status}: ${text.slice(0, 200)}`);
+  // Try each key once if rate-limited
+  for (let attempt = 0; attempt < Math.max(1, KEYS.length); attempt++) {
+    const key = nextKey();
+    const res = await fetch(url, { headers: { Authorization: key }, next: { revalidate: 60 } });
+    if (res.status === 429 && attempt < KEYS.length - 1) continue;
+    if (!res.ok) {
+      const text = await res.text().catch(() => '');
+      throw new Error(`taostats ${res.status}: ${text.slice(0, 200)}`);
+    }
+    return res.json();
   }
-  return res.json();
+  throw new Error('taostats: all keys rate-limited');
 }
 
 export async function GET() {

@@ -5,6 +5,32 @@ export const maxDuration = 60;
 
 const API = 'https://api.taostats.io';
 
+// Multi-key round-robin rotation: TAOSTATS_API_KEY can be comma-separated
+// to rotate across multiple accounts (each has independent 5 req/min).
+const KEYS = (process.env.TAOSTATS_API_KEY || '')
+  .split(',').map(k => k.trim()).filter(k => k.length > 0);
+
+const keyUsage = new Map<string, number[]>();
+for (const k of KEYS) keyUsage.set(k, []);
+
+function pickKey(): string {
+  if (KEYS.length === 0) throw new Error('Missing TAOSTATS_API_KEY');
+  const now = Date.now();
+  const cutoff = now - 60_000;
+  let best = KEYS[0];
+  let bestCount = Infinity;
+  for (const k of KEYS) {
+    const recent = (keyUsage.get(k) || []).filter(t => t >= cutoff);
+    keyUsage.set(k, recent);
+    if (recent.length < bestCount) {
+      bestCount = recent.length;
+      best = k;
+    }
+  }
+  keyUsage.get(best)!.push(now);
+  return best;
+}
+
 async function taoFetchAll(path: string, params: Record<string, string> = {}) {
   const all: any[] = [];
   let page = 1;
@@ -14,16 +40,15 @@ async function taoFetchAll(path: string, params: Record<string, string> = {}) {
     all.push(...items);
     if (!res.pagination?.next_page || items.length === 0) break;
     page++;
-    await new Promise(r => setTimeout(r, 400));
+    await new Promise(r => setTimeout(r, Math.max(200, 400 / KEYS.length)));
   }
   return all;
 }
 
 async function taoFetch(path: string, params: Record<string, string> = {}, retries = 2) {
-  const key = process.env.TAOSTATS_API_KEY;
-  if (!key) throw new Error('Missing TAOSTATS_API_KEY');
   const qs = new URLSearchParams(params).toString();
   for (let attempt = 0; attempt <= retries; attempt++) {
+    const key = pickKey();
     const res = await fetch(`${API}/${path}?${qs}`, { headers: { Authorization: key } });
     if (res.status === 429 && attempt < retries) {
       await new Promise(r => setTimeout(r, 2000 * (attempt + 1)));

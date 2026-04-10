@@ -1,56 +1,15 @@
 #!/usr/bin/env node
 // Patch script — re-fetches only incomplete/suspicious subnets from owners.json.
 // Runs frequently throughout the day to fill gaps left by rate-limited main runs.
-// Much smaller API footprint than fetch-daily.mjs (only 5-15 calls typically).
-// Run: TAOSTATS_API_KEY=... node scripts/fetch-incomplete.mjs
+// Run: TAOSTATS_API_KEY=key1,key2,key3 node scripts/fetch-incomplete.mjs
 
 import { readFileSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { taoFetch, taoFetchAll, sleep, interCallDelay } from './taostats-client.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OWNERS_PATH = join(__dirname, '..', 'public', 'data', 'owners.json');
-
-const API = 'https://api.taostats.io';
-const KEY = process.env.TAOSTATS_API_KEY;
-if (!KEY) { console.error('Missing TAOSTATS_API_KEY'); process.exit(1); }
-
-const sleep = (ms) => new Promise(r => setTimeout(r, ms));
-
-async function taoFetch(path, params = {}) {
-  const qs = new URLSearchParams(params).toString();
-  const url = `${API}/${path}?${qs}`;
-  for (let attempt = 0; attempt < 4; attempt++) {
-    const res = await fetch(url, { headers: { Authorization: KEY } });
-    if (res.status === 429) {
-      const wait = 8000 * (attempt + 1);
-      console.log(`  429 on ${path}, waiting ${wait / 1000}s...`);
-      await sleep(wait);
-      continue;
-    }
-    if (!res.ok) {
-      console.log(`  ${res.status} on ${path}`);
-      return { data: [] };
-    }
-    return res.json();
-  }
-  console.log(`  FAILED ${path} after 4 retries`);
-  return { data: [] };
-}
-
-async function taoFetchAll(path, params = {}) {
-  const all = [];
-  let page = 1;
-  while (true) {
-    const res = await taoFetch(path, { ...params, page: String(page) });
-    const items = res.data || [];
-    all.push(...items);
-    if (!res.pagination?.next_page || items.length === 0) break;
-    page++;
-    await sleep(4000);
-  }
-  return all;
-}
 
 const WINDOWS = [
   { key: 'd1', days: 1 },
@@ -195,12 +154,12 @@ async function main() {
     const delegations = await taoFetchAll('api/delegation/v1', {
       nominator: ck, action: 'all', limit: '200', order: 'timestamp_desc',
     });
-    await sleep(6000);
+    await sleep(interCallDelay());
 
     const transfers = await taoFetchAll('api/transfer/v1', {
       from: ck, limit: '200', order: 'timestamp_desc',
     });
-    await sleep(6000);
+    await sleep(interCallDelay());
 
     ownerData[ck] = { delegations, transfers };
     console.log(`  ${delegations.length} delegations, ${transfers.length} transfers`);

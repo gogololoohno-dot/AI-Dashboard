@@ -1,57 +1,16 @@
 #!/usr/bin/env node
-// Fetches subnet owner sell/buy data from taostats API with generous delays.
+// Fetches subnet owner sell/buy data from taostats API.
 // Writes results to public/data/owners.json for static serving.
-// Run: TAOSTATS_API_KEY=... node scripts/fetch-owners.mjs
+// Run: TAOSTATS_API_KEY=key1,key2,key3 node scripts/fetch-daily.mjs
 
 import { writeFileSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { taoFetch, taoFetchAll, sleep, interCallDelay, NUM_KEYS } from './taostats-client.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT_PATH = join(__dirname, '..', 'public', 'data', 'owners.json');
 const EXTRA_PATH = join(__dirname, '..', 'public', 'data', 'subnets-extra.json');
-const AGENTIC_PATH = join(__dirname, '..', 'public', 'data', 'agentic.json');
-
-const API = 'https://api.taostats.io';
-const KEY = process.env.TAOSTATS_API_KEY;
-if (!KEY) { console.error('Missing TAOSTATS_API_KEY'); process.exit(1); }
-
-const sleep = (ms) => new Promise(r => setTimeout(r, ms));
-
-async function taoFetchAll(path, params = {}) {
-  const all = [];
-  let page = 1;
-  while (true) {
-    const res = await taoFetch(path, { ...params, page: String(page) });
-    const items = res.data || [];
-    all.push(...items);
-    if (!res.pagination?.next_page || items.length === 0) break;
-    page++;
-    await sleep(3000);
-  }
-  return all;
-}
-
-async function taoFetch(path, params = {}) {
-  const qs = new URLSearchParams(params).toString();
-  const url = `${API}/${path}?${qs}`;
-  for (let attempt = 0; attempt < 3; attempt++) {
-    const res = await fetch(url, { headers: { Authorization: KEY } });
-    if (res.status === 429) {
-      const wait = 5000 * (attempt + 1);
-      console.log(`  429 on ${path}, waiting ${wait / 1000}s...`);
-      await sleep(wait);
-      continue;
-    }
-    if (!res.ok) {
-      console.log(`  ${res.status} on ${path}`);
-      return { data: [] };
-    }
-    return res.json();
-  }
-  console.log(`  FAILED ${path} after 3 retries`);
-  return { data: [] };
-}
 
 const WINDOWS = [
   { key: 'd1', days: 1 },
@@ -191,7 +150,7 @@ async function main() {
       if (!coldkeyToNetuids[ck]) coldkeyToNetuids[ck] = [];
       coldkeyToNetuids[ck].push(netuid);
     }
-    await sleep(3000);
+    await sleep(interCallDelay());
   }
 
   const uniqueOwners = Object.keys(coldkeyToNetuids);
@@ -210,12 +169,12 @@ async function main() {
     const delegations = await taoFetchAll('api/delegation/v1', {
       nominator: ck, action: 'all', limit: '200', order: 'timestamp_desc',
     });
-    await sleep(3000);
+    await sleep(interCallDelay());
 
     const transfers = await taoFetchAll('api/transfer/v1', {
       from: ck, limit: '200', order: 'timestamp_desc',
     });
-    await sleep(3000);
+    await sleep(interCallDelay());
 
     ownerData[ck] = { delegations, transfers };
     console.log(`    ${delegations.length} delegations, ${transfers.length} transfers`);
@@ -233,11 +192,11 @@ async function main() {
       const delegations = await taoFetchAll('api/delegation/v1', {
         nominator: ck, action: 'all', limit: '200', order: 'timestamp_desc',
       });
-      await sleep(5000);
+      await sleep(interCallDelay() * 1.5);
       const transfers = await taoFetchAll('api/transfer/v1', {
         from: ck, limit: '200', order: 'timestamp_desc',
       });
-      await sleep(5000);
+      await sleep(interCallDelay() * 1.5);
       ownerData[ck] = { delegations, transfers };
       console.log(`    ${delegations.length} delegations, ${transfers.length} transfers`);
     }
@@ -284,7 +243,7 @@ async function main() {
       nominator: addr, action: 'undelegate', limit: '200', order: 'timestamp_desc',
     });
     recipientData[addr] = trades.filter(t => !t.is_transfer); // only actual sells
-    await sleep(3000);
+    await sleep(interCallDelay());
   }
 
   // Aggregate indirect sells per subnet
@@ -366,7 +325,7 @@ async function main() {
       if (snap7) flow7 = Math.round((latestTao - toTao(snap7.total_tao)) * 100) / 100;
       if (snap30) flow30 = Math.round((latestTao - toTao(snap30.total_tao)) * 100) / 100;
     }
-    await sleep(3000);
+    await sleep(interCallDelay());
 
     // Metagraph for emission data — get top neuron (owner hotkey typically has highest emission)
     let daily_alpha = null, daily_tao = null, daily_owner_alpha = null;
@@ -386,7 +345,7 @@ async function main() {
         daily_tao = Math.round(ownerTao / 0.18 * 100) / 100;
       }
     }
-    await sleep(3000);
+    await sleep(interCallDelay());
 
     subnetExtras.push({
       sn: netuid,

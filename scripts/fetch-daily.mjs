@@ -60,13 +60,42 @@ const WINDOWS = [
   { key: 'd90', days: 90 },
 ];
 
+// Identify restake pairs: DELEGATE + UNDELEGATE events in the same extrinsic
+// represent a single atomic validator move (owner unstakes from validator A,
+// restakes to validator B) — NOT a real buy or sell. Exclude both.
+function filterRestakes(trades) {
+  const byExtrinsic = {};
+  for (const t of trades) {
+    const eid = t.extrinsic_id;
+    if (!eid || t.is_transfer) continue;
+    if (!byExtrinsic[eid]) byExtrinsic[eid] = [];
+    byExtrinsic[eid].push(t);
+  }
+  const excludeIds = new Set();
+  for (const [eid, events] of Object.entries(byExtrinsic)) {
+    const delegates = events.filter(e => e.action === 'DELEGATE');
+    const undelegates = events.filter(e => e.action === 'UNDELEGATE');
+    if (delegates.length > 0 && undelegates.length > 0) {
+      const delSum = delegates.reduce((s, e) => s + (parseFloat(e.amount) || 0), 0);
+      const undelSum = undelegates.reduce((s, e) => s + (parseFloat(e.amount) || 0), 0);
+      // Amounts match within 0.1% → restake pair
+      const diff = Math.abs(delSum - undelSum);
+      if (delSum > 0 && diff / delSum < 0.001) {
+        excludeIds.add(eid);
+      }
+    }
+  }
+  return trades.filter(t => !excludeIds.has(t.extrinsic_id));
+}
+
 function aggregateDelegations(trades, netuid) {
   const now = Date.now() / 1000;
   const sell = {}, buy = {}, net = {};
   const transferred = {}; // alpha transferred (not sold) — tracked separately
 
-  // Filter to this subnet, separate direct sells from transfers
-  const filtered = trades.filter(t => t.netuid === netuid);
+  // Filter to this subnet, then remove restake pairs (not real sells/buys)
+  let filtered = trades.filter(t => t.netuid === netuid);
+  filtered = filterRestakes(filtered);
   const transferRecipients = new Set();
 
   for (const { key, days } of WINDOWS) {

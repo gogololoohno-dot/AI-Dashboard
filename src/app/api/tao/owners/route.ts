@@ -43,14 +43,39 @@ const WINDOWS = [
   { key: 'd90', days: 90 },
 ];
 
+// Remove restake pairs: DELEGATE + UNDELEGATE on same extrinsic_id with
+// matching amounts = atomic validator move, not a real buy or sell.
+function filterRestakes(trades: any[]): any[] {
+  const byExtrinsic: Record<string, any[]> = {};
+  for (const t of trades) {
+    const eid = t.extrinsic_id;
+    if (!eid || t.is_transfer) continue;
+    if (!byExtrinsic[eid]) byExtrinsic[eid] = [];
+    byExtrinsic[eid].push(t);
+  }
+  const excludeIds = new Set<string>();
+  for (const [eid, events] of Object.entries(byExtrinsic)) {
+    const delegates = events.filter((e: any) => e.action === 'DELEGATE');
+    const undelegates = events.filter((e: any) => e.action === 'UNDELEGATE');
+    if (delegates.length > 0 && undelegates.length > 0) {
+      const delSum = delegates.reduce((s: number, e: any) => s + (parseFloat(e.amount) || 0), 0);
+      const undelSum = undelegates.reduce((s: number, e: any) => s + (parseFloat(e.amount) || 0), 0);
+      const diff = Math.abs(delSum - undelSum);
+      if (delSum > 0 && diff / delSum < 0.001) excludeIds.add(eid);
+    }
+  }
+  return trades.filter((t: any) => !excludeIds.has(t.extrinsic_id));
+}
+
 function aggregate(trades: any[], netuid: number) {
   const now = Date.now() / 1000;
   const sell: Record<string, number> = {};
   const buy: Record<string, number> = {};
   const net: Record<string, number> = {};
 
-  // Filter to this subnet
-  const filtered = trades.filter((t: any) => t.netuid === netuid);
+  // Filter to this subnet, then remove restake pairs
+  let filtered = trades.filter((t: any) => t.netuid === netuid);
+  filtered = filterRestakes(filtered);
 
   // Per-window aggregation
   for (const { key, days } of WINDOWS) {

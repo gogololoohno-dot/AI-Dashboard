@@ -512,11 +512,12 @@ export default function App(){
 
   useEffect(()=>{
     const s=document.createElement("script");s.src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js";s.onload=()=>setCJS(true);document.head.appendChild(s);
-    // Load Artemis cached data + Dune fallback + Degen status
-    const loadArtemis=()=>fetch("/data/agentic.json").then(r=>{if(!r.ok)throw new Error();return r.json();}).catch(()=>null);
-    const loadDune=()=>fetchDune();
-    Promise.all([loadArtemis(),loadDune(),fetchDegen()]).then(([a,d,g])=>{
+    // Load Artemis cached data IMMEDIATELY (static JSON, ~100ms)
+    fetch("/data/agentic.json").then(r=>{if(!r.ok)throw new Error();return r.json();}).then(a=>{
       if(a?.summary)setArtemis(a);
+    }).catch(()=>{});
+    // Load Dune + Degen separately (Dune polling takes 30-80s, don't block Artemis)
+    Promise.all([fetchDune(),fetchDegen()]).then(([d,g])=>{
       setDune(d);setDegen(g);setL(false);
       setAnL(true);fetchAnalysis(g).then(an=>{setAn(an);setAnL(false);}).catch(()=>setAnL(false));
     });
@@ -543,7 +544,10 @@ export default function App(){
   };
 
   const refresh=()=>{
-    setL(true);setDune(null);setDegen(null);setAn(null);setAnL(false);
+    setL(true);setDegen(null);setAn(null);setAnL(false);
+    // Reload Artemis instantly
+    fetch("/data/agentic.json").then(r=>r.ok?r.json():null).then(a=>{if(a?.summary)setArtemis(a);}).catch(()=>{});
+    // Dune + Degen in parallel
     Promise.all([fetchDune(),fetchDegen()]).then(([d,g])=>{setDune(d);setDegen(g);setL(false);setAnL(true);fetchAnalysis(g).then(a=>{setAn(a);setAnL(false);}).catch(()=>setAnL(false));});
   };
 

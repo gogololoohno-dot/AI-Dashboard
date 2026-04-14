@@ -52,7 +52,9 @@ const fP=n=>n==null?"":` ${Number(n)>=0?"+":""}${Number(n).toFixed(1)}%`;
 const pclr=n=>n==null?"#4a5568":Number(n)>=0?"#1de9b6":"#f87171";
 const fTao=n=>n==null?"—":`τ${Number(n).toLocaleString(undefined,{maximumFractionDigits:2})}`;
 
-const C={bg:"#0d1017",surf:"#131920",surf2:"#1a2332",bdr:"rgba(255,255,255,0.06)",bdr2:"rgba(255,255,255,0.12)",txt:"#e2eaf5",muted:"#4a6785",accent:"#2172e5",green:"#1de9b6",neg:"#f87171",warn:"#fbbf24",purple:"#a78bfa",tao:"#e6c875"};
+const DARK={bg:"#0d1017",surf:"#131920",surf2:"#1a2332",bdr:"rgba(255,255,255,0.06)",bdr2:"rgba(255,255,255,0.12)",txt:"#e2eaf5",muted:"#4a6785",accent:"#2172e5",green:"#1de9b6",neg:"#f87171",warn:"#fbbf24",purple:"#a78bfa",tao:"#e6c875"};
+const LIGHT={bg:"#f7f9fc",surf:"#ffffff",surf2:"#f0f4f9",bdr:"rgba(0,0,0,0.08)",bdr2:"rgba(0,0,0,0.14)",txt:"#0f172a",muted:"#64748b",accent:"#2172e5",green:"#059669",neg:"#dc2626",warn:"#d97706",purple:"#7c3aed",tao:"#b8860b"};
+let C=DARK;
 const MONO="'IBM Plex Mono','Fira Code',monospace";
 const SANS="'Inter',system-ui,sans-serif";
 
@@ -496,6 +498,9 @@ const TABS=[{id:"agentic",l:"Agentic Payments"},{id:"bittensor",l:"Bittensor ◈
 const AP_SUBS=[{id:"overview",l:"Overview"},{id:"trends",l:"Charts"},{id:"facilitators",l:"Facilitators"},{id:"servers",l:"Servers"},{id:"erc8004",l:"ERC-8004"},{id:"analysis",l:"Analysis"}];
 
 export default function App(){
+  const[theme,setTheme]=useState("dark");
+  // Apply theme to module-level C palette so all components pick it up on re-render
+  C=theme==="light"?LIGHT:DARK;
   const[tab,setTab]=useState("agentic");
   const[apSub,setApSub]=useState("overview");
   const[dune,setDune]=useState(null);
@@ -507,6 +512,20 @@ export default function App(){
   const[taoErr,setTaoErr]=useState(null);
   const[loading,setL]=useState(true);
   const[anLoad,setAnL]=useState(false);
+
+  // Read theme from localStorage on mount + sync body background
+  useEffect(()=>{
+    const saved=typeof window!=="undefined"?localStorage.getItem("theme"):null;
+    if(saved==="light"||saved==="dark")setTheme(saved);
+  },[]);
+  useEffect(()=>{
+    if(typeof window==="undefined")return;
+    localStorage.setItem("theme",theme);
+    document.body.style.background=C.bg;
+    document.body.style.color=C.txt;
+    document.documentElement.style.colorScheme=theme;
+  },[theme]);
+  const toggleTheme=()=>setTheme(t=>t==="dark"?"light":"dark");
   const[cjs,setCJS]=useState(false);
   const taoFetched=useRef(false);
 
@@ -568,6 +587,9 @@ export default function App(){
         </div>
         <div style={{display:"flex",alignItems:"center",gap:"8px"}}>
           {loading&&<div style={{display:"flex",gap:"4px",alignItems:"center"}}>{[0,1,2].map(i=><div key={i} style={{width:"5px",height:"5px",borderRadius:"50%",background:C.accent,animation:`pulse 1.2s ease-in-out ${i*0.2}s infinite`}}/>)}</div>}
+          <button onClick={toggleTheme} title={theme==="dark"?"Switch to light mode":"Switch to dark mode"} style={{background:"transparent",border:`1px solid ${C.bdr2}`,color:C.muted,padding:"4px 10px",borderRadius:"6px",fontSize:"12px",cursor:"pointer",fontFamily:MONO,lineHeight:1}}>
+            {theme==="dark"?"☀":"☾"}
+          </button>
           {tab==="bittensor"
             ?<button onClick={refreshTao} disabled={taoLoad} style={{background:"transparent",border:`1px solid rgba(230,200,117,0.3)`,color:taoLoad?C.muted:C.tao,padding:"4px 12px",borderRadius:"6px",fontSize:"11px",cursor:taoLoad?"not-allowed":"pointer",fontFamily:MONO}}>
               {taoLoad?"searching…":"↻ refresh TAO"}

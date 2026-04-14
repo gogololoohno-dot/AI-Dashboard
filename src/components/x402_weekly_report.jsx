@@ -52,8 +52,8 @@ const fP=n=>n==null?"":` ${Number(n)>=0?"+":""}${Number(n).toFixed(1)}%`;
 const pclr=n=>n==null?"#4a5568":Number(n)>=0?"#1de9b6":"#f87171";
 const fTao=n=>n==null?"—":`τ${Number(n).toLocaleString(undefined,{maximumFractionDigits:2})}`;
 
-const DARK={bg:"#0d1017",surf:"#131920",surf2:"#1a2332",bdr:"rgba(255,255,255,0.06)",bdr2:"rgba(255,255,255,0.12)",txt:"#e2eaf5",muted:"#4a6785",accent:"#2172e5",green:"#1de9b6",neg:"#f87171",warn:"#fbbf24",purple:"#a78bfa",tao:"#e6c875"};
-const LIGHT={bg:"#f7f9fc",surf:"#ffffff",surf2:"#f0f4f9",bdr:"rgba(0,0,0,0.08)",bdr2:"rgba(0,0,0,0.14)",txt:"#0f172a",muted:"#64748b",accent:"#2172e5",green:"#059669",neg:"#dc2626",warn:"#d97706",purple:"#7c3aed",tao:"#b8860b"};
+const DARK={bg:"#171c25",surf:"#1d242f",surf2:"#252f3d",bdr:"rgba(255,255,255,0.08)",bdr2:"rgba(255,255,255,0.14)",txt:"#dde6f2",muted:"#6b7f9a",accent:"#4a90f0",green:"#34d399",neg:"#fb7185",warn:"#fbbf24",purple:"#a78bfa",tao:"#e6c875"};
+const LIGHT={bg:"#e8ecf2",surf:"#f4f6fa",surf2:"#dfe5ec",bdr:"rgba(0,0,0,0.10)",bdr2:"rgba(0,0,0,0.16)",txt:"#1e293b",muted:"#556579",accent:"#2563eb",green:"#059669",neg:"#dc2626",warn:"#d97706",purple:"#7c3aed",tao:"#a17318"};
 let C=DARK;
 const MONO="'IBM Plex Mono','Fira Code',monospace";
 const SANS="'Inter',system-ui,sans-serif";

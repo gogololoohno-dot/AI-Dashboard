@@ -117,13 +117,23 @@ function Chart({id,labels,datasets,height=160,yFmt,y2Fmt}){
   return <div style={{position:"relative",height:`${height}px`,width:"100%"}}><canvas ref={ref} id={id}/></div>;
 }
 
-const KV=({l,v,delta,accent})=>(<div style={{padding:"14px 16px",background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"8px"}}>
-  <div style={{fontSize:"11px",color:C.muted,marginBottom:"6px",letterSpacing:"0.03em",fontFamily:SANS}}>{l}</div>
-  <div style={{fontSize:"20px",fontWeight:700,color:accent||C.txt,letterSpacing:"-0.01em",marginBottom:"3px",fontFamily:MONO}}>{v}</div>
-  {delta!=null&&<div style={{fontSize:"11px",color:pclr(delta),fontWeight:500,fontFamily:MONO}}>{fP(delta)}<span style={{color:C.muted,fontWeight:400}}> 30d</span></div>}
-</div>);
+const KV=({l,v,delta,accent})=>{
+  const dColor=delta!=null?pclr(delta):null;
+  const dBg=delta!=null?(delta>=0?"rgba(52,211,153,0.10)":"rgba(251,113,133,0.10)"):null;
+  return(<div className="kv-card" style={{padding:"16px 18px",background:C.surf,border:`1px solid ${C.bdr}`,borderRadius:"10px",transition:"transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease"}}>
+    <div style={{fontSize:"10px",color:C.muted,marginBottom:"10px",letterSpacing:"0.08em",textTransform:"uppercase",fontFamily:MONO,fontWeight:500}}>{l}</div>
+    <div style={{fontSize:"26px",fontWeight:600,color:accent||C.txt,letterSpacing:"-0.02em",marginBottom:delta!=null?"8px":"0",fontFamily:SANS,lineHeight:1.1}}>{v}</div>
+    {delta!=null&&<div style={{display:"inline-flex",alignItems:"center",gap:"4px",padding:"3px 8px",borderRadius:"5px",fontSize:"10px",fontWeight:600,fontFamily:MONO,color:dColor,background:dBg,border:`1px solid ${dColor}30`}}>
+      <span style={{fontSize:"9px"}}>{delta>=0?"▲":"▼"}</span>{fP(delta)}<span style={{color:C.muted,fontWeight:400,marginLeft:"2px"}}>30d</span>
+    </div>}
+  </div>);
+};
 
-const SH=({c})=><div style={{fontSize:"10px",fontWeight:600,letterSpacing:"0.1em",textTransform:"uppercase",color:C.muted,marginBottom:"10px",paddingBottom:"6px",borderBottom:`1px solid ${C.bdr}`,fontFamily:MONO}}>{c}</div>;
+const SH=({c})=><div style={{display:"flex",alignItems:"center",gap:"10px",marginBottom:"14px"}}>
+  <div style={{width:"3px",height:"14px",background:C.accent,borderRadius:"2px"}}/>
+  <span style={{fontSize:"11px",fontWeight:600,letterSpacing:"0.12em",textTransform:"uppercase",color:C.txt,fontFamily:MONO}}>{c}</span>
+  <div style={{flex:1,height:"1px",background:`linear-gradient(to right, ${C.bdr}, transparent)`}}/>
+</div>;
 const Tag=({c,children})=><span style={{padding:"2px 7px",borderRadius:"4px",fontSize:"9px",fontWeight:600,background:(c||C.muted)+"20",color:c||C.muted,border:`1px solid ${(c||C.muted)}40`,letterSpacing:"0.04em",fontFamily:MONO}}>{children}</span>;
 
 function ATip({a}){return(
@@ -259,11 +269,13 @@ function BittensorDashboard({data,loading,error}){
     return sortAsc?av-bv:bv-av;
   });
 
-  const td0={padding:"6px 10px",borderBottom:"1px solid rgba(255,255,255,0.03)",fontSize:"10px",fontFamily:MONO};
+  const isDark=C===DARK;
+  const td0={padding:"9px 12px",borderBottom:`1px solid ${isDark?"rgba(255,255,255,0.04)":"rgba(0,0,0,0.04)"}`,fontSize:"11px",fontFamily:MONO};
   const thStyle=(col)=>({
-    textAlign:"right",padding:"7px 10px",fontSize:"8px",letterSpacing:"0.08em",textTransform:"uppercase",
+    textAlign:"right",padding:"10px 12px",fontSize:"9px",letterSpacing:"0.1em",textTransform:"uppercase",
     color:sortCol===col?C.tao:C.muted,borderBottom:`1px solid ${C.bdr}`,fontWeight:600,fontFamily:MONO,
-    cursor:"pointer",whiteSpace:"nowrap",userSelect:"none"
+    cursor:"pointer",whiteSpace:"nowrap",userSelect:"none",
+    background:isDark?"rgba(255,255,255,0.02)":"rgba(0,0,0,0.02)"
   });
   const thL=(col)=>({...thStyle(col),textAlign:"left"});
   const sort=(col)=>{if(sortCol===col)setSortAsc(!sortAsc);else{setSortCol(col);setSortAsc(false);}};
@@ -338,7 +350,7 @@ function BittensorDashboard({data,loading,error}){
             s.flow_30d=ex?.flow_30d??null;
             s.tao_emission_pct=emPct;
             return(
-            <tr key={s.sn} style={{background:i%2===0?"transparent":"rgba(255,255,255,0.015)"}}>
+            <tr key={s.sn} className="row-hover" style={{background:i%2===0?"transparent":(isDark?"rgba(255,255,255,0.015)":"rgba(0,0,0,0.012)"),transition:"background 0.12s"}}>
               <td style={{...td0,textAlign:"center",color:C.muted,fontSize:"9px"}}>{i+1}</td>
               <td style={{...td0,color:C.txt,fontFamily:SANS,fontSize:"11px",maxWidth:"150px",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}><span style={{color:C.tao,fontFamily:MONO,fontSize:"9px",marginRight:"6px"}}>SN{s.sn}</span>{s.name||"—"}</td>
               <td style={{...td0,textAlign:"right",color:emPct>3?C.tao:C.muted}} title={`≈ τ${taoPerDay}/day (${emPct.toFixed(2)}% of ~7,200 TAO/day)\nComputed from alpha price weight: price / sum(all prices)\nHigher alpha price → more TAO emission share`}>{emPct.toFixed(2)}%</td>
@@ -425,7 +437,7 @@ function BittensorDashboard({data,loading,error}){
             const ck=o?.owner_coldkey||"";
             const incomplete=o?._incomplete;
             return(
-            <tr key={s.sn} style={{background:i%2===0?"transparent":"rgba(255,255,255,0.015)",opacity:incomplete?0.5:1}} title={incomplete?"Data may be incomplete — API rate-limited during fetch":""}>
+            <tr key={s.sn} className="row-hover" style={{background:i%2===0?"transparent":(isDark?"rgba(255,255,255,0.015)":"rgba(0,0,0,0.012)"),opacity:incomplete?0.5:1,transition:"background 0.12s"}} title={incomplete?"Data may be incomplete — API rate-limited during fetch":""}>
               <td style={{...td0,color:C.tao,fontWeight:600}}>SN{s.sn}{incomplete&&<span style={{color:"#fbbf24",fontSize:"8px",marginLeft:"3px"}} title="Rate-limited">⚠</span>}</td>
               <td style={{...td0,color:C.txt,fontFamily:SANS,fontSize:"11px",maxWidth:"120px",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{s.name||"—"}</td>
               <td style={{...td0,textAlign:"right",color:"rgba(74,103,133,0.6)",fontSize:"9px",maxWidth:"80px",overflow:"hidden",textOverflow:"ellipsis"}}>{ck?`${ck.slice(0,6)}…${ck.slice(-4)}`:"—"}</td>
@@ -574,27 +586,48 @@ export default function App(){
 
   return(
     <div style={{fontFamily:SANS,background:C.bg,color:C.txt,minHeight:"100vh",display:"flex",flexDirection:"column"}}>
-      <style>{`@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}*{box-sizing:border-box}::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:${C.bg}}::-webkit-scrollbar-thumb{background:${C.bdr2};border-radius:2px}`}</style>
+      <style>{`
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+        *{box-sizing:border-box}
+        body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-feature-settings:"cv11","ss01"}
+        ::-webkit-scrollbar{width:6px;height:6px}
+        ::-webkit-scrollbar-track{background:transparent}
+        ::-webkit-scrollbar-thumb{background:${C.bdr2};border-radius:3px}
+        ::-webkit-scrollbar-thumb:hover{background:${C.muted}}
+        button:not(:disabled):hover{filter:brightness(1.1)}
+        .kv-card:hover{transform:translateY(-1px);border-color:${C.bdr2}!important;box-shadow:0 4px 16px rgba(0,0,0,${theme==="dark"?"0.25":"0.06"})}
+        .row-hover:hover{background:${theme==="dark"?"rgba(255,255,255,0.025)":"rgba(0,0,0,0.025)"}!important}
+        .fade-in{animation:fadeIn 0.3s ease-out}
+      `}</style>
 
       {/* Topbar */}
-      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"0 20px",height:"48px",background:C.surf,borderBottom:`1px solid ${C.bdr}`,flexShrink:0}}>
-        <div style={{display:"flex",alignItems:"center",gap:"16px"}}>
-          <span style={{fontSize:"13px",fontWeight:700,fontFamily:MONO}}><span style={{color:C.accent}}>Onchain AI</span><span style={{color:C.muted,fontSize:"10px",margin:"0 6px",fontWeight:400}}>·</span><span style={{color:C.green}}>Dashboard</span></span>
-          <div style={{width:"1px",height:"16px",background:C.bdr}}/>
-          <span style={{fontSize:"10px",color:C.muted,fontFamily:MONO}}>{new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</span>
-          <span style={{fontSize:"10px",color:C.muted,fontFamily:MONO}}>Degen: {degen==null?"…":<span style={{color:degen.active?C.green:C.neg}}>{degen.active?"ACTIVE":"inactive"}</span>}</span>
-          {tao?.tao_price&&<span style={{fontSize:"10px",fontFamily:MONO}}>TAO: <span style={{color:C.tao,fontWeight:600}}>${Number(tao.tao_price).toFixed(2)}</span></span>}
+      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"0 24px",height:"56px",background:C.surf,borderBottom:`1px solid ${C.bdr}`,flexShrink:0,backdropFilter:"blur(8px)"}}>
+        <div style={{display:"flex",alignItems:"center",gap:"18px"}}>
+          <div style={{display:"flex",alignItems:"center",gap:"10px"}}>
+            <div style={{width:"26px",height:"26px",borderRadius:"7px",background:`linear-gradient(135deg, ${C.accent}, ${C.tao})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"12px",fontWeight:700,color:"#fff",fontFamily:SANS,boxShadow:`0 4px 12px ${C.accent}30`}}>◈</div>
+            <span style={{fontSize:"14px",fontWeight:700,fontFamily:SANS,letterSpacing:"-0.01em"}}><span style={{color:C.txt}}>Onchain</span> <span style={{color:C.accent}}>AI</span></span>
+          </div>
+          <div style={{width:"1px",height:"20px",background:C.bdr}}/>
+          <span style={{fontSize:"11px",color:C.muted,fontFamily:MONO,fontWeight:500}}>{new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</span>
+          {degen!=null&&<div style={{display:"inline-flex",alignItems:"center",gap:"6px",padding:"3px 9px",borderRadius:"12px",fontSize:"10px",fontFamily:MONO,fontWeight:600,letterSpacing:"0.04em",color:degen.active?C.green:C.neg,background:`${degen.active?C.green:C.neg}15`,border:`1px solid ${degen.active?C.green:C.neg}30`}}>
+            <span style={{width:"6px",height:"6px",borderRadius:"50%",background:degen.active?C.green:C.neg,boxShadow:`0 0 8px ${degen.active?C.green:C.neg}`}}/>
+            DEGEN {degen.active?"ACTIVE":"OFFLINE"}
+          </div>}
+          {tao?.tao_price&&<div style={{display:"inline-flex",alignItems:"center",gap:"6px",padding:"3px 9px",borderRadius:"12px",fontSize:"11px",fontFamily:MONO,fontWeight:600,color:C.tao,background:`${C.tao}12`,border:`1px solid ${C.tao}28`}}>
+            <span style={{fontSize:"9px",opacity:0.7}}>TAO</span>${Number(tao.tao_price).toFixed(2)}
+          </div>}
         </div>
         <div style={{display:"flex",alignItems:"center",gap:"8px"}}>
           {loading&&<div style={{display:"flex",gap:"4px",alignItems:"center"}}>{[0,1,2].map(i=><div key={i} style={{width:"5px",height:"5px",borderRadius:"50%",background:C.accent,animation:`pulse 1.2s ease-in-out ${i*0.2}s infinite`}}/>)}</div>}
-          <button onClick={toggleTheme} title={theme==="dark"?"Switch to light mode":"Switch to dark mode"} style={{background:"transparent",border:`1px solid ${C.bdr2}`,color:C.muted,padding:"4px 10px",borderRadius:"6px",fontSize:"12px",cursor:"pointer",fontFamily:MONO,lineHeight:1}}>
+          <button onClick={toggleTheme} title={theme==="dark"?"Switch to light mode":"Switch to dark mode"} style={{background:"transparent",border:`1px solid ${C.bdr2}`,color:C.muted,width:"32px",height:"32px",borderRadius:"8px",fontSize:"14px",cursor:"pointer",fontFamily:MONO,lineHeight:1,display:"flex",alignItems:"center",justifyContent:"center",transition:"all 0.15s"}}>
             {theme==="dark"?"☀":"☾"}
           </button>
           {tab==="bittensor"
-            ?<button onClick={refreshTao} disabled={taoLoad} style={{background:"transparent",border:`1px solid rgba(230,200,117,0.3)`,color:taoLoad?C.muted:C.tao,padding:"4px 12px",borderRadius:"6px",fontSize:"11px",cursor:taoLoad?"not-allowed":"pointer",fontFamily:MONO}}>
+            ?<button onClick={refreshTao} disabled={taoLoad} style={{background:taoLoad?"transparent":`${C.tao}10`,border:`1px solid ${C.tao}40`,color:taoLoad?C.muted:C.tao,padding:"6px 14px",borderRadius:"8px",fontSize:"11px",cursor:taoLoad?"not-allowed":"pointer",fontFamily:MONO,fontWeight:600,letterSpacing:"0.02em",transition:"all 0.15s"}}>
               {taoLoad?"searching…":"↻ refresh TAO"}
             </button>
-            :<button onClick={refresh} disabled={loading} style={{background:"transparent",border:`1px solid ${C.bdr2}`,color:loading?C.muted:C.accent,padding:"4px 12px",borderRadius:"6px",fontSize:"11px",cursor:loading?"not-allowed":"pointer",fontFamily:MONO,letterSpacing:"0.04em"}}>
+            :<button onClick={refresh} disabled={loading} style={{background:loading?"transparent":`${C.accent}10`,border:`1px solid ${loading?C.bdr2:C.accent+"40"}`,color:loading?C.muted:C.accent,padding:"6px 14px",borderRadius:"8px",fontSize:"11px",cursor:loading?"not-allowed":"pointer",fontFamily:MONO,fontWeight:600,letterSpacing:"0.04em",transition:"all 0.15s"}}>
               {loading?"syncing…":"↻ refresh"}
             </button>
           }
@@ -602,11 +635,12 @@ export default function App(){
       </div>
 
       {/* Tabbar */}
-      <div style={{display:"flex",padding:"0 20px",background:C.surf,borderBottom:`1px solid ${C.bdr}`,flexShrink:0}}>
+      <div style={{display:"flex",padding:"0 24px",background:C.surf,borderBottom:`1px solid ${C.bdr}`,flexShrink:0,gap:"4px"}}>
         {TABS.map(t=>{
           const isTao=t.id==="bittensor";
           const active=tab===t.id;
-          return<button key={t.id} onClick={()=>setTab(t.id)} style={{background:"transparent",border:"none",borderBottom:`2px solid ${active?(isTao?C.tao:C.accent):"transparent"}`,color:active?(isTao?C.tao:C.accent):C.muted,padding:"10px 14px",fontSize:"11px",cursor:"pointer",fontFamily:MONO,letterSpacing:"0.06em",fontWeight:active?600:400,marginBottom:"-1px",transition:"all 0.15s"}}>{t.l}</button>;
+          const c=isTao?C.tao:C.accent;
+          return<button key={t.id} onClick={()=>setTab(t.id)} style={{background:active?`${c}10`:"transparent",border:"none",borderBottom:`2px solid ${active?c:"transparent"}`,color:active?c:C.muted,padding:"12px 16px",fontSize:"12px",cursor:"pointer",fontFamily:SANS,letterSpacing:"-0.01em",fontWeight:active?600:500,marginBottom:"-1px",transition:"all 0.18s ease",borderRadius:"6px 6px 0 0"}}>{t.l}</button>;
         })}
       </div>
 
@@ -615,7 +649,7 @@ export default function App(){
 
         {/* Agentic Payments sub-nav */}
         {tab==="agentic"&&<div style={{display:"flex",gap:"4px",marginBottom:"16px",flexWrap:"wrap"}}>
-          {AP_SUBS.map(s=><button key={s.id} onClick={()=>setApSub(s.id)} style={{background:apSub===s.id?"rgba(33,114,229,0.12)":"transparent",border:`1px solid ${apSub===s.id?"rgba(33,114,229,0.3)":C.bdr}`,color:apSub===s.id?C.accent:C.muted,padding:"4px 12px",borderRadius:"5px",fontSize:"10px",cursor:"pointer",fontFamily:MONO,letterSpacing:"0.04em",fontWeight:apSub===s.id?600:400}}>{s.l}</button>)}
+          {AP_SUBS.map(s=><button key={s.id} onClick={()=>setApSub(s.id)} style={{background:apSub===s.id?`${C.accent}15`:"transparent",border:`1px solid ${apSub===s.id?C.accent+"40":C.bdr}`,color:apSub===s.id?C.accent:C.muted,padding:"6px 14px",borderRadius:"7px",fontSize:"11px",cursor:"pointer",fontFamily:MONO,letterSpacing:"0.03em",fontWeight:apSub===s.id?600:500,transition:"all 0.15s ease"}}>{s.l}</button>)}
         </div>}
 
         {an?.key_insight&&tab==="agentic"&&<div style={{padding:"10px 16px",background:"rgba(33,114,229,0.08)",border:`1px solid rgba(33,114,229,0.2)`,borderRadius:"8px",marginBottom:"16px",fontSize:"12px",color:"#93c5fd",lineHeight:1.5,fontFamily:SANS}}><span style={{fontWeight:700,marginRight:"8px",color:C.accent,fontFamily:MONO,fontSize:"9px",letterSpacing:"0.1em"}}>INSIGHT </span>{an.key_insight}</div>}

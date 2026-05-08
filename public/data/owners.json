@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-08T04:13:04.311Z",
+  "updated_at": "2026-05-08T06:27:38.882Z",
   "subnet_count": 49,
   "owners": [
     {
@@ -765,40 +765,46 @@
       "sn": 85,
       "owner_coldkey": "5GTPBjA4uXhuQ51SJB7Jd55JwY6dKEnbnjCrsSSEXy3MN63z",
       "sell_pressure": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
+        "d1": 119.2,
+        "d7": 229.74,
+        "d30": 691.72,
+        "d90": 1677.85,
+        "lifetime": 2961.14
       },
       "buyback": {
         "d1": 0,
         "d7": 0,
         "d30": 0,
         "d90": 0,
-        "lifetime": 0
+        "lifetime": 1124.94
       },
       "net_flow": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
+        "d1": -119.2,
+        "d7": -229.74,
+        "d30": -691.72,
+        "d90": -1677.85,
+        "lifetime": -1836.2
       },
       "transferred": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
+        "d1": 87.64,
+        "d7": 198.88,
+        "d30": 199.01,
+        "d90": 265.66,
+        "lifetime": 814.66
       },
       "transfers_out": {
-        "d1": 0,
-        "d7": 235,
-        "d30": 572.45,
-        "d90": 1559.12,
-        "lifetime": 3167.92
+        "d1": 119,
+        "d7": 230,
+        "d30": 691.45,
+        "d90": 1678.12,
+        "lifetime": 3286.92
       },
+      "transfer_recipients": [
+        "5DD2gFHjH3g5d7nHaDnmBA6Qvo8yvonSTacNShUxuCAc41yB",
+        "5CLbNL7BkFxuCM9NQHEJL3tnMXgnPUfVGv6trTRtuv55Uhtu",
+        "5F8yYaMNCs3By6LaMBetAzwqRSfPZugtHpQW1fxHWV38ssKA",
+        "5HM5zW2MRnvg8w4nFNzH2umn8BTcM14ksvv5Y6FiwobtaYsV"
+      ],
       "indirect_sells": {}
     },
     {
@@ -1256,6 +1262,7 @@
         "d90": 0.1,
         "lifetime": 0.2
       },
+      "transfer_recipients": [],
       "indirect_sells": {}
     },
     {
@@ -1566,8 +1573,8 @@
         "d1": 0,
         "d7": 0,
         "d30": 0,
-        "d90": 0,
-        "lifetime": 0
+        "d90": 710.87,
+        "lifetime": 1076.41
       },
       "transfers_out": {
         "d1": 0,
@@ -1576,8 +1583,13 @@
         "d90": 0,
         "lifetime": 0
       },
-      "indirect_sells": {},
-      "_incomplete": true
+      "transfer_recipients": [
+        "5GE1WGR1fKcCnX2t3tQ19NgSoZuL6K34udoKgNPAVjNybR2A",
+        "5Ei2SZGTQEWG9XHyC6rcWn6iuoxYsLuGeWJG7L4cAtvLAP6o",
+        "5FvWc8z9xqS9eKD9xDwAQ72CAWT9YKeDPd5YMdb8wcc74dL9",
+        "5Eh3tyKhv4L7zUUo2GB4mbpW89DZFvSKDVegxuC3wsX97LAM"
+      ],
+      "indirect_sells": {}
     },
     {
       "sn": 39,

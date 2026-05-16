@@ -1,23 +1,18 @@
 {
-  "updated_at": "2026-05-16T06:06:28.268Z",
+  "updated_at": "2026-05-16T16:03:54.888Z",
   "summary": {
-    "daily_txns": 13660,
-    "daily_vol": 59310,
-    "avg_tx": 4.34,
-    "txns_d": 66.53473622105315,
-    "vol_d": 32.29914118548853,
-    "avg_tx_d": -20.55763008512611,
-    "cum_buyers": 615619,
-    "cum_sellers": 5772,
-    "buyers_d": 60.161040650406505,
-    "sellers_d": 9.900990099009901
+    "daily_txns": 14179,
+    "daily_vol": 59454,
+    "avg_tx": 4.19,
+    "txns_d": 100.19174984020847,
+    "vol_d": 42.59424877517593,
+    "avg_tx_d": -28.77116619990906,
+    "cum_buyers": 622850,
+    "cum_sellers": 5942,
+    "buyers_d": 62.04227642276423,
+    "sellers_d": 13.137852246763138
   },
   "timeseries": [
-    {
-      "d": "11/16",
-      "tx": 2293747,
-      "vol": 0
-    },
     {
       "d": "11/17",
       "tx": 2078557,
@@ -900,18 +895,23 @@
     },
     {
       "d": "05/12",
-      "tx": 11221,
+      "tx": 11288,
       "vol": 74380
     },
     {
       "d": "05/13",
-      "tx": 12562,
-      "vol": 85396
+      "tx": 12610,
+      "vol": 73093
     },
     {
       "d": "05/14",
-      "tx": 14430,
-      "vol": 66937
+      "tx": 14449,
+      "vol": 70724
+    },
+    {
+      "d": "05/15",
+      "tx": 15467,
+      "vol": 72145
     }
   ],
   "servers": [
@@ -1058,7 +1058,7 @@
     {
       "url": "https://mcp-x402.vishwanetwork.xyz",
       "facilitator": "Vishwa Network",
-      "real_txns": 145273,
+      "real_txns": 145274,
       "real_volume": 145,
       "avg_tx": 0,
       "buyers": 298,
@@ -1158,7 +1158,7 @@
     {
       "url": "https://x402.teneo-protocol.ai",
       "facilitator": "Other",
-      "real_txns": 16353,
+      "real_txns": 16305,
       "real_volume": 71,
       "avg_tx": 0,
       "buyers": 513,
@@ -1188,12 +1188,12 @@
     {
       "url": "https://mpp.hyreagent.fun",
       "facilitator": "Other",
-      "real_txns": 2886,
+      "real_txns": 2884,
       "real_volume": 63,
       "avg_tx": 0.02,
       "buyers": 153,
-      "pct_gamed_txns": 62.32,
-      "pct_gamed_vol": 36.19
+      "pct_gamed_txns": 62.34,
+      "pct_gamed_vol": 36.23
     },
     {
       "url": "http://x4021.987659876.xyz",
@@ -1219,11 +1219,11 @@
   "facilitators": [
     {
       "name": "Other",
-      "vol": 9914,
-      "tx": 479164,
+      "vol": 9936,
+      "tx": 479284,
       "avg": 0.02,
-      "buyers": 5912,
-      "server_count": 333,
+      "buyers": 5929,
+      "server_count": 339,
       "note": ""
     },
     {
@@ -1265,7 +1265,7 @@
     {
       "name": "Vishwa Network",
       "vol": 145,
-      "tx": 145273,
+      "tx": 145274,
       "avg": 0,
       "buyers": 298,
       "server_count": 1,
@@ -1319,9 +1319,9 @@
   ],
   "chains": {
     "base": {
-      "real_volume_30d": 1097157,
-      "real_txns_30d": 2504339,
-      "pct_of_volume": 89.66
+      "real_volume_30d": 1137669,
+      "real_txns_30d": 2590677,
+      "pct_of_volume": 89.79
     },
     "polygon": {
       "real_volume_30d": 0,
@@ -1329,9 +1329,9 @@
       "pct_of_volume": 0
     },
     "solana": {
-      "real_volume_30d": 126187,
-      "real_txns_30d": 396798,
-      "pct_of_volume": 10.31
+      "real_volume_30d": 129121,
+      "real_txns_30d": 457828,
+      "pct_of_volume": 10.19
     },
     "arbitrum": {
       "real_volume_30d": 0,
@@ -1354,8 +1354,8 @@
       "pct_of_volume": 0
     },
     "ripple": {
-      "real_volume_30d": 288,
-      "real_txns_30d": 56031,
+      "real_volume_30d": 289,
+      "real_txns_30d": 56052,
       "pct_of_volume": 0.02
     }
   }

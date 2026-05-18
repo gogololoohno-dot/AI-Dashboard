@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-05-17T16:04:44.562Z",
+  "updated_at": "2026-05-18T07:03:28.386Z",
   "summary": {
     "daily_txns": 14640,
-    "daily_vol": 59914,
-    "avg_tx": 4.09,
-    "txns_d": 114.51853539092308,
-    "vol_d": 40.976964956937096,
-    "avg_tx_d": -34.28215202941281,
+    "daily_vol": 60156,
+    "avg_tx": 4.11,
+    "txns_d": 73.398878731807,
+    "vol_d": 41.43904942111862,
+    "avg_tx_d": -18.431393296446917,
     "cum_buyers": 629611,
     "cum_sellers": 6110,
-    "buyers_d": 60.80005312234229,
-    "sellers_d": 16.248097412480973
+    "buyers_d": 57.7063346942865,
+    "sellers_d": 16.159695817490494
   },
   "timeseries": [
     {
@@ -766,7 +766,7 @@
     {
       "d": "04/17",
       "tx": 7818,
-      "vol": 52904
+      "vol": 0
     },
     {
       "d": "04/18",
@@ -918,52 +918,52 @@
     {
       "url": "https://blockrun.ai",
       "facilitator": "Blockrun",
-      "real_txns": 81707,
-      "real_volume": 2925,
+      "real_txns": 78801,
+      "real_volume": 2824,
       "avg_tx": 0.04,
-      "buyers": 266,
+      "buyers": 270,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://enrichx402.com",
       "facilitator": "Enrichx402",
-      "real_txns": 100341,
-      "real_volume": 2697,
+      "real_txns": 101015,
+      "real_volume": 2727,
       "avg_tx": 0.03,
-      "buyers": 517,
+      "buyers": 523,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0.03
+    },
+    {
+      "url": "https://x402endpoint-utiwoa54hq-uc.a.run.app",
+      "facilitator": "Other",
+      "real_txns": 149,
+      "real_volume": 1923,
+      "avg_tx": 12.91,
+      "buyers": 25,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://x402.clashofcoins.com",
       "facilitator": "Other",
-      "real_txns": 26489,
-      "real_volume": 1784,
-      "avg_tx": 0.07,
+      "real_txns": 30098,
+      "real_volume": 1826,
+      "avg_tx": 0.06,
       "buyers": 203,
-      "pct_gamed_txns": 0,
-      "pct_gamed_vol": 0
-    },
-    {
-      "url": "https://x402endpoint-utiwoa54hq-uc.a.run.app",
-      "facilitator": "Other",
-      "real_txns": 140,
-      "real_volume": 1742,
-      "avg_tx": 12.44,
-      "buyers": 24,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://acp-x402.virtuals.io",
       "facilitator": "Virtuals Protocol",
-      "real_txns": 3287,
-      "real_volume": 875,
-      "avg_tx": 0.27,
-      "buyers": 591,
-      "pct_gamed_txns": 58.63,
-      "pct_gamed_vol": 74.42
+      "real_txns": 3137,
+      "real_volume": 803,
+      "avg_tx": 0.26,
+      "buyers": 580,
+      "pct_gamed_txns": 58.58,
+      "pct_gamed_vol": 75.57
     },
     {
       "url": "https://claudepoker.com",
@@ -978,38 +978,38 @@
     {
       "url": "https://x402.anyspend.com",
       "facilitator": "Anyspend",
-      "real_txns": 408,
-      "real_volume": 729,
+      "real_txns": 379,
+      "real_volume": 679,
       "avg_tx": 1.79,
       "buyers": 260,
-      "pct_gamed_txns": 89.74,
-      "pct_gamed_vol": 89.01
+      "pct_gamed_txns": 90.48,
+      "pct_gamed_vol": 89.78
     },
     {
       "url": "https://basehub-alpha.vercel.app",
       "facilitator": "Other",
-      "real_txns": 8035,
-      "real_volume": 546,
+      "real_txns": 7965,
+      "real_volume": 542,
       "avg_tx": 0.07,
-      "buyers": 278,
-      "pct_gamed_txns": 1.52,
-      "pct_gamed_vol": 1.18
+      "buyers": 273,
+      "pct_gamed_txns": 1.55,
+      "pct_gamed_vol": 1.27
     },
     {
       "url": "https://kg.dyor.network",
       "facilitator": "Other",
-      "real_txns": 138,
+      "real_txns": 139,
       "real_volume": 527,
-      "avg_tx": 3.82,
+      "avg_tx": 3.79,
       "buyers": 3,
-      "pct_gamed_txns": 60.8,
+      "pct_gamed_txns": 60.62,
       "pct_gamed_vol": 9.38
     },
     {
       "url": "https://pilonidal-corinne-nonelliptical.ngrok-free.dev",
       "facilitator": "Other",
-      "real_txns": 72443,
-      "real_volume": 505,
+      "real_txns": 72616,
+      "real_volume": 506,
       "avg_tx": 0.01,
       "buyers": 262,
       "pct_gamed_txns": 0.01,
@@ -1018,8 +1018,8 @@
     {
       "url": "https://api.deepnets.ai",
       "facilitator": "Other",
-      "real_txns": 19085,
-      "real_volume": 453,
+      "real_txns": 20114,
+      "real_volume": 474,
       "avg_tx": 0.02,
       "buyers": 93,
       "pct_gamed_txns": 0,
@@ -1028,37 +1028,37 @@
     {
       "url": "https://x402.sniperx.fun",
       "facilitator": "Other",
-      "real_txns": 18645,
-      "real_volume": 373,
+      "real_txns": 19795,
+      "real_volume": 396,
       "avg_tx": 0.02,
       "buyers": 48,
-      "pct_gamed_txns": 51.06,
-      "pct_gamed_vol": 51.05
+      "pct_gamed_txns": 49.56,
+      "pct_gamed_vol": 49.55
     },
     {
       "url": "https://orbisapi.com",
       "facilitator": "Other",
-      "real_txns": 113983,
-      "real_volume": 329,
+      "real_txns": 110026,
+      "real_volume": 325,
       "avg_tx": 0,
-      "buyers": 124,
-      "pct_gamed_txns": 54.31,
-      "pct_gamed_vol": 61.43
+      "buyers": 136,
+      "pct_gamed_txns": 55.27,
+      "pct_gamed_vol": 61.83
     },
     {
       "url": "https://x402.slinkylayer.ai",
       "facilitator": "Other",
-      "real_txns": 4372,
-      "real_volume": 281,
+      "real_txns": 4446,
+      "real_volume": 286,
       "avg_tx": 0.06,
-      "buyers": 2046,
+      "buyers": 2135,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://mcp-x402.vishwanetwork.xyz",
       "facilitator": "Vishwa Network",
-      "real_txns": 146262,
+      "real_txns": 145901,
       "real_volume": 146,
       "avg_tx": 0,
       "buyers": 298,
@@ -1076,41 +1076,41 @@
       "pct_gamed_vol": 0
     },
     {
-      "url": "https://api.nansen.ai",
-      "facilitator": "Other",
-      "real_txns": 5562,
-      "real_volume": 130,
+      "url": "https://x402-api.aubr.ai",
+      "facilitator": "Aubr.ai",
+      "real_txns": 6299,
+      "real_volume": 129,
       "avg_tx": 0.02,
-      "buyers": 57,
+      "buyers": 64,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
-      "url": "https://x402-api.aubr.ai",
-      "facilitator": "Aubr.ai",
-      "real_txns": 6316,
-      "real_volume": 130,
+      "url": "https://api.nansen.ai",
+      "facilitator": "Other",
+      "real_txns": 5319,
+      "real_volume": 127,
       "avg_tx": 0.02,
-      "buyers": 66,
+      "buyers": 56,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://sol.blockrun.ai",
       "facilitator": "Blockrun",
-      "real_txns": 3847,
-      "real_volume": 112,
+      "real_txns": 3967,
+      "real_volume": 116,
       "avg_tx": 0.03,
-      "buyers": 12,
+      "buyers": 13,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://api.strale.io",
       "facilitator": "Other",
-      "real_txns": 1390,
-      "real_volume": 104,
-      "avg_tx": 0.07,
+      "real_txns": 1422,
+      "real_volume": 107,
+      "avg_tx": 0.08,
       "buyers": 37,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
@@ -1118,7 +1118,7 @@
     {
       "url": "https://x402factory.ai",
       "facilitator": "Other",
-      "real_txns": 335,
+      "real_txns": 337,
       "real_volume": 100,
       "avg_tx": 0.3,
       "buyers": 18,
@@ -1128,18 +1128,18 @@
     {
       "url": "https://weather.hugen.tokyo",
       "facilitator": "Other",
-      "real_txns": 7203,
-      "real_volume": 93,
+      "real_txns": 7426,
+      "real_volume": 96,
       "avg_tx": 0.01,
-      "buyers": 77,
+      "buyers": 83,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://x402.twit.sh",
       "facilitator": "Twit.sh",
-      "real_txns": 8945,
-      "real_volume": 87,
+      "real_txns": 9003,
+      "real_volume": 88,
       "avg_tx": 0.01,
       "buyers": 62,
       "pct_gamed_txns": 0,
@@ -1148,62 +1148,52 @@
     {
       "url": "https://mpp.hyreagent.fun",
       "facilitator": "Other",
-      "real_txns": 3233,
-      "real_volume": 78,
+      "real_txns": 3291,
+      "real_volume": 81,
       "avg_tx": 0.02,
       "buyers": 178,
-      "pct_gamed_txns": 59.82,
-      "pct_gamed_vol": 34.1
+      "pct_gamed_txns": 59.4,
+      "pct_gamed_vol": 33.44
     },
     {
       "url": "https://x402.teneo-protocol.ai",
       "facilitator": "Other",
-      "real_txns": 16753,
-      "real_volume": 74,
+      "real_txns": 17087,
+      "real_volume": 76,
       "avg_tx": 0,
-      "buyers": 525,
+      "buyers": 534,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://api.myceliasignal.com",
       "facilitator": "Other",
-      "real_txns": 1950,
-      "real_volume": 72,
+      "real_txns": 2022,
+      "real_volume": 73,
       "avg_tx": 0.04,
       "buyers": 10,
-      "pct_gamed_txns": 21.05,
-      "pct_gamed_vol": 70.36
+      "pct_gamed_txns": 20.83,
+      "pct_gamed_vol": 69.95
     },
     {
       "url": "https://pubmed.sekgen.xyz",
       "facilitator": "Other",
-      "real_txns": 2066,
-      "real_volume": 71,
+      "real_txns": 2120,
+      "real_volume": 72,
       "avg_tx": 0.03,
       "buyers": 4,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
-      "url": "https://b9c7a16b-b90f-4d3c-b73c-bb8d49f9a8fd-00-2zmwe913s9fbf.picard.replit.dev",
-      "facilitator": "Other",
-      "real_txns": 103,
-      "real_volume": 66,
-      "avg_tx": 0.64,
-      "buyers": 1,
-      "pct_gamed_txns": 0,
-      "pct_gamed_vol": 0
-    },
-    {
       "url": "http://x4021.987659876.xyz",
       "facilitator": "Other",
-      "real_txns": 240,
-      "real_volume": 60,
+      "real_txns": 251,
+      "real_volume": 63,
       "avg_tx": 0.25,
       "buyers": 23,
-      "pct_gamed_txns": 14.59,
-      "pct_gamed_vol": 21.14
+      "pct_gamed_txns": 14.04,
+      "pct_gamed_vol": 20.47
     },
     {
       "url": "https://api.100xsoon.com",
@@ -1214,49 +1204,59 @@
       "buyers": 4,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://audits.archonics.ai",
+      "facilitator": "Other",
+      "real_txns": 5,
+      "real_volume": 53,
+      "avg_tx": 10.6,
+      "buyers": 1,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
     }
   ],
   "facilitators": [
     {
       "name": "Other",
-      "vol": 10021,
-      "tx": 490020,
+      "vol": 10232,
+      "tx": 495792,
       "avg": 0.02,
-      "buyers": 6133,
-      "server_count": 341,
+      "buyers": 6255,
+      "server_count": 338,
       "note": ""
     },
     {
       "name": "Blockrun",
-      "vol": 3037,
-      "tx": 85554,
+      "vol": 2940,
+      "tx": 82768,
       "avg": 0.04,
-      "buyers": 278,
+      "buyers": 283,
       "server_count": 2,
       "note": ""
     },
     {
       "name": "Enrichx402",
-      "vol": 2697,
-      "tx": 100341,
+      "vol": 2727,
+      "tx": 101015,
       "avg": 0.03,
-      "buyers": 517,
+      "buyers": 523,
       "server_count": 1,
       "note": ""
     },
     {
       "name": "Virtuals Protocol",
-      "vol": 875,
-      "tx": 3287,
-      "avg": 0.27,
-      "buyers": 591,
+      "vol": 803,
+      "tx": 3137,
+      "avg": 0.26,
+      "buyers": 580,
       "server_count": 1,
       "note": "Degen Claw ACP"
     },
     {
       "name": "Anyspend",
-      "vol": 729,
-      "tx": 408,
+      "vol": 679,
+      "tx": 379,
       "avg": 1.79,
       "buyers": 260,
       "server_count": 1,
@@ -1265,7 +1265,7 @@
     {
       "name": "Vishwa Network",
       "vol": 146,
-      "tx": 146262,
+      "tx": 145901,
       "avg": 0,
       "buyers": 298,
       "server_count": 1,
@@ -1273,17 +1273,17 @@
     },
     {
       "name": "Aubr.ai",
-      "vol": 130,
-      "tx": 6316,
+      "vol": 129,
+      "tx": 6299,
       "avg": 0.02,
-      "buyers": 66,
+      "buyers": 64,
       "server_count": 1,
       "note": ""
     },
     {
       "name": "Twit.sh",
-      "vol": 87,
-      "tx": 8945,
+      "vol": 88,
+      "tx": 9003,
       "avg": 0.01,
       "buyers": 62,
       "server_count": 1,
@@ -1292,7 +1292,7 @@
     {
       "name": "Coinbase",
       "vol": 1,
-      "tx": 200,
+      "tx": 209,
       "avg": 0.01,
       "buyers": 14,
       "server_count": 1,
@@ -1319,9 +1319,9 @@
   ],
   "chains": {
     "base": {
-      "real_volume_30d": 1147311,
-      "real_txns_30d": 2630379,
-      "pct_of_volume": 90.07
+      "real_volume_30d": 1112352,
+      "real_txns_30d": 2548243,
+      "pct_of_volume": 90.24
     },
     "polygon": {
       "real_volume_30d": 0,
@@ -1329,9 +1329,9 @@
       "pct_of_volume": 0
     },
     "solana": {
-      "real_volume_30d": 126263,
-      "real_txns_30d": 508654,
-      "pct_of_volume": 9.91
+      "real_volume_30d": 120006,
+      "real_txns_30d": 490888,
+      "pct_of_volume": 9.74
     },
     "arbitrum": {
       "real_volume_30d": 0,

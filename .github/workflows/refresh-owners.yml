@@ -46,12 +46,10 @@ jobs:
             echo "mode=patch" >> $GITHUB_OUTPUT
           fi
 
-      - name: Install Playwright browsers (full mode only)
-        if: steps.mode.outputs.mode == 'full'
+      - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Fetch Artemis x402 data (full mode only)
-        if: steps.mode.outputs.mode == 'full'
+      - name: Fetch Artemis x402 data
         run: node scripts/fetch-artemis.mjs
         timeout-minutes: 5
         continue-on-error: true

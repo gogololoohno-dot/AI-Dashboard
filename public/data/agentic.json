@@ -1,23 +1,18 @@
 {
-  "updated_at": "2026-05-21T08:59:34.674Z",
+  "updated_at": "2026-05-21T12:15:22.005Z",
   "summary": {
-    "daily_txns": 16674,
-    "daily_vol": 62704,
-    "avg_tx": 3.76,
-    "txns_d": 31.30612284013915,
-    "vol_d": 37.22043643387284,
-    "avg_tx_d": 4.5042176753129475,
-    "cum_buyers": 650772,
-    "cum_sellers": 6499,
-    "buyers_d": 53.97421033952443,
-    "sellers_d": 21.136999068033553
+    "daily_txns": 17204,
+    "daily_vol": 63000,
+    "avg_tx": 3.66,
+    "txns_d": 54.31876335687657,
+    "vol_d": 26.424116668245283,
+    "avg_tx_d": -18.075991591587805,
+    "cum_buyers": 657494,
+    "cum_sellers": 6638,
+    "buyers_d": 55.564651602981186,
+    "sellers_d": 23.727865796831313
   },
   "timeseries": [
-    {
-      "d": "11/21",
-      "tx": 437308,
-      "vol": 0
-    },
     {
       "d": "11/22",
       "tx": 221582,
@@ -905,13 +900,18 @@
     },
     {
       "d": "05/18",
-      "tx": 37511,
-      "vol": 82145
+      "tx": 37577,
+      "vol": 70737
     },
     {
       "d": "05/19",
-      "tx": 29775,
-      "vol": 79489
+      "tx": 29797,
+      "vol": 89246
+    },
+    {
+      "d": "05/20",
+      "tx": 24447,
+      "vol": 73235
     }
   ],
   "servers": [
@@ -1319,9 +1319,9 @@
   ],
   "chains": {
     "base": {
-      "real_volume_30d": 1138193,
-      "real_txns_30d": 2573785,
-      "pct_of_volume": 91.6
+      "real_volume_30d": 1182107,
+      "real_txns_30d": 2681542,
+      "pct_of_volume": 91.75
     },
     "polygon": {
       "real_volume_30d": 0,
@@ -1329,9 +1329,9 @@
       "pct_of_volume": 0
     },
     "solana": {
-      "real_volume_30d": 104037,
-      "real_txns_30d": 533910,
-      "pct_of_volume": 8.37
+      "real_volume_30d": 106059,
+      "real_txns_30d": 562723,
+      "pct_of_volume": 8.23
     },
     "arbitrum": {
       "real_volume_30d": 0,
@@ -1354,8 +1354,8 @@
       "pct_of_volume": 0
     },
     "ripple": {
-      "real_volume_30d": 289,
-      "real_txns_30d": 56064,
+      "real_volume_30d": 292,
+      "real_txns_30d": 56085,
       "pct_of_volume": 0.02
     }
   }

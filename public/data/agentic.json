@@ -1,166 +1,916 @@
 {
-  "updated_at": "2026-06-13T21:58:07.741Z",
+  "updated_at": "2026-06-14T07:54:15.040Z",
   "summary": {
-    "daily_txns": 175637,
-    "daily_vol": 68453,
-    "avg_tx": 0.39,
-    "txns_d": 58.568267315777824,
-    "vol_d": 8.153262200422951,
-    "avg_tx_d": -31.79388030705844,
+    "daily_txns": 14669,
+    "daily_vol": 68614,
+    "avg_tx": 4.68,
+    "txns_d": 31.928564853171316,
+    "vol_d": -5.687485606088798,
+    "avg_tx_d": -28.512438152514246,
     "cum_buyers": 765586,
     "cum_sellers": 7638,
-    "buyers_d": 24.365409669359998,
-    "sellers_d": 32.32848232848233
+    "buyers_d": 22.915014337136235,
+    "sellers_d": 28.542578256479302
   },
   "timeseries": [
     {
+      "d": "12/15",
+      "tx": 673684,
+      "vol": 0
+    },
+    {
+      "d": "12/16",
+      "tx": 815423,
+      "vol": 0
+    },
+    {
+      "d": "12/17",
+      "tx": 779055,
+      "vol": 0
+    },
+    {
+      "d": "12/18",
+      "tx": 844100,
+      "vol": 0
+    },
+    {
+      "d": "12/19",
+      "tx": 804330,
+      "vol": 0
+    },
+    {
+      "d": "12/20",
+      "tx": 717113,
+      "vol": 0
+    },
+    {
+      "d": "12/21",
+      "tx": 785912,
+      "vol": 0
+    },
+    {
+      "d": "12/22",
+      "tx": 764809,
+      "vol": 0
+    },
+    {
+      "d": "12/23",
+      "tx": 781533,
+      "vol": 0
+    },
+    {
+      "d": "12/24",
+      "tx": 842214,
+      "vol": 0
+    },
+    {
+      "d": "12/25",
+      "tx": 784380,
+      "vol": 0
+    },
+    {
+      "d": "12/26",
+      "tx": 760464,
+      "vol": 0
+    },
+    {
+      "d": "12/27",
+      "tx": 877901,
+      "vol": 0
+    },
+    {
+      "d": "12/28",
+      "tx": 502434,
+      "vol": 0
+    },
+    {
+      "d": "12/29",
+      "tx": 569688,
+      "vol": 0
+    },
+    {
+      "d": "12/30",
+      "tx": 637419,
+      "vol": 0
+    },
+    {
+      "d": "12/31",
+      "tx": 436592,
+      "vol": 0
+    },
+    {
+      "d": "01/01",
+      "tx": 579834,
+      "vol": 0
+    },
+    {
+      "d": "01/02",
+      "tx": 625698,
+      "vol": 0
+    },
+    {
+      "d": "01/03",
+      "tx": 572930,
+      "vol": 0
+    },
+    {
+      "d": "01/04",
+      "tx": 541128,
+      "vol": 0
+    },
+    {
+      "d": "01/05",
+      "tx": 540475,
+      "vol": 0
+    },
+    {
+      "d": "01/06",
+      "tx": 528897,
+      "vol": 0
+    },
+    {
+      "d": "01/07",
+      "tx": 532432,
+      "vol": 0
+    },
+    {
+      "d": "01/08",
+      "tx": 542163,
+      "vol": 0
+    },
+    {
+      "d": "01/09",
+      "tx": 381782,
+      "vol": 0
+    },
+    {
+      "d": "01/10",
+      "tx": 340608,
+      "vol": 0
+    },
+    {
+      "d": "01/11",
+      "tx": 518265,
+      "vol": 0
+    },
+    {
+      "d": "01/12",
+      "tx": 330313,
+      "vol": 0
+    },
+    {
+      "d": "01/13",
+      "tx": 256364,
+      "vol": 0
+    },
+    {
+      "d": "01/14",
+      "tx": 283152,
+      "vol": 0
+    },
+    {
+      "d": "01/15",
+      "tx": 278863,
+      "vol": 0
+    },
+    {
+      "d": "01/16",
+      "tx": 273332,
+      "vol": 0
+    },
+    {
+      "d": "01/17",
+      "tx": 278790,
+      "vol": 0
+    },
+    {
+      "d": "01/18",
+      "tx": 266675,
+      "vol": 0
+    },
+    {
+      "d": "01/19",
+      "tx": 260994,
+      "vol": 0
+    },
+    {
+      "d": "01/20",
+      "tx": 260897,
+      "vol": 0
+    },
+    {
+      "d": "01/21",
+      "tx": 269239,
+      "vol": 0
+    },
+    {
+      "d": "01/22",
+      "tx": 454208,
+      "vol": 0
+    },
+    {
+      "d": "01/23",
+      "tx": 511672,
+      "vol": 0
+    },
+    {
+      "d": "01/24",
+      "tx": 339538,
+      "vol": 0
+    },
+    {
+      "d": "01/25",
+      "tx": 341263,
+      "vol": 0
+    },
+    {
+      "d": "01/26",
+      "tx": 331210,
+      "vol": 0
+    },
+    {
+      "d": "01/27",
+      "tx": 324564,
+      "vol": 0
+    },
+    {
+      "d": "01/28",
+      "tx": 346051,
+      "vol": 0
+    },
+    {
+      "d": "01/29",
+      "tx": 343935,
+      "vol": 0
+    },
+    {
+      "d": "01/30",
+      "tx": 142348,
+      "vol": 0
+    },
+    {
+      "d": "01/31",
+      "tx": 31138,
+      "vol": 0
+    },
+    {
+      "d": "02/01",
+      "tx": 18206,
+      "vol": 0
+    },
+    {
+      "d": "02/02",
+      "tx": 43687,
+      "vol": 0
+    },
+    {
+      "d": "02/03",
+      "tx": 270423,
+      "vol": 0
+    },
+    {
+      "d": "02/04",
+      "tx": 267410,
+      "vol": 0
+    },
+    {
+      "d": "02/05",
+      "tx": 341960,
+      "vol": 0
+    },
+    {
+      "d": "02/06",
+      "tx": 96001,
+      "vol": 0
+    },
+    {
+      "d": "02/07",
+      "tx": 67264,
+      "vol": 0
+    },
+    {
+      "d": "02/08",
+      "tx": 67135,
+      "vol": 0
+    },
+    {
+      "d": "02/09",
+      "tx": 66898,
+      "vol": 0
+    },
+    {
+      "d": "02/10",
+      "tx": 69389,
+      "vol": 0
+    },
+    {
+      "d": "02/11",
+      "tx": 57103,
+      "vol": 0
+    },
+    {
+      "d": "02/12",
+      "tx": 52104,
+      "vol": 0
+    },
+    {
+      "d": "02/13",
+      "tx": 247,
+      "vol": 0
+    },
+    {
+      "d": "02/14",
+      "tx": 206,
+      "vol": 0
+    },
+    {
+      "d": "02/15",
+      "tx": 37,
+      "vol": 0
+    },
+    {
+      "d": "02/16",
+      "tx": 15,
+      "vol": 0
+    },
+    {
+      "d": "02/17",
+      "tx": 9,
+      "vol": 0
+    },
+    {
+      "d": "02/18",
+      "tx": 66276,
+      "vol": 0
+    },
+    {
+      "d": "02/19",
+      "tx": 58332,
+      "vol": 0
+    },
+    {
+      "d": "02/20",
+      "tx": 40962,
+      "vol": 0
+    },
+    {
+      "d": "02/21",
+      "tx": 54747,
+      "vol": 0
+    },
+    {
+      "d": "02/22",
+      "tx": 61536,
+      "vol": 0
+    },
+    {
+      "d": "02/23",
+      "tx": 36848,
+      "vol": 0
+    },
+    {
+      "d": "02/24",
+      "tx": 22075,
+      "vol": 0
+    },
+    {
+      "d": "02/25",
+      "tx": 57097,
+      "vol": 0
+    },
+    {
+      "d": "02/26",
+      "tx": 56724,
+      "vol": 0
+    },
+    {
+      "d": "02/27",
+      "tx": 50749,
+      "vol": 0
+    },
+    {
+      "d": "02/28",
+      "tx": 72145,
+      "vol": 0
+    },
+    {
+      "d": "03/01",
+      "tx": 60396,
+      "vol": 0
+    },
+    {
+      "d": "03/02",
+      "tx": 32586,
+      "vol": 0
+    },
+    {
+      "d": "03/03",
+      "tx": 19837,
+      "vol": 0
+    },
+    {
+      "d": "03/04",
+      "tx": 45086,
+      "vol": 0
+    },
+    {
+      "d": "03/05",
+      "tx": 83949,
+      "vol": 0
+    },
+    {
+      "d": "03/06",
+      "tx": 73371,
+      "vol": 0
+    },
+    {
+      "d": "03/07",
+      "tx": 31414,
+      "vol": 0
+    },
+    {
+      "d": "03/08",
+      "tx": 42811,
+      "vol": 0
+    },
+    {
+      "d": "03/09",
+      "tx": 45540,
+      "vol": 0
+    },
+    {
+      "d": "03/10",
+      "tx": 45613,
+      "vol": 0
+    },
+    {
+      "d": "03/11",
+      "tx": 59194,
+      "vol": 0
+    },
+    {
+      "d": "03/12",
+      "tx": 59877,
+      "vol": 0
+    },
+    {
+      "d": "03/13",
+      "tx": 62604,
+      "vol": 0
+    },
+    {
+      "d": "03/14",
+      "tx": 23658,
+      "vol": 0
+    },
+    {
+      "d": "03/15",
+      "tx": 32977,
+      "vol": 0
+    },
+    {
+      "d": "03/16",
+      "tx": 34510,
+      "vol": 0
+    },
+    {
+      "d": "03/17",
+      "tx": 28685,
+      "vol": 0
+    },
+    {
+      "d": "03/18",
+      "tx": 39435,
+      "vol": 0
+    },
+    {
+      "d": "03/19",
+      "tx": 40935,
+      "vol": 0
+    },
+    {
+      "d": "03/20",
+      "tx": 40432,
+      "vol": 0
+    },
+    {
+      "d": "03/21",
+      "tx": 36602,
+      "vol": 0
+    },
+    {
+      "d": "03/22",
+      "tx": 22075,
+      "vol": 0
+    },
+    {
+      "d": "03/23",
+      "tx": 23499,
+      "vol": 0
+    },
+    {
+      "d": "03/24",
+      "tx": 22908,
+      "vol": 0
+    },
+    {
+      "d": "03/25",
+      "tx": 22156,
+      "vol": 0
+    },
+    {
+      "d": "03/26",
+      "tx": 22569,
+      "vol": 0
+    },
+    {
+      "d": "03/27",
+      "tx": 20489,
+      "vol": 0
+    },
+    {
+      "d": "03/28",
+      "tx": 21214,
+      "vol": 0
+    },
+    {
+      "d": "03/29",
+      "tx": 18941,
+      "vol": 0
+    },
+    {
+      "d": "03/30",
+      "tx": 20107,
+      "vol": 0
+    },
+    {
+      "d": "03/31",
+      "tx": 12215,
+      "vol": 0
+    },
+    {
+      "d": "04/01",
+      "tx": 19882,
+      "vol": 0
+    },
+    {
+      "d": "04/02",
+      "tx": 13698,
+      "vol": 0
+    },
+    {
+      "d": "04/03",
+      "tx": 12396,
+      "vol": 0
+    },
+    {
+      "d": "04/04",
+      "tx": 9995,
+      "vol": 0
+    },
+    {
+      "d": "04/05",
+      "tx": 17013,
+      "vol": 0
+    },
+    {
+      "d": "04/06",
+      "tx": 10443,
+      "vol": 0
+    },
+    {
+      "d": "04/07",
+      "tx": 12850,
+      "vol": 0
+    },
+    {
+      "d": "04/08",
+      "tx": 23044,
+      "vol": 0
+    },
+    {
+      "d": "04/09",
+      "tx": 21301,
+      "vol": 0
+    },
+    {
+      "d": "04/10",
+      "tx": 11503,
+      "vol": 0
+    },
+    {
+      "d": "04/11",
+      "tx": 3735,
+      "vol": 0
+    },
+    {
+      "d": "04/12",
+      "tx": 4720,
+      "vol": 0
+    },
+    {
+      "d": "04/13",
+      "tx": 9959,
+      "vol": 0
+    },
+    {
+      "d": "04/14",
+      "tx": 7,
+      "vol": 0
+    },
+    {
+      "d": "04/15",
+      "tx": 16,
+      "vol": 0
+    },
+    {
+      "d": "04/16",
+      "tx": 4117,
+      "vol": 0
+    },
+    {
+      "d": "04/17",
+      "tx": 7818,
+      "vol": 0
+    },
+    {
+      "d": "04/18",
+      "tx": 8725,
+      "vol": 0
+    },
+    {
+      "d": "04/19",
+      "tx": 9526,
+      "vol": 0
+    },
+    {
+      "d": "04/20",
+      "tx": 8626,
+      "vol": 0
+    },
+    {
+      "d": "04/21",
+      "tx": 9365,
+      "vol": 0
+    },
+    {
+      "d": "04/22",
+      "tx": 11102,
+      "vol": 0
+    },
+    {
+      "d": "04/23",
+      "tx": 9891,
+      "vol": 0
+    },
+    {
+      "d": "04/24",
+      "tx": 27168,
+      "vol": 0
+    },
+    {
+      "d": "04/25",
+      "tx": 7298,
+      "vol": 0
+    },
+    {
+      "d": "04/26",
+      "tx": 26331,
+      "vol": 0
+    },
+    {
+      "d": "04/27",
+      "tx": 25444,
+      "vol": 0
+    },
+    {
+      "d": "04/28",
+      "tx": 20263,
+      "vol": 0
+    },
+    {
+      "d": "04/29",
+      "tx": 20422,
+      "vol": 0
+    },
+    {
+      "d": "04/30",
+      "tx": 14883,
+      "vol": 0
+    },
+    {
+      "d": "05/01",
+      "tx": 21464,
+      "vol": 0
+    },
+    {
+      "d": "05/02",
+      "tx": 14565,
+      "vol": 0
+    },
+    {
+      "d": "05/03",
+      "tx": 20383,
+      "vol": 0
+    },
+    {
+      "d": "05/04",
+      "tx": 27811,
+      "vol": 0
+    },
+    {
+      "d": "05/05",
+      "tx": 23889,
+      "vol": 0
+    },
+    {
+      "d": "05/06",
+      "tx": 12128,
+      "vol": 0
+    },
+    {
+      "d": "05/07",
+      "tx": 8112,
+      "vol": 0
+    },
+    {
+      "d": "05/08",
+      "tx": 8628,
+      "vol": 0
+    },
+    {
+      "d": "05/09",
+      "tx": 7744,
+      "vol": 0
+    },
+    {
+      "d": "05/10",
+      "tx": 7289,
+      "vol": 0
+    },
+    {
+      "d": "05/11",
+      "tx": 8577,
+      "vol": 0
+    },
+    {
+      "d": "05/12",
+      "tx": 11288,
+      "vol": 0
+    },
+    {
+      "d": "05/13",
+      "tx": 12582,
+      "vol": 0
+    },
+    {
       "d": "05/14",
-      "tx": 135570,
-      "vol": 63781
+      "tx": 14464,
+      "vol": 0
     },
     {
       "d": "05/15",
-      "tx": 162945,
+      "tx": 15496,
       "vol": 73141
     },
     {
       "d": "05/16",
-      "tx": 188421,
+      "tx": 17975,
       "vol": 68541
     },
     {
       "d": "05/17",
-      "tx": 139374,
+      "tx": 19733,
       "vol": 69231
     },
     {
       "d": "05/18",
-      "tx": 168793,
+      "tx": 37577,
       "vol": 70737
     },
     {
       "d": "05/19",
-      "tx": 137083,
+      "tx": 29797,
       "vol": 89246
     },
     {
       "d": "05/20",
-      "tx": 161027,
+      "tx": 24434,
       "vol": 73235
     },
     {
       "d": "05/21",
-      "tx": 136113,
+      "tx": 294,
       "vol": 68323
     },
     {
       "d": "05/22",
-      "tx": 119174,
+      "tx": 171,
       "vol": 72592
     },
     {
       "d": "05/23",
-      "tx": 96208,
+      "tx": 8261,
       "vol": 54523
     },
     {
       "d": "05/24",
-      "tx": 105155,
+      "tx": 9997,
       "vol": 54760
     },
     {
       "d": "05/25",
-      "tx": 109823,
+      "tx": 19912,
       "vol": 59924
     },
     {
       "d": "05/26",
-      "tx": 120960,
+      "tx": 27792,
       "vol": 59126
     },
     {
       "d": "05/27",
-      "tx": 115993,
+      "tx": 17831,
       "vol": 58561
     },
     {
       "d": "05/28",
-      "tx": 107819,
+      "tx": 11808,
       "vol": 64389
     },
     {
       "d": "05/29",
-      "tx": 100428,
+      "tx": 14163,
       "vol": 55424
     },
     {
       "d": "05/30",
-      "tx": 114932,
+      "tx": 13120,
       "vol": 64743
     },
     {
       "d": "05/31",
-      "tx": 103942,
+      "tx": 9058,
       "vol": 64726
     },
     {
       "d": "06/01",
-      "tx": 154518,
+      "tx": 21536,
       "vol": 75847
     },
     {
       "d": "06/02",
-      "tx": 151537,
+      "tx": 26479,
       "vol": 89036
     },
     {
       "d": "06/03",
-      "tx": 119706,
+      "tx": 12065,
       "vol": 71080
     },
     {
       "d": "06/04",
-      "tx": 150926,
+      "tx": 14819,
       "vol": 71763
     },
     {
       "d": "06/05",
-      "tx": 170839,
+      "tx": 5770,
       "vol": 72339
     },
     {
       "d": "06/06",
-      "tx": 151918,
+      "tx": 6917,
       "vol": 65854
     },
     {
       "d": "06/07",
-      "tx": 162880,
+      "tx": 6739,
       "vol": 65035
     },
     {
       "d": "06/08",
-      "tx": 201337,
+      "tx": 6307,
       "vol": 69088
     },
     {
       "d": "06/09",
-      "tx": 440826,
+      "tx": 10938,
       "vol": 75978
     },
     {
       "d": "06/10",
-      "tx": 673184,
+      "tx": 15724,
       "vol": 76205
     },
     {
       "d": "06/11",
-      "tx": 352693,
+      "tx": 9131,
       "vol": 67393
     },
     {
       "d": "06/12",
-      "tx": 214971,
+      "tx": 11750,
       "vol": 68981
     }
   ],
@@ -168,49 +918,49 @@
     {
       "url": "https://mcp-x402.vishwanetwork.xyz",
       "facilitator": "Vishwa Network",
-      "real_txns": 267651,
-      "real_volume": 35605,
+      "real_txns": 277638,
+      "real_volume": 36060,
       "avg_tx": 0.13,
-      "buyers": 306,
+      "buyers": 307,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://x402.teneo-protocol.ai",
       "facilitator": "Other",
-      "real_txns": 6503,
-      "real_volume": 4868,
-      "avg_tx": 0.75,
-      "buyers": 253,
+      "real_txns": 6562,
+      "real_volume": 4867,
+      "avg_tx": 0.74,
+      "buyers": 254,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://x402endpoint-utiwoa54hq-uc.a.run.app",
       "facilitator": "Other",
-      "real_txns": 189,
-      "real_volume": 4085,
-      "avg_tx": 21.61,
-      "buyers": 35,
-      "pct_gamed_txns": 0.53,
+      "real_txns": 192,
+      "real_volume": 4121,
+      "avg_tx": 21.46,
+      "buyers": 36,
+      "pct_gamed_txns": 0.52,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://enrichx402.com",
       "facilitator": "Enrichx402",
-      "real_txns": 92925,
-      "real_volume": 2185,
-      "avg_tx": 0.02,
-      "buyers": 574,
-      "pct_gamed_txns": 0.02,
-      "pct_gamed_vol": 0.06
+      "real_txns": 71291,
+      "real_volume": 2120,
+      "avg_tx": 0.03,
+      "buyers": 560,
+      "pct_gamed_txns": 0.03,
+      "pct_gamed_vol": 0.07
     },
     {
       "url": "https://gitlawb.com",
       "facilitator": "Other",
-      "real_txns": 34,
-      "real_volume": 1130,
-      "avg_tx": 33.23,
+      "real_txns": 35,
+      "real_volume": 1140,
+      "avg_tx": 32.56,
       "buyers": 9,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
@@ -218,8 +968,8 @@
     {
       "url": "https://sol.blockrun.ai",
       "facilitator": "Blockrun",
-      "real_txns": 20451,
-      "real_volume": 1066,
+      "real_txns": 20565,
+      "real_volume": 1078,
       "avg_tx": 0.05,
       "buyers": 28,
       "pct_gamed_txns": 0,
@@ -228,38 +978,38 @@
     {
       "url": "https://x402.anyspend.com",
       "facilitator": "Anyspend",
-      "real_txns": 602,
-      "real_volume": 1012,
+      "real_txns": 590,
+      "real_volume": 991,
       "avg_tx": 1.68,
       "buyers": 260,
-      "pct_gamed_txns": 81.29,
-      "pct_gamed_vol": 81.19
+      "pct_gamed_txns": 80.86,
+      "pct_gamed_vol": 80.81
     },
     {
       "url": "https://x402.clashofcoins.com",
       "facilitator": "Other",
-      "real_txns": 44966,
-      "real_volume": 964,
+      "real_txns": 37555,
+      "real_volume": 810,
       "avg_tx": 0.02,
-      "buyers": 316,
+      "buyers": 311,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://x402.sniperx.fun",
       "facilitator": "Other",
-      "real_txns": 29422,
-      "real_volume": 589,
+      "real_txns": 29326,
+      "real_volume": 588,
       "avg_tx": 0.02,
       "buyers": 14,
-      "pct_gamed_txns": 13.33,
-      "pct_gamed_vol": 13.37
+      "pct_gamed_txns": 13.62,
+      "pct_gamed_vol": 13.66
     },
     {
       "url": "https://api.deepnets.ai",
       "facilitator": "Other",
-      "real_txns": 28643,
-      "real_volume": 585,
+      "real_txns": 28945,
+      "real_volume": 587,
       "avg_tx": 0.02,
       "buyers": 13,
       "pct_gamed_txns": 0,
@@ -268,42 +1018,42 @@
     {
       "url": "https://orbisapi.com",
       "facilitator": "Other",
-      "real_txns": 98116,
-      "real_volume": 575,
+      "real_txns": 99102,
+      "real_volume": 581,
       "avg_tx": 0.01,
       "buyers": 404,
-      "pct_gamed_txns": 39.56,
-      "pct_gamed_vol": 44.56
+      "pct_gamed_txns": 40.35,
+      "pct_gamed_vol": 44.99
     },
     {
       "url": "https://win.oneshotagent.com",
       "facilitator": "Other",
-      "real_txns": 31674,
-      "real_volume": 387,
+      "real_txns": 30629,
+      "real_volume": 391,
       "avg_tx": 0.01,
-      "buyers": 22,
+      "buyers": 23,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://wurkapi.fun",
       "facilitator": "Other",
-      "real_txns": 1299,
-      "real_volume": 385,
+      "real_txns": 1229,
+      "real_volume": 374,
       "avg_tx": 0.3,
       "buyers": 23,
-      "pct_gamed_txns": 56.34,
-      "pct_gamed_vol": 52.37
+      "pct_gamed_txns": 57.88,
+      "pct_gamed_vol": 55.27
     },
     {
       "url": "https://basehub-alpha.vercel.app",
       "facilitator": "Other",
-      "real_txns": 4898,
-      "real_volume": 361,
+      "real_txns": 4859,
+      "real_volume": 358,
       "avg_tx": 0.07,
-      "buyers": 178,
-      "pct_gamed_txns": 1.17,
-      "pct_gamed_vol": 1.08
+      "buyers": 180,
+      "pct_gamed_txns": 1.18,
+      "pct_gamed_vol": 1.09
     },
     {
       "url": "https://api.100xsoon.com",
@@ -318,38 +1068,28 @@
     {
       "url": "https://api.myceliasignal.com",
       "facilitator": "Other",
-      "real_txns": 2362,
-      "real_volume": 226,
+      "real_txns": 2224,
+      "real_volume": 225,
       "avg_tx": 0.1,
       "buyers": 21,
-      "pct_gamed_txns": 10.22,
-      "pct_gamed_vol": 8.77
+      "pct_gamed_txns": 15.98,
+      "pct_gamed_vol": 17.42
     },
     {
       "url": "https://api.solreplay.io",
       "facilitator": "Other",
-      "real_txns": 4,
+      "real_txns": 3,
       "real_volume": 201,
-      "avg_tx": 50.3,
+      "avg_tx": 66.86,
       "buyers": 3,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
-      "url": "https://acp-x402.virtuals.io",
-      "facilitator": "Virtuals Protocol",
-      "real_txns": 1254,
-      "real_volume": 156,
-      "avg_tx": 0.12,
-      "buyers": 146,
-      "pct_gamed_txns": 11.75,
-      "pct_gamed_vol": 18.74
-    },
-    {
       "url": "https://api.nansen.ai",
       "facilitator": "Other",
-      "real_txns": 5923,
-      "real_volume": 147,
+      "real_txns": 5736,
+      "real_volume": 142,
       "avg_tx": 0.02,
       "buyers": 104,
       "pct_gamed_txns": 0,
@@ -358,155 +1098,165 @@
     {
       "url": "https://api.molty.cash",
       "facilitator": "Other",
-      "real_txns": 5037,
+      "real_txns": 5036,
       "real_volume": 110,
       "avg_tx": 0.02,
-      "buyers": 27,
-      "pct_gamed_txns": 6.24,
-      "pct_gamed_vol": 64.98
+      "buyers": 26,
+      "pct_gamed_txns": 6.17,
+      "pct_gamed_vol": 64.87
     },
     {
       "url": "https://1c09pdnrx1.execute-api.us-east-1.amazonaws.com",
       "facilitator": "Other",
-      "real_txns": 633,
-      "real_volume": 99,
+      "real_txns": 661,
+      "real_volume": 105,
       "avg_tx": 0.16,
-      "buyers": 55,
-      "pct_gamed_txns": 10.72,
-      "pct_gamed_vol": 0.27
+      "buyers": 59,
+      "pct_gamed_txns": 10.31,
+      "pct_gamed_vol": 0.26
     },
     {
-      "url": "https://mpp.hyreagent.fun",
-      "facilitator": "Other",
-      "real_txns": 2304,
-      "real_volume": 97,
-      "avg_tx": 0.04,
-      "buyers": 174,
-      "pct_gamed_txns": 13.32,
-      "pct_gamed_vol": 21.59
-    },
-    {
-      "url": "https://weather.hugen.tokyo",
-      "facilitator": "Other",
-      "real_txns": 8132,
-      "real_volume": 96,
-      "avg_tx": 0.01,
-      "buyers": 221,
-      "pct_gamed_txns": 0,
-      "pct_gamed_vol": 0
+      "url": "https://acp-x402.virtuals.io",
+      "facilitator": "Virtuals Protocol",
+      "real_txns": 1147,
+      "real_volume": 102,
+      "avg_tx": 0.09,
+      "buyers": 144,
+      "pct_gamed_txns": 12.71,
+      "pct_gamed_vol": 24.7
     },
     {
       "url": "https://x402.twit.sh",
       "facilitator": "Twit.sh",
-      "real_txns": 14704,
-      "real_volume": 94,
+      "real_txns": 15241,
+      "real_volume": 97,
       "avg_tx": 0.01,
       "buyers": 83,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
+      "url": "https://weather.hugen.tokyo",
+      "facilitator": "Other",
+      "real_txns": 7849,
+      "real_volume": 95,
+      "avg_tx": 0.01,
+      "buyers": 233,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
       "url": "https://api.xona-agent.com",
       "facilitator": "Other",
-      "real_txns": 2550,
-      "real_volume": 89,
-      "avg_tx": 0.03,
-      "buyers": 67,
-      "pct_gamed_txns": 0.51,
-      "pct_gamed_vol": 3.2
+      "real_txns": 2573,
+      "real_volume": 93,
+      "avg_tx": 0.04,
+      "buyers": 64,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://mpp.hyreagent.fun",
+      "facilitator": "Other",
+      "real_txns": 2022,
+      "real_volume": 85,
+      "avg_tx": 0.04,
+      "buyers": 147,
+      "pct_gamed_txns": 13.74,
+      "pct_gamed_vol": 21.43
     },
     {
       "url": "https://stable-travel-git-migrate-stabletravel-router-140-merit-systems.vercel.app",
       "facilitator": "Other",
-      "real_txns": 4029,
-      "real_volume": 74,
+      "real_txns": 3919,
+      "real_volume": 73,
       "avg_tx": 0.02,
-      "buyers": 115,
+      "buyers": 116,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://x402factory.ai",
       "facilitator": "Other",
-      "real_txns": 29,
+      "real_txns": 31,
       "real_volume": 72,
-      "avg_tx": 2.49,
-      "buyers": 7,
+      "avg_tx": 2.33,
+      "buyers": 9,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://x402-deployer.x402-deployer.workers.dev",
       "facilitator": "Other",
-      "real_txns": 2411,
+      "real_txns": 2397,
       "real_volume": 67,
       "avg_tx": 0.03,
-      "buyers": 14,
-      "pct_gamed_txns": 37.72,
-      "pct_gamed_vol": 35.9
+      "buyers": 11,
+      "pct_gamed_txns": 33.38,
+      "pct_gamed_vol": 31.85
     },
     {
       "url": "https://stable-domains-git-ben-upgrade-agentcash-r-bb6a65-merit-systems.vercel.app",
       "facilitator": "Other",
-      "real_txns": 60,
+      "real_txns": 45,
       "real_volume": 61,
-      "avg_tx": 1.02,
-      "buyers": 13,
+      "avg_tx": 1.36,
+      "buyers": 11,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
-      "url": "https://blockint.ai",
+      "url": "https://api.cn402.com",
       "facilitator": "Other",
-      "real_txns": 5812,
-      "real_volume": 58,
-      "avg_tx": 0.01,
-      "buyers": 4,
-      "pct_gamed_txns": 0,
-      "pct_gamed_vol": 0
+      "real_txns": 2119,
+      "real_volume": 61,
+      "avg_tx": 0.03,
+      "buyers": 35,
+      "pct_gamed_txns": 35.71,
+      "pct_gamed_vol": 44.35
     }
   ],
   "facilitators": [
     {
       "name": "Vishwa Network",
-      "vol": 35605,
-      "tx": 267651,
+      "vol": 36060,
+      "tx": 277638,
       "avg": 0.13,
-      "buyers": 306,
+      "buyers": 307,
       "server_count": 1,
       "note": ""
     },
     {
       "name": "Other",
-      "vol": 17130,
-      "tx": 373098,
+      "vol": 17133,
+      "tx": 361899,
       "avg": 0.05,
-      "buyers": 6553,
-      "server_count": 408,
+      "buyers": 6624,
+      "server_count": 446,
       "note": ""
     },
     {
       "name": "Enrichx402",
-      "vol": 2185,
-      "tx": 92925,
-      "avg": 0.02,
-      "buyers": 574,
+      "vol": 2120,
+      "tx": 71291,
+      "avg": 0.03,
+      "buyers": 560,
       "server_count": 1,
       "note": ""
     },
     {
       "name": "Blockrun",
-      "vol": 1089,
-      "tx": 27618,
+      "vol": 1101,
+      "tx": 27732,
       "avg": 0.04,
-      "buyers": 250,
+      "buyers": 258,
       "server_count": 2,
       "note": ""
     },
     {
       "name": "Anyspend",
-      "vol": 1012,
-      "tx": 602,
+      "vol": 991,
+      "tx": 590,
       "avg": 1.68,
       "buyers": 260,
       "server_count": 1,
@@ -514,17 +1264,17 @@
     },
     {
       "name": "Virtuals Protocol",
-      "vol": 156,
-      "tx": 1254,
-      "avg": 0.12,
-      "buyers": 146,
+      "vol": 102,
+      "tx": 1147,
+      "avg": 0.09,
+      "buyers": 144,
       "server_count": 1,
       "note": "Degen Claw ACP"
     },
     {
       "name": "Twit.sh",
-      "vol": 94,
-      "tx": 14704,
+      "vol": 97,
+      "tx": 15241,
       "avg": 0.01,
       "buyers": 83,
       "server_count": 1,
@@ -533,9 +1283,18 @@
     {
       "name": "Aubr.ai",
       "vol": 26,
-      "tx": 882,
+      "tx": 886,
       "avg": 0.03,
       "buyers": 8,
+      "server_count": 1,
+      "note": ""
+    },
+    {
+      "name": "Ainalyst",
+      "vol": 2,
+      "tx": 4,
+      "avg": 0.5,
+      "buyers": 3,
       "server_count": 1,
       "note": ""
     },
@@ -549,15 +1308,6 @@
       "note": "CDP facilitator"
     },
     {
-      "name": "Ainalyst",
-      "vol": 1,
-      "tx": 2,
-      "avg": 0.5,
-      "buyers": 2,
-      "server_count": 1,
-      "note": ""
-    },
-    {
       "name": "Dexter",
       "vol": 0,
       "tx": 4,
@@ -569,8 +1319,8 @@
   ],
   "chains": {
     "base": {
-      "real_volume_30d": 1204259,
-      "real_txns_30d": 4195300,
+      "real_volume_30d": 1162404,
+      "real_txns_30d": 4108868,
       "pct_of_volume": 93.69
     },
     "polygon": {
@@ -579,9 +1329,9 @@
       "pct_of_volume": 0
     },
     "solana": {
-      "real_volume_30d": 81100,
-      "real_txns_30d": 509130,
-      "pct_of_volume": 6.31
+      "real_volume_30d": 78165,
+      "real_txns_30d": 448100,
+      "pct_of_volume": 6.3
     },
     "arbitrum": {
       "real_volume_30d": 0,
@@ -604,8 +1354,8 @@
       "pct_of_volume": 0
     },
     "ripple": {
-      "real_volume_30d": 71,
-      "real_txns_30d": 4149,
+      "real_volume_30d": 70,
+      "real_txns_30d": 4134,
       "pct_of_volume": 0.01
     }
   }

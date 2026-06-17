@@ -1,23 +1,18 @@
 {
-  "updated_at": "2026-06-16T10:56:55.797Z",
+  "updated_at": "2026-06-17T03:11:49.817Z",
   "summary": {
-    "daily_txns": 14615,
-    "daily_vol": 68345,
-    "avg_tx": 4.68,
-    "txns_d": 20.744902205576363,
-    "vol_d": -7.069306294130899,
-    "avg_tx_d": -23.035513708356557,
-    "cum_buyers": 772299,
-    "cum_sellers": 8014,
-    "buyers_d": 21.402600342373695,
-    "sellers_d": 28.26504481434059
+    "daily_txns": 14402,
+    "daily_vol": 68659,
+    "avg_tx": 4.77,
+    "txns_d": 44.317596108843375,
+    "vol_d": 17.590759747489372,
+    "avg_tx_d": -18.51945783603324,
+    "cum_buyers": 778387,
+    "cum_sellers": 8226,
+    "buyers_d": 21.020889823129927,
+    "sellers_d": 29.993678887484197
   },
   "timeseries": [
-    {
-      "d": "12/17",
-      "tx": 779055,
-      "vol": 0
-    },
     {
       "d": "12/18",
       "tx": 844100,
@@ -771,7 +766,7 @@
     {
       "d": "05/17",
       "tx": 19733,
-      "vol": 69231
+      "vol": 0
     },
     {
       "d": "05/18",
@@ -900,18 +895,23 @@
     },
     {
       "d": "06/12",
-      "tx": 11730,
+      "tx": 11707,
       "vol": 65275
     },
     {
       "d": "06/13",
-      "tx": 9872,
-      "vol": 73181
+      "tx": 9910,
+      "vol": 69108
     },
     {
       "d": "06/14",
-      "tx": 18472,
-      "vol": 64337
+      "tx": 18483,
+      "vol": 63557
+    },
+    {
+      "d": "06/15",
+      "tx": 11556,
+      "vol": 83181
     }
   ],
   "servers": [
@@ -1319,9 +1319,9 @@
   ],
   "chains": {
     "base": {
-      "real_volume_30d": 1145938,
-      "real_txns_30d": 4176451,
-      "pct_of_volume": 92.81
+      "real_volume_30d": 1148275,
+      "real_txns_30d": 4280623,
+      "pct_of_volume": 92.34
     },
     "polygon": {
       "real_volume_30d": 0,
@@ -1329,9 +1329,9 @@
       "pct_of_volume": 0
     },
     "solana": {
-      "real_volume_30d": 88713,
-      "real_txns_30d": 378799,
-      "pct_of_volume": 7.18
+      "real_volume_30d": 95090,
+      "real_txns_30d": 373088,
+      "pct_of_volume": 7.65
     },
     "arbitrum": {
       "real_volume_30d": 0,
@@ -1354,8 +1354,8 @@
       "pct_of_volume": 0
     },
     "ripple": {
-      "real_volume_30d": 101,
-      "real_txns_30d": 8688,
+      "real_volume_30d": 116,
+      "real_txns_30d": 11120,
       "pct_of_volume": 0.01
     }
   }

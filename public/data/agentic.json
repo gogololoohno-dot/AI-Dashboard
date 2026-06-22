@@ -1,166 +1,916 @@
 {
-  "updated_at": "2026-06-21T22:09:23.401Z",
+  "updated_at": "2026-06-22T09:18:48.384Z",
   "summary": {
-    "daily_txns": 278677,
-    "daily_vol": 68528,
-    "avg_tx": 0.25,
-    "txns_d": 271.63475254669646,
-    "vol_d": -10.982058995741834,
-    "avg_tx_d": -76.04692769063008,
+    "daily_txns": 12256,
+    "daily_vol": 68388,
+    "avg_tx": 5.58,
+    "txns_d": 360.3484117744886,
+    "vol_d": 18.517325627850763,
+    "avg_tx_d": -74.25486379522714,
     "cum_buyers": 799139,
     "cum_sellers": 8584,
-    "buyers_d": 19.37585800478317,
-    "sellers_d": 25.957446808510635
+    "buyers_d": 18.59301031386807,
+    "sellers_d": 24.821870001454123
   },
   "timeseries": [
     {
+      "d": "12/23",
+      "tx": 781533,
+      "vol": 0
+    },
+    {
+      "d": "12/24",
+      "tx": 842214,
+      "vol": 0
+    },
+    {
+      "d": "12/25",
+      "tx": 784380,
+      "vol": 0
+    },
+    {
+      "d": "12/26",
+      "tx": 760464,
+      "vol": 0
+    },
+    {
+      "d": "12/27",
+      "tx": 877901,
+      "vol": 0
+    },
+    {
+      "d": "12/28",
+      "tx": 502434,
+      "vol": 0
+    },
+    {
+      "d": "12/29",
+      "tx": 569688,
+      "vol": 0
+    },
+    {
+      "d": "12/30",
+      "tx": 637419,
+      "vol": 0
+    },
+    {
+      "d": "12/31",
+      "tx": 436592,
+      "vol": 0
+    },
+    {
+      "d": "01/01",
+      "tx": 579834,
+      "vol": 0
+    },
+    {
+      "d": "01/02",
+      "tx": 625698,
+      "vol": 0
+    },
+    {
+      "d": "01/03",
+      "tx": 572930,
+      "vol": 0
+    },
+    {
+      "d": "01/04",
+      "tx": 541128,
+      "vol": 0
+    },
+    {
+      "d": "01/05",
+      "tx": 540475,
+      "vol": 0
+    },
+    {
+      "d": "01/06",
+      "tx": 528897,
+      "vol": 0
+    },
+    {
+      "d": "01/07",
+      "tx": 532432,
+      "vol": 0
+    },
+    {
+      "d": "01/08",
+      "tx": 542163,
+      "vol": 0
+    },
+    {
+      "d": "01/09",
+      "tx": 381782,
+      "vol": 0
+    },
+    {
+      "d": "01/10",
+      "tx": 340608,
+      "vol": 0
+    },
+    {
+      "d": "01/11",
+      "tx": 518265,
+      "vol": 0
+    },
+    {
+      "d": "01/12",
+      "tx": 330313,
+      "vol": 0
+    },
+    {
+      "d": "01/13",
+      "tx": 256364,
+      "vol": 0
+    },
+    {
+      "d": "01/14",
+      "tx": 283152,
+      "vol": 0
+    },
+    {
+      "d": "01/15",
+      "tx": 278863,
+      "vol": 0
+    },
+    {
+      "d": "01/16",
+      "tx": 273332,
+      "vol": 0
+    },
+    {
+      "d": "01/17",
+      "tx": 278790,
+      "vol": 0
+    },
+    {
+      "d": "01/18",
+      "tx": 266675,
+      "vol": 0
+    },
+    {
+      "d": "01/19",
+      "tx": 260994,
+      "vol": 0
+    },
+    {
+      "d": "01/20",
+      "tx": 260897,
+      "vol": 0
+    },
+    {
+      "d": "01/21",
+      "tx": 269239,
+      "vol": 0
+    },
+    {
+      "d": "01/22",
+      "tx": 454208,
+      "vol": 0
+    },
+    {
+      "d": "01/23",
+      "tx": 511672,
+      "vol": 0
+    },
+    {
+      "d": "01/24",
+      "tx": 339538,
+      "vol": 0
+    },
+    {
+      "d": "01/25",
+      "tx": 341263,
+      "vol": 0
+    },
+    {
+      "d": "01/26",
+      "tx": 331210,
+      "vol": 0
+    },
+    {
+      "d": "01/27",
+      "tx": 324564,
+      "vol": 0
+    },
+    {
+      "d": "01/28",
+      "tx": 346051,
+      "vol": 0
+    },
+    {
+      "d": "01/29",
+      "tx": 343935,
+      "vol": 0
+    },
+    {
+      "d": "01/30",
+      "tx": 142348,
+      "vol": 0
+    },
+    {
+      "d": "01/31",
+      "tx": 31138,
+      "vol": 0
+    },
+    {
+      "d": "02/01",
+      "tx": 18206,
+      "vol": 0
+    },
+    {
+      "d": "02/02",
+      "tx": 43687,
+      "vol": 0
+    },
+    {
+      "d": "02/03",
+      "tx": 270423,
+      "vol": 0
+    },
+    {
+      "d": "02/04",
+      "tx": 267410,
+      "vol": 0
+    },
+    {
+      "d": "02/05",
+      "tx": 341960,
+      "vol": 0
+    },
+    {
+      "d": "02/06",
+      "tx": 96001,
+      "vol": 0
+    },
+    {
+      "d": "02/07",
+      "tx": 67264,
+      "vol": 0
+    },
+    {
+      "d": "02/08",
+      "tx": 67135,
+      "vol": 0
+    },
+    {
+      "d": "02/09",
+      "tx": 66898,
+      "vol": 0
+    },
+    {
+      "d": "02/10",
+      "tx": 69389,
+      "vol": 0
+    },
+    {
+      "d": "02/11",
+      "tx": 57103,
+      "vol": 0
+    },
+    {
+      "d": "02/12",
+      "tx": 52104,
+      "vol": 0
+    },
+    {
+      "d": "02/13",
+      "tx": 247,
+      "vol": 0
+    },
+    {
+      "d": "02/14",
+      "tx": 206,
+      "vol": 0
+    },
+    {
+      "d": "02/15",
+      "tx": 37,
+      "vol": 0
+    },
+    {
+      "d": "02/16",
+      "tx": 15,
+      "vol": 0
+    },
+    {
+      "d": "02/17",
+      "tx": 9,
+      "vol": 0
+    },
+    {
+      "d": "02/18",
+      "tx": 66276,
+      "vol": 0
+    },
+    {
+      "d": "02/19",
+      "tx": 58332,
+      "vol": 0
+    },
+    {
+      "d": "02/20",
+      "tx": 40962,
+      "vol": 0
+    },
+    {
+      "d": "02/21",
+      "tx": 54747,
+      "vol": 0
+    },
+    {
+      "d": "02/22",
+      "tx": 61536,
+      "vol": 0
+    },
+    {
+      "d": "02/23",
+      "tx": 36848,
+      "vol": 0
+    },
+    {
+      "d": "02/24",
+      "tx": 22075,
+      "vol": 0
+    },
+    {
+      "d": "02/25",
+      "tx": 57097,
+      "vol": 0
+    },
+    {
+      "d": "02/26",
+      "tx": 56724,
+      "vol": 0
+    },
+    {
+      "d": "02/27",
+      "tx": 50749,
+      "vol": 0
+    },
+    {
+      "d": "02/28",
+      "tx": 72145,
+      "vol": 0
+    },
+    {
+      "d": "03/01",
+      "tx": 60396,
+      "vol": 0
+    },
+    {
+      "d": "03/02",
+      "tx": 32586,
+      "vol": 0
+    },
+    {
+      "d": "03/03",
+      "tx": 19837,
+      "vol": 0
+    },
+    {
+      "d": "03/04",
+      "tx": 45086,
+      "vol": 0
+    },
+    {
+      "d": "03/05",
+      "tx": 83949,
+      "vol": 0
+    },
+    {
+      "d": "03/06",
+      "tx": 73371,
+      "vol": 0
+    },
+    {
+      "d": "03/07",
+      "tx": 31414,
+      "vol": 0
+    },
+    {
+      "d": "03/08",
+      "tx": 42811,
+      "vol": 0
+    },
+    {
+      "d": "03/09",
+      "tx": 45540,
+      "vol": 0
+    },
+    {
+      "d": "03/10",
+      "tx": 45613,
+      "vol": 0
+    },
+    {
+      "d": "03/11",
+      "tx": 59194,
+      "vol": 0
+    },
+    {
+      "d": "03/12",
+      "tx": 59877,
+      "vol": 0
+    },
+    {
+      "d": "03/13",
+      "tx": 62604,
+      "vol": 0
+    },
+    {
+      "d": "03/14",
+      "tx": 23658,
+      "vol": 0
+    },
+    {
+      "d": "03/15",
+      "tx": 32977,
+      "vol": 0
+    },
+    {
+      "d": "03/16",
+      "tx": 34510,
+      "vol": 0
+    },
+    {
+      "d": "03/17",
+      "tx": 28685,
+      "vol": 0
+    },
+    {
+      "d": "03/18",
+      "tx": 39435,
+      "vol": 0
+    },
+    {
+      "d": "03/19",
+      "tx": 40935,
+      "vol": 0
+    },
+    {
+      "d": "03/20",
+      "tx": 40432,
+      "vol": 0
+    },
+    {
+      "d": "03/21",
+      "tx": 36602,
+      "vol": 0
+    },
+    {
+      "d": "03/22",
+      "tx": 22075,
+      "vol": 0
+    },
+    {
+      "d": "03/23",
+      "tx": 23499,
+      "vol": 0
+    },
+    {
+      "d": "03/24",
+      "tx": 22908,
+      "vol": 0
+    },
+    {
+      "d": "03/25",
+      "tx": 22156,
+      "vol": 0
+    },
+    {
+      "d": "03/26",
+      "tx": 22569,
+      "vol": 0
+    },
+    {
+      "d": "03/27",
+      "tx": 20489,
+      "vol": 0
+    },
+    {
+      "d": "03/28",
+      "tx": 21214,
+      "vol": 0
+    },
+    {
+      "d": "03/29",
+      "tx": 18941,
+      "vol": 0
+    },
+    {
+      "d": "03/30",
+      "tx": 20107,
+      "vol": 0
+    },
+    {
+      "d": "03/31",
+      "tx": 12215,
+      "vol": 0
+    },
+    {
+      "d": "04/01",
+      "tx": 19882,
+      "vol": 0
+    },
+    {
+      "d": "04/02",
+      "tx": 13698,
+      "vol": 0
+    },
+    {
+      "d": "04/03",
+      "tx": 12396,
+      "vol": 0
+    },
+    {
+      "d": "04/04",
+      "tx": 9995,
+      "vol": 0
+    },
+    {
+      "d": "04/05",
+      "tx": 17013,
+      "vol": 0
+    },
+    {
+      "d": "04/06",
+      "tx": 10443,
+      "vol": 0
+    },
+    {
+      "d": "04/07",
+      "tx": 12850,
+      "vol": 0
+    },
+    {
+      "d": "04/08",
+      "tx": 23044,
+      "vol": 0
+    },
+    {
+      "d": "04/09",
+      "tx": 21301,
+      "vol": 0
+    },
+    {
+      "d": "04/10",
+      "tx": 11503,
+      "vol": 0
+    },
+    {
+      "d": "04/11",
+      "tx": 3735,
+      "vol": 0
+    },
+    {
+      "d": "04/12",
+      "tx": 4720,
+      "vol": 0
+    },
+    {
+      "d": "04/13",
+      "tx": 9959,
+      "vol": 0
+    },
+    {
+      "d": "04/14",
+      "tx": 7,
+      "vol": 0
+    },
+    {
+      "d": "04/15",
+      "tx": 16,
+      "vol": 0
+    },
+    {
+      "d": "04/16",
+      "tx": 4117,
+      "vol": 0
+    },
+    {
+      "d": "04/17",
+      "tx": 7818,
+      "vol": 0
+    },
+    {
+      "d": "04/18",
+      "tx": 8725,
+      "vol": 0
+    },
+    {
+      "d": "04/19",
+      "tx": 9526,
+      "vol": 0
+    },
+    {
+      "d": "04/20",
+      "tx": 8626,
+      "vol": 0
+    },
+    {
+      "d": "04/21",
+      "tx": 9365,
+      "vol": 0
+    },
+    {
+      "d": "04/22",
+      "tx": 11102,
+      "vol": 0
+    },
+    {
+      "d": "04/23",
+      "tx": 9891,
+      "vol": 0
+    },
+    {
+      "d": "04/24",
+      "tx": 27168,
+      "vol": 0
+    },
+    {
+      "d": "04/25",
+      "tx": 7298,
+      "vol": 0
+    },
+    {
+      "d": "04/26",
+      "tx": 26331,
+      "vol": 0
+    },
+    {
+      "d": "04/27",
+      "tx": 25444,
+      "vol": 0
+    },
+    {
+      "d": "04/28",
+      "tx": 20263,
+      "vol": 0
+    },
+    {
+      "d": "04/29",
+      "tx": 20422,
+      "vol": 0
+    },
+    {
+      "d": "04/30",
+      "tx": 14883,
+      "vol": 0
+    },
+    {
+      "d": "05/01",
+      "tx": 21464,
+      "vol": 0
+    },
+    {
+      "d": "05/02",
+      "tx": 14565,
+      "vol": 0
+    },
+    {
+      "d": "05/03",
+      "tx": 20383,
+      "vol": 0
+    },
+    {
+      "d": "05/04",
+      "tx": 27811,
+      "vol": 0
+    },
+    {
+      "d": "05/05",
+      "tx": 23889,
+      "vol": 0
+    },
+    {
+      "d": "05/06",
+      "tx": 12128,
+      "vol": 0
+    },
+    {
+      "d": "05/07",
+      "tx": 8112,
+      "vol": 0
+    },
+    {
+      "d": "05/08",
+      "tx": 8628,
+      "vol": 0
+    },
+    {
+      "d": "05/09",
+      "tx": 7744,
+      "vol": 0
+    },
+    {
+      "d": "05/10",
+      "tx": 7289,
+      "vol": 0
+    },
+    {
+      "d": "05/11",
+      "tx": 8577,
+      "vol": 0
+    },
+    {
+      "d": "05/12",
+      "tx": 11288,
+      "vol": 0
+    },
+    {
+      "d": "05/13",
+      "tx": 12582,
+      "vol": 0
+    },
+    {
+      "d": "05/14",
+      "tx": 14464,
+      "vol": 0
+    },
+    {
+      "d": "05/15",
+      "tx": 15496,
+      "vol": 0
+    },
+    {
+      "d": "05/16",
+      "tx": 17975,
+      "vol": 0
+    },
+    {
+      "d": "05/17",
+      "tx": 19733,
+      "vol": 0
+    },
+    {
+      "d": "05/18",
+      "tx": 37577,
+      "vol": 0
+    },
+    {
+      "d": "05/19",
+      "tx": 29797,
+      "vol": 0
+    },
+    {
+      "d": "05/20",
+      "tx": 24434,
+      "vol": 0
+    },
+    {
+      "d": "05/21",
+      "tx": 294,
+      "vol": 0
+    },
+    {
       "d": "05/22",
-      "tx": 119174,
-      "vol": 72592
+      "tx": 171,
+      "vol": 0
     },
     {
       "d": "05/23",
-      "tx": 96208,
+      "tx": 8261,
       "vol": 54523
     },
     {
       "d": "05/24",
-      "tx": 105155,
+      "tx": 9997,
       "vol": 54760
     },
     {
       "d": "05/25",
-      "tx": 109823,
+      "tx": 19912,
       "vol": 59924
     },
     {
       "d": "05/26",
-      "tx": 120960,
+      "tx": 27792,
       "vol": 59126
     },
     {
       "d": "05/27",
-      "tx": 115993,
+      "tx": 17831,
       "vol": 58561
     },
     {
       "d": "05/28",
-      "tx": 107819,
+      "tx": 11808,
       "vol": 64389
     },
     {
       "d": "05/29",
-      "tx": 100428,
+      "tx": 14163,
       "vol": 55424
     },
     {
       "d": "05/30",
-      "tx": 114932,
+      "tx": 13120,
       "vol": 64743
     },
     {
       "d": "05/31",
-      "tx": 103942,
+      "tx": 9058,
       "vol": 64726
     },
     {
       "d": "06/01",
-      "tx": 154518,
+      "tx": 21536,
       "vol": 75847
     },
     {
       "d": "06/02",
-      "tx": 151537,
+      "tx": 26479,
       "vol": 89036
     },
     {
       "d": "06/03",
-      "tx": 119706,
+      "tx": 12065,
       "vol": 71080
     },
     {
       "d": "06/04",
-      "tx": 150926,
+      "tx": 14819,
       "vol": 71763
     },
     {
       "d": "06/05",
-      "tx": 170839,
+      "tx": 5770,
       "vol": 72339
     },
     {
       "d": "06/06",
-      "tx": 151918,
+      "tx": 6917,
       "vol": 65854
     },
     {
       "d": "06/07",
-      "tx": 162880,
+      "tx": 6739,
       "vol": 65035
     },
     {
       "d": "06/08",
-      "tx": 201337,
+      "tx": 6307,
       "vol": 69088
     },
     {
       "d": "06/09",
-      "tx": 440826,
+      "tx": 10938,
       "vol": 75978
     },
     {
       "d": "06/10",
-      "tx": 673184,
+      "tx": 15707,
       "vol": 76205
     },
     {
       "d": "06/11",
-      "tx": 352723,
+      "tx": 9171,
       "vol": 67459
     },
     {
       "d": "06/12",
-      "tx": 215032,
+      "tx": 11707,
       "vol": 65275
     },
     {
       "d": "06/13",
-      "tx": 152882,
+      "tx": 9953,
       "vol": 69108
     },
     {
       "d": "06/14",
-      "tx": 168357,
+      "tx": 18477,
       "vol": 61706
     },
     {
       "d": "06/15",
-      "tx": 243684,
+      "tx": 11538,
       "vol": 78939
     },
     {
       "d": "06/16",
-      "tx": 835758,
+      "tx": 8952,
       "vol": 69230
     },
     {
       "d": "06/17",
-      "tx": 1007758,
+      "tx": 11324,
       "vol": 80466
     },
     {
       "d": "06/18",
-      "tx": 841689,
+      "tx": 11925,
       "vol": 81914
     },
     {
       "d": "06/19",
-      "tx": 627443,
+      "tx": 32,
       "vol": 76137
     },
     {
       "d": "06/20",
-      "tx": 442892,
+      "tx": 15205,
       "vol": 64620
     }
   ],
@@ -168,9 +918,9 @@
     {
       "url": "https://mcp-x402.vishwanetwork.xyz",
       "facilitator": "Vishwa Network",
-      "real_txns": 283625,
-      "real_volume": 40520,
-      "avg_tx": 0.14,
+      "real_txns": 279078,
+      "real_volume": 40516,
+      "avg_tx": 0.15,
       "buyers": 309,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
@@ -178,68 +928,68 @@
     {
       "url": "https://x402.teneo-protocol.ai",
       "facilitator": "Other",
-      "real_txns": 5028,
-      "real_volume": 4860,
-      "avg_tx": 0.97,
-      "buyers": 212,
+      "real_txns": 4560,
+      "real_volume": 4856,
+      "avg_tx": 1.06,
+      "buyers": 199,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://x402endpoint-utiwoa54hq-uc.a.run.app",
       "facilitator": "Other",
-      "real_txns": 130,
-      "real_volume": 3715,
-      "avg_tx": 28.58,
+      "real_txns": 120,
+      "real_volume": 4028,
+      "avg_tx": 33.56,
       "buyers": 31,
-      "pct_gamed_txns": 0.76,
+      "pct_gamed_txns": 0.83,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://enrichx402.com",
       "facilitator": "Enrichx402",
-      "real_txns": 62348,
-      "real_volume": 2022,
+      "real_txns": 60746,
+      "real_volume": 1966,
       "avg_tx": 0.03,
-      "buyers": 514,
+      "buyers": 484,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://gitlawb.com",
       "facilitator": "Other",
-      "real_txns": 47,
-      "real_volume": 1325,
-      "avg_tx": 28.18,
+      "real_txns": 52,
+      "real_volume": 1495,
+      "avg_tx": 28.74,
       "buyers": 11,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://sol.blockrun.ai",
+      "facilitator": "Blockrun",
+      "real_txns": 11245,
+      "real_volume": 979,
+      "avg_tx": 0.09,
+      "buyers": 21,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://x402.anyspend.com",
       "facilitator": "Anyspend",
-      "real_txns": 601,
-      "real_volume": 1018,
+      "real_txns": 538,
+      "real_volume": 911,
       "avg_tx": 1.69,
       "buyers": 260,
-      "pct_gamed_txns": 73.63,
-      "pct_gamed_vol": 73.4
-    },
-    {
-      "url": "https://sol.blockrun.ai",
-      "facilitator": "Blockrun",
-      "real_txns": 11793,
-      "real_volume": 982,
-      "avg_tx": 0.08,
-      "buyers": 22,
-      "pct_gamed_txns": 0,
-      "pct_gamed_vol": 0
+      "pct_gamed_txns": 76.36,
+      "pct_gamed_vol": 76.15
     },
     {
       "url": "https://api.deepnets.ai",
       "facilitator": "Other",
-      "real_txns": 28557,
-      "real_volume": 572,
+      "real_txns": 28400,
+      "real_volume": 571,
       "avg_tx": 0.02,
       "buyers": 9,
       "pct_gamed_txns": 0,
@@ -248,7 +998,7 @@
     {
       "url": "https://x402.sniperx.fun",
       "facilitator": "Other",
-      "real_txns": 26034,
+      "real_txns": 26036,
       "real_volume": 521,
       "avg_tx": 0.02,
       "buyers": 15,
@@ -258,62 +1008,62 @@
     {
       "url": "https://orbisapi.com",
       "facilitator": "Other",
-      "real_txns": 85081,
-      "real_volume": 506,
+      "real_txns": 83869,
+      "real_volume": 509,
       "avg_tx": 0.01,
-      "buyers": 377,
-      "pct_gamed_txns": 44.72,
-      "pct_gamed_vol": 49.73
+      "buyers": 383,
+      "pct_gamed_txns": 45.08,
+      "pct_gamed_vol": 49.57
     },
     {
       "url": "https://win.oneshotagent.com",
       "facilitator": "Other",
-      "real_txns": 27034,
-      "real_volume": 501,
+      "real_txns": 25993,
+      "real_volume": 499,
       "avg_tx": 0.02,
       "buyers": 23,
-      "pct_gamed_txns": 0.01,
-      "pct_gamed_vol": 2.91
+      "pct_gamed_txns": 9,
+      "pct_gamed_vol": 13.03
     },
     {
       "url": "https://x402.clashofcoins.com",
       "facilitator": "Other",
-      "real_txns": 20834,
-      "real_volume": 498,
+      "real_txns": 20754,
+      "real_volume": 461,
       "avg_tx": 0.02,
-      "buyers": 282,
+      "buyers": 273,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://wurkapi.fun",
       "facilitator": "Other",
-      "real_txns": 1506,
-      "real_volume": 458,
+      "real_txns": 1428,
+      "real_volume": 430,
       "avg_tx": 0.3,
-      "buyers": 29,
-      "pct_gamed_txns": 53.68,
-      "pct_gamed_vol": 57.62
+      "buyers": 27,
+      "pct_gamed_txns": 55.09,
+      "pct_gamed_vol": 59.82
     },
     {
       "url": "https://basehub-alpha.vercel.app",
       "facilitator": "Other",
-      "real_txns": 5259,
-      "real_volume": 390,
+      "real_txns": 5525,
+      "real_volume": 406,
       "avg_tx": 0.07,
-      "buyers": 189,
-      "pct_gamed_txns": 1.94,
-      "pct_gamed_vol": 1.43
+      "buyers": 194,
+      "pct_gamed_txns": 1.85,
+      "pct_gamed_vol": 1.37
     },
     {
       "url": "https://api.myceliasignal.com",
       "facilitator": "Other",
-      "real_txns": 2083,
-      "real_volume": 244,
+      "real_txns": 2078,
+      "real_volume": 248,
       "avg_tx": 0.12,
       "buyers": 19,
-      "pct_gamed_txns": 13.89,
-      "pct_gamed_vol": 15.49
+      "pct_gamed_txns": 13.92,
+      "pct_gamed_vol": 15.29
     },
     {
       "url": "https://api.solreplay.io",
@@ -328,10 +1078,10 @@
     {
       "url": "https://x402.twit.sh",
       "facilitator": "Twit.sh",
-      "real_txns": 21083,
-      "real_volume": 140,
+      "real_txns": 21473,
+      "real_volume": 142,
       "avg_tx": 0.01,
-      "buyers": 101,
+      "buyers": 98,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
@@ -348,58 +1098,38 @@
     {
       "url": "https://api.nansen.ai",
       "facilitator": "Other",
-      "real_txns": 5532,
-      "real_volume": 130,
+      "real_txns": 5401,
+      "real_volume": 127,
       "avg_tx": 0.02,
-      "buyers": 104,
+      "buyers": 103,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://1c09pdnrx1.execute-api.us-east-1.amazonaws.com",
       "facilitator": "Other",
-      "real_txns": 898,
+      "real_txns": 998,
       "real_volume": 120,
-      "avg_tx": 0.13,
-      "buyers": 101,
-      "pct_gamed_txns": 7.8,
+      "avg_tx": 0.12,
+      "buyers": 124,
+      "pct_gamed_txns": 7.08,
       "pct_gamed_vol": 0.22
     },
     {
       "url": "https://api.molty.cash",
       "facilitator": "Other",
-      "real_txns": 5048,
-      "real_volume": 109,
+      "real_txns": 5039,
+      "real_volume": 108,
       "avg_tx": 0.02,
-      "buyers": 28,
-      "pct_gamed_txns": 5.82,
-      "pct_gamed_vol": 54.42
-    },
-    {
-      "url": "https://weather.hugen.tokyo",
-      "facilitator": "Other",
-      "real_txns": 7257,
-      "real_volume": 95,
-      "avg_tx": 0.01,
-      "buyers": 302,
-      "pct_gamed_txns": 0,
-      "pct_gamed_vol": 0
-    },
-    {
-      "url": "https://api.cn402.com",
-      "facilitator": "Other",
-      "real_txns": 2485,
-      "real_volume": 93,
-      "avg_tx": 0.04,
-      "buyers": 74,
-      "pct_gamed_txns": 33.43,
-      "pct_gamed_vol": 38.78
+      "buyers": 26,
+      "pct_gamed_txns": 5.83,
+      "pct_gamed_vol": 54.8
     },
     {
       "url": "https://tradeos.tech",
       "facilitator": "Other",
-      "real_txns": 273,
-      "real_volume": 92,
+      "real_txns": 309,
+      "real_volume": 104,
       "avg_tx": 0.34,
       "buyers": 2,
       "pct_gamed_txns": 0,
@@ -408,27 +1138,57 @@
     {
       "url": "https://api.messari.io",
       "facilitator": "Other",
-      "real_txns": 341,
-      "real_volume": 89,
+      "real_txns": 369,
+      "real_volume": 98,
       "avg_tx": 0.26,
-      "buyers": 24,
+      "buyers": 23,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
+      "url": "https://weather.hugen.tokyo",
+      "facilitator": "Other",
+      "real_txns": 7053,
+      "real_volume": 93,
+      "avg_tx": 0.01,
+      "buyers": 305,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
+      "url": "https://api.cn402.com",
+      "facilitator": "Other",
+      "real_txns": 2455,
+      "real_volume": 92,
+      "avg_tx": 0.04,
+      "buyers": 80,
+      "pct_gamed_txns": 33.86,
+      "pct_gamed_vol": 39.35
+    },
+    {
       "url": "https://api.strale.io",
       "facilitator": "Other",
-      "real_txns": 915,
-      "real_volume": 89,
+      "real_txns": 951,
+      "real_volume": 92,
       "avg_tx": 0.1,
       "buyers": 17,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
+      "url": "https://x402.slinkylayer.ai",
+      "facilitator": "Other",
+      "real_txns": 1311,
+      "real_volume": 86,
+      "avg_tx": 0.07,
+      "buyers": 1178,
+      "pct_gamed_txns": 0,
+      "pct_gamed_vol": 0
+    },
+    {
       "url": "https://api.xona-agent.com",
       "facilitator": "Other",
-      "real_txns": 2285,
+      "real_txns": 2286,
       "real_volume": 86,
       "avg_tx": 0.04,
       "buyers": 56,
@@ -438,30 +1198,20 @@
     {
       "url": "https://stable-travel-git-migrate-stabletravel-router-140-merit-systems.vercel.app",
       "facilitator": "Other",
-      "real_txns": 3890,
+      "real_txns": 3841,
       "real_volume": 76,
       "avg_tx": 0.02,
-      "buyers": 144,
+      "buyers": 151,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     },
     {
       "url": "https://x402factory.ai",
       "facilitator": "Other",
-      "real_txns": 21,
+      "real_txns": 16,
       "real_volume": 72,
-      "avg_tx": 3.43,
-      "buyers": 11,
-      "pct_gamed_txns": 0,
-      "pct_gamed_vol": 0
-    },
-    {
-      "url": "https://defi-shield-hazel.vercel.app",
-      "facilitator": "Other",
-      "real_txns": 236,
-      "real_volume": 68,
-      "avg_tx": 0.29,
-      "buyers": 3,
+      "avg_tx": 4.5,
+      "buyers": 9,
       "pct_gamed_txns": 0,
       "pct_gamed_vol": 0
     }
@@ -469,44 +1219,44 @@
   "facilitators": [
     {
       "name": "Vishwa Network",
-      "vol": 40520,
-      "tx": 283625,
-      "avg": 0.14,
+      "vol": 40516,
+      "tx": 279078,
+      "avg": 0.15,
       "buyers": 309,
       "server_count": 1,
       "note": ""
     },
     {
       "name": "Other",
-      "vol": 17076,
-      "tx": 318012,
-      "avg": 0.05,
-      "buyers": 8174,
-      "server_count": 459,
+      "vol": 17605,
+      "tx": 314081,
+      "avg": 0.06,
+      "buyers": 8735,
+      "server_count": 454,
       "note": ""
     },
     {
       "name": "Enrichx402",
-      "vol": 2022,
-      "tx": 62348,
+      "vol": 1966,
+      "tx": 60746,
       "avg": 0.03,
-      "buyers": 514,
+      "buyers": 484,
       "server_count": 1,
       "note": ""
     },
     {
       "name": "Blockrun",
-      "vol": 1020,
-      "tx": 21037,
+      "vol": 1019,
+      "tx": 20745,
       "avg": 0.05,
-      "buyers": 275,
+      "buyers": 269,
       "server_count": 2,
       "note": ""
     },
     {
       "name": "Anyspend",
-      "vol": 1018,
-      "tx": 601,
+      "vol": 911,
+      "tx": 538,
       "avg": 1.69,
       "buyers": 260,
       "server_count": 1,
@@ -514,18 +1264,18 @@
     },
     {
       "name": "Twit.sh",
-      "vol": 140,
-      "tx": 21083,
+      "vol": 142,
+      "tx": 21473,
       "avg": 0.01,
-      "buyers": 101,
+      "buyers": 98,
       "server_count": 1,
       "note": ""
     },
     {
       "name": "Virtuals Protocol",
-      "vol": 45,
-      "tx": 688,
-      "avg": 0.06,
+      "vol": 44,
+      "tx": 650,
+      "avg": 0.07,
       "buyers": 45,
       "server_count": 1,
       "note": "Degen Claw ACP"
@@ -533,7 +1283,7 @@
     {
       "name": "Aubr.ai",
       "vol": 32,
-      "tx": 1082,
+      "tx": 1083,
       "avg": 0.03,
       "buyers": 7,
       "server_count": 1,
@@ -551,16 +1301,16 @@
     {
       "name": "Coinbase",
       "vol": 1,
-      "tx": 204,
+      "tx": 119,
       "avg": 0.01,
-      "buyers": 12,
+      "buyers": 11,
       "server_count": 1,
       "note": "CDP facilitator"
     },
     {
       "name": "Dexter",
       "vol": 0,
-      "tx": 6,
+      "tx": 8,
       "avg": 0.04,
       "buyers": 1,
       "server_count": 1,
@@ -569,9 +1319,9 @@
   ],
   "chains": {
     "base": {
-      "real_volume_30d": 1186255,
-      "real_txns_30d": 7418253,
-      "pct_of_volume": 92.44
+      "real_volume_30d": 1155496,
+      "real_txns_30d": 7343255,
+      "pct_of_volume": 92.49
     },
     "polygon": {
       "real_volume_30d": 0,
@@ -579,9 +1329,9 @@
       "pct_of_volume": 0
     },
     "solana": {
-      "real_volume_30d": 96782,
-      "real_txns_30d": 396357,
-      "pct_of_volume": 7.54
+      "real_volume_30d": 93520,
+      "real_txns_30d": 383387,
+      "pct_of_volume": 7.49
     },
     "arbitrum": {
       "real_volume_30d": 0,
@@ -605,7 +1355,7 @@
     },
     "ripple": {
       "real_volume_30d": 237,
-      "real_txns_30d": 59645,
+      "real_txns_30d": 59643,
       "pct_of_volume": 0.02
     }
   }

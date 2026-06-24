@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-24T07:15:10.773Z",
+  "updated_at": "2026-06-24T08:55:45.106Z",
   "subnet_count": 49,
   "owners": [
     {
@@ -350,6 +350,7 @@
         "d90": 0,
         "lifetime": 0.01
       },
+      "transfer_recipients": [],
       "indirect_sells": {}
     },
     {
@@ -1537,9 +1538,10 @@
         "d1": 0,
         "d7": 0,
         "d30": 0,
-        "d90": 0,
-        "lifetime": 0
+        "d90": 0.1,
+        "lifetime": 0.2
       },
+      "transfer_recipients": [],
       "indirect_sells": {}
     },
     {

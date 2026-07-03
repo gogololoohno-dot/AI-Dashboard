@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-01T06:26:09.844Z",
+  "updated_at": "2026-07-03T03:16:32.252Z",
   "subnet_count": 49,
   "owners": [
     {
@@ -1081,11 +1081,11 @@
         "lifetime": 0
       },
       "transferred": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
+        "d1": 36.61,
+        "d7": 36.61,
+        "d30": 36.61,
+        "d90": 36.61,
+        "lifetime": 36.61
       },
       "transfers_out": {
         "d1": 0,
@@ -1094,8 +1094,10 @@
         "d90": 0,
         "lifetime": 0
       },
-      "indirect_sells": {},
-      "_incomplete": true
+      "transfer_recipients": [
+        "5GLTKKLWek8G2Q9P3HPtg7gh2qPU2EcxBNiZRgno6Xg3aC9x"
+      ],
+      "indirect_sells": {}
     },
     {
       "sn": 77,

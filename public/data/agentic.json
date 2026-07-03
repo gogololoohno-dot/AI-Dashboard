@@ -1,23 +1,18 @@
 {
-  "updated_at": "2026-07-03T08:51:30.419Z",
+  "updated_at": "2026-07-03T11:27:40.570Z",
   "summary": {
-    "daily_txns": 9658,
-    "daily_vol": 67318,
-    "avg_tx": 6.97,
-    "txns_d": 125.15496299266535,
-    "vol_d": 0.7146772588616408,
-    "avg_tx_d": -55.26872873677561,
-    "cum_buyers": 817078,
-    "cum_sellers": 8900,
-    "buyers_d": 12.43738784856391,
-    "sellers_d": 19.09541014318212
+    "daily_txns": 8965,
+    "daily_vol": 67978,
+    "avg_tx": 7.58,
+    "txns_d": 59.149081917364214,
+    "vol_d": 18.565106148172287,
+    "avg_tx_d": -25.500603132768653,
+    "cum_buyers": 818141,
+    "cum_sellers": 8906,
+    "buyers_d": 12.5836663474135,
+    "sellers_d": 19.17569918372809
   },
   "timeseries": [
-    {
-      "d": "01/03",
-      "tx": 572930,
-      "vol": 0
-    },
     {
       "d": "01/04",
       "tx": 541128,
@@ -900,18 +895,23 @@
     },
     {
       "d": "06/29",
-      "tx": 8273,
+      "tx": 8337,
       "vol": 75754
     },
     {
       "d": "06/30",
-      "tx": 14797,
-      "vol": 69788
+      "tx": 14812,
+      "vol": 73254
     },
     {
       "d": "07/01",
-      "tx": 5088,
-      "vol": 71588
+      "tx": 5083,
+      "vol": 70962
+    },
+    {
+      "d": "07/02",
+      "tx": 5611,
+      "vol": 84276
     }
   ],
   "servers": [
@@ -1310,9 +1310,9 @@
   ],
   "chains": {
     "base": {
-      "real_volume_30d": 1250626,
-      "real_txns_30d": 11505064,
-      "pct_of_volume": 93.02
+      "real_volume_30d": 1303815,
+      "real_txns_30d": 11685860,
+      "pct_of_volume": 93.29
     },
     "polygon": {
       "real_volume_30d": 0,
@@ -1322,7 +1322,7 @@
     "solana": {
       "real_volume_30d": 93312,
       "real_txns_30d": 382244,
-      "pct_of_volume": 6.94
+      "pct_of_volume": 6.68
     },
     "arbitrum": {
       "real_volume_30d": 0,
@@ -1345,8 +1345,8 @@
       "pct_of_volume": 0
     },
     "ripple": {
-      "real_volume_30d": 510,
-      "real_txns_30d": 168143,
+      "real_volume_30d": 532,
+      "real_txns_30d": 172332,
       "pct_of_volume": 0.04
     }
   }

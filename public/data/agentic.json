@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-04T10:50:22.829Z",
+  "updated_at": "2026-07-04T16:11:36.737Z",
   "summary": {
-    "daily_txns": 8965,
+    "daily_txns": 8793,
     "daily_vol": 68298,
-    "avg_tx": 7.62,
+    "avg_tx": 7.77,
     "txns_d": 56.74834024621338,
     "vol_d": 11.352548436003934,
     "avg_tx_d": -28.960939387877243,
@@ -13,11 +13,6 @@
     "sellers_d": 19.46524064171123
   },
   "timeseries": [
-    {
-      "d": "01/04",
-      "tx": 541128,
-      "vol": 0
-    },
     {
       "d": "01/05",
       "tx": 540475,
@@ -900,18 +895,23 @@
     },
     {
       "d": "06/30",
-      "tx": 14812,
+      "tx": 14828,
       "vol": 73254
     },
     {
       "d": "07/01",
-      "tx": 5083,
+      "tx": 5157,
       "vol": 72134
     },
     {
       "d": "07/02",
-      "tx": 5611,
+      "tx": 5635,
       "vol": 83866
+    },
+    {
+      "d": "07/03",
+      "tx": 6820,
+      "vol": 79910
     }
   ],
   "servers": [
@@ -1310,9 +1310,9 @@
   ],
   "chains": {
     "base": {
-      "real_volume_30d": 1260251,
-      "real_txns_30d": 11555837,
-      "pct_of_volume": 93.15
+      "real_volume_30d": 1313837,
+      "real_txns_30d": 11770745,
+      "pct_of_volume": 93.41
     },
     "polygon": {
       "real_volume_30d": 0,
@@ -1322,7 +1322,7 @@
     "solana": {
       "real_volume_30d": 92090,
       "real_txns_30d": 376139,
-      "pct_of_volume": 6.81
+      "pct_of_volume": 6.55
     },
     "arbitrum": {
       "real_volume_30d": 0,
@@ -1345,8 +1345,8 @@
       "pct_of_volume": 0
     },
     "ripple": {
-      "real_volume_30d": 532,
-      "real_txns_30d": 172329,
+      "real_volume_30d": 568,
+      "real_txns_30d": 187237,
       "pct_of_volume": 0.04
     }
   }

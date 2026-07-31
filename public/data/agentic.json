@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-07-30T22:00:46.362Z",
+  "updated_at": "2026-07-31T06:20:23.816Z",
   "summary": {
     "daily_txns": 14469,
-    "daily_vol": 1142721,
-    "avg_tx": 78.98,
-    "txns_d": -27.82883689537583,
-    "vol_d": -93.948686070174,
-    "avg_tx_d": -91.61532990530634,
+    "daily_vol": 1136133,
+    "avg_tx": 78.52,
+    "txns_d": -34.539031952288795,
+    "vol_d": -94.99017900269408,
+    "avg_tx_d": -92.34685775857375,
     "cum_buyers": 954834,
     "cum_sellers": 11107,
-    "buyers_d": 13.210728314597949,
-    "sellers_d": 21.760578820434116
+    "buyers_d": 12.760309028770097,
+    "sellers_d": 21.123227917121046
   },
   "timeseries": [
     {
@@ -766,7 +766,7 @@
     {
       "d": "06/30",
       "tx": 16404,
-      "vol": 1333768
+      "vol": 0
     },
     {
       "d": "07/01",
@@ -1301,24 +1301,24 @@
   ],
   "chains": {
     "base": {
-      "real_volume_30d": 1581027,
-      "real_txns_30d": 11479436,
-      "pct_of_volume": 4.93
+      "real_volume_30d": 1532192,
+      "real_txns_30d": 11217115,
+      "pct_of_volume": 5.02
     },
     "polygon": {
-      "real_volume_30d": 29011589,
-      "real_txns_30d": 4588101,
-      "pct_of_volume": 90.43
+      "real_volume_30d": 27493179,
+      "real_txns_30d": 4463949,
+      "pct_of_volume": 90.12
     },
     "solana": {
-      "real_volume_30d": 27368,
-      "real_txns_30d": 495039,
+      "real_volume_30d": 27100,
+      "real_txns_30d": 485325,
       "pct_of_volume": 0.09
     },
     "arbitrum": {
-      "real_volume_30d": 683242,
-      "real_txns_30d": 24883,
-      "pct_of_volume": 2.13
+      "real_volume_30d": 675785,
+      "real_txns_30d": 24339,
+      "pct_of_volume": 2.22
     },
     "bsc": {
       "real_volume_30d": 15,
@@ -1326,9 +1326,9 @@
       "pct_of_volume": 0
     },
     "avalanche": {
-      "real_volume_30d": 776856,
-      "real_txns_30d": 21843,
-      "pct_of_volume": 2.42
+      "real_volume_30d": 775225,
+      "real_txns_30d": 21721,
+      "pct_of_volume": 2.54
     },
     "sei": {
       "real_volume_30d": 0,
@@ -1336,8 +1336,8 @@
       "pct_of_volume": 0
     },
     "ripple": {
-      "real_volume_30d": 2693,
-      "real_txns_30d": 693803,
+      "real_volume_30d": 2659,
+      "real_txns_30d": 691719,
       "pct_of_volume": 0.01
     }
   }

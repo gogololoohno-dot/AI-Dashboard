@@ -1,23 +1,18 @@
 {
-  "updated_at": "2026-08-24T09:38:29.912Z",
+  "updated_at": "2026-08-24T15:48:27.199Z",
   "summary": {
-    "daily_txns": 113981,
-    "daily_vol": 35098,
-    "avg_tx": 0.31,
-    "txns_d": 158.9684369181665,
-    "vol_d": 94.95062784409465,
-    "avg_tx_d": -24.720313346255924,
-    "cum_buyers": 742414,
-    "cum_sellers": 11928,
-    "buyers_d": 1.5933877964338987,
-    "sellers_d": 12.751677852348994
+    "daily_txns": 114057,
+    "daily_vol": 34026,
+    "avg_tx": 0.3,
+    "txns_d": 3.29328841209327,
+    "vol_d": -84.08322751456717,
+    "avg_tx_d": -84.5907001992887,
+    "cum_buyers": 742429,
+    "cum_sellers": 11929,
+    "buyers_d": 1.5954404258521835,
+    "sellers_d": 12.761130541639096
   },
   "timeseries": [
-    {
-      "d": "02/24",
-      "tx": 22069,
-      "vol": 0
-    },
     {
       "d": "02/25",
       "tx": 57097,
@@ -911,7 +906,12 @@
     {
       "d": "08/22",
       "tx": 190072,
-      "vol": 36063
+      "vol": 36074
+    },
+    {
+      "d": "08/23",
+      "tx": 2294,
+      "vol": 2944
     }
   ],
   "servers": [
@@ -1285,12 +1285,12 @@
     "base": {
       "real_volume_30d": 435044,
       "real_txns_30d": 9673091,
-      "pct_of_volume": 68.72
+      "pct_of_volume": 68.41
     },
     "solana": {
-      "real_volume_30d": 43420,
-      "real_txns_30d": 3264655,
-      "pct_of_volume": 6.86
+      "real_volume_30d": 46166,
+      "real_txns_30d": 3667959,
+      "pct_of_volume": 7.26
     },
     "sei": {
       "real_volume_30d": 0,
@@ -1298,14 +1298,14 @@
       "pct_of_volume": 0
     },
     "ripple": {
-      "real_volume_30d": 1138,
-      "real_txns_30d": 768050,
-      "pct_of_volume": 0.18
+      "real_volume_30d": 1211,
+      "real_txns_30d": 828470,
+      "pct_of_volume": 0.19
     },
     "polygon": {
       "real_volume_30d": 153503,
       "real_txns_30d": 2061637,
-      "pct_of_volume": 24.25
+      "pct_of_volume": 24.14
     },
     "bsc": {
       "real_volume_30d": 1,

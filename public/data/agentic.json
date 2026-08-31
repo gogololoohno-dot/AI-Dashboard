@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-08-30T23:02:38.301Z",
+  "updated_at": "2026-08-31T06:09:23.241Z",
   "summary": {
     "daily_txns": 150075,
-    "daily_vol": 39184,
-    "avg_tx": 0.26,
-    "txns_d": 301.2681341221335,
-    "vol_d": 153.72809753054065,
-    "avg_tx_d": -36.76844086171224,
+    "daily_vol": 39873,
+    "avg_tx": 0.27,
+    "txns_d": 323.2548472878424,
+    "vol_d": 280.9490545581001,
+    "avg_tx_d": -9.995347484106063,
     "cum_buyers": 744093,
     "cum_sellers": 12013,
-    "buyers_d": 1.5829394756026638,
-    "sellers_d": 8.498916184971097
+    "buyers_d": 1.551053051063969,
+    "sellers_d": 7.778575273640769
   },
   "timeseries": [
     {
@@ -766,7 +766,7 @@
     {
       "d": "07/31",
       "tx": 13258,
-      "vol": 19198
+      "vol": 0
     },
     {
       "d": "08/01",
@@ -1283,29 +1283,29 @@
   ],
   "chains": {
     "base": {
-      "real_volume_30d": 422784,
-      "real_txns_30d": 8845473,
-      "pct_of_volume": 59.62
+      "real_volume_30d": 415133,
+      "real_txns_30d": 8699713,
+      "pct_of_volume": 60.22
     },
     "solana": {
-      "real_volume_30d": 149109,
-      "real_txns_30d": 11398497,
-      "pct_of_volume": 21.03
+      "real_volume_30d": 148546,
+      "real_txns_30d": 11380074,
+      "pct_of_volume": 21.55
     },
     "sei": {
       "real_volume_30d": 0,
-      "real_txns_30d": 50,
+      "real_txns_30d": 49,
       "pct_of_volume": 0
     },
     "ripple": {
-      "real_volume_30d": 1783,
-      "real_txns_30d": 1192084,
+      "real_volume_30d": 1748,
+      "real_txns_30d": 1167908,
       "pct_of_volume": 0.25
     },
     "polygon": {
-      "real_volume_30d": 135400,
-      "real_txns_30d": 1109992,
-      "pct_of_volume": 19.1
+      "real_volume_30d": 123880,
+      "real_txns_30d": 924003,
+      "pct_of_volume": 17.97
     },
     "bsc": {
       "real_volume_30d": 3,
@@ -1314,7 +1314,7 @@
     },
     "avalanche": {
       "real_volume_30d": 2,
-      "real_txns_30d": 128,
+      "real_txns_30d": 126,
       "pct_of_volume": 0
     }
   }

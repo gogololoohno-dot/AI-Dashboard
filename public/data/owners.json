@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-02T22:56:38.793Z",
+  "updated_at": "2026-09-03T08:19:14.784Z",
   "subnet_count": 49,
   "owners": [
     {
@@ -178,7 +178,6 @@
         "d90": 0,
         "lifetime": 0
       },
-      "transfer_recipients": [],
       "indirect_sells": {}
     },
     {
@@ -347,7 +346,7 @@
       },
       "indirect_sells": {
         "d1": 0,
-        "d7": 139.74,
+        "d7": 97.66,
         "d30": 1127.18,
         "d90": 3717.68,
         "lifetime": 3717.68
@@ -395,7 +394,7 @@
         "d1": 0,
         "d7": 207.51,
         "d30": 1674.12,
-        "d90": 3241.15,
+        "d90": 2972.17,
         "lifetime": 6654.89
       }
     },
@@ -437,18 +436,17 @@
         "d90": 0,
         "lifetime": 0.01
       },
-      "transfer_recipients": [],
       "indirect_sells": {}
     },
     {
       "sn": 68,
       "owner_coldkey": "5EcdJLAeYoxM3Tsf5VZ3NQPenPku218gqnjSoo3iJNy4V12V",
       "sell_pressure": {
-        "d1": 30.03,
-        "d7": 100.08,
-        "d30": 523.56,
-        "d90": 1086.2,
-        "lifetime": 4727.69
+        "d1": 60.08,
+        "d7": 130.13,
+        "d30": 553.61,
+        "d90": 1116.26,
+        "lifetime": 4757.75
       },
       "buyback": {
         "d1": 0,
@@ -458,11 +456,11 @@
         "lifetime": 17.82
       },
       "net_flow": {
-        "d1": -30.03,
-        "d7": -100.08,
-        "d30": -523.56,
-        "d90": -1086.2,
-        "lifetime": -4709.87
+        "d1": -60.08,
+        "d7": -130.13,
+        "d30": -553.61,
+        "d90": -1116.26,
+        "lifetime": -4739.92
       },
       "transferred": {
         "d1": 0,
@@ -474,7 +472,7 @@
       "transfers_out": {
         "d1": 0,
         "d7": 10,
-        "d30": 965.95,
+        "d30": 433.95,
         "d90": 995.65,
         "lifetime": 6129.52
       },
@@ -533,52 +531,6 @@
       }
     },
     {
-      "sn": 75,
-      "owner_coldkey": "5DAQpczEK4vzBn1waHkC4BZGqGPZ1dwPxKVsj36JDofHAw3a",
-      "sell_pressure": {
-        "d1": 0,
-        "d7": 99.65,
-        "d30": 527.71,
-        "d90": 2075.43,
-        "lifetime": 6270.05
-      },
-      "buyback": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 120.04
-      },
-      "net_flow": {
-        "d1": 0,
-        "d7": -99.65,
-        "d30": -527.71,
-        "d90": -2075.43,
-        "lifetime": -6150.01
-      },
-      "transferred": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 19.97,
-        "d90": 389.91,
-        "lifetime": 4737.99
-      },
-      "transfers_out": {
-        "d1": 0,
-        "d7": 99.6,
-        "d30": 527.7,
-        "d90": 2075.4,
-        "lifetime": 6963.86
-      },
-      "indirect_sells": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
-      }
-    },
-    {
       "sn": 107,
       "owner_coldkey": "5DA2vLrSXZxnT9G4Yrywx1Fpi4RXwMH1Ah7r8DTTWS7UZZBM",
       "sell_pressure": {
@@ -604,8 +556,8 @@
       },
       "transferred": {
         "d1": 0,
-        "d7": 95.25,
-        "d30": 462.37,
+        "d7": 0,
+        "d30": 281.57,
         "d90": 2015.44,
         "lifetime": 2086.71
       },
@@ -622,6 +574,52 @@
         "d30": 0,
         "d90": 20.2,
         "lifetime": 37.17
+      }
+    },
+    {
+      "sn": 75,
+      "owner_coldkey": "5DAQpczEK4vzBn1waHkC4BZGqGPZ1dwPxKVsj36JDofHAw3a",
+      "sell_pressure": {
+        "d1": 0,
+        "d7": 99.65,
+        "d30": 527.71,
+        "d90": 1926.14,
+        "lifetime": 6270.05
+      },
+      "buyback": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 120.04
+      },
+      "net_flow": {
+        "d1": 0,
+        "d7": -99.65,
+        "d30": -527.71,
+        "d90": -1926.14,
+        "lifetime": -6150.01
+      },
+      "transferred": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 19.97,
+        "d90": 389.91,
+        "lifetime": 4737.99
+      },
+      "transfers_out": {
+        "d1": 0,
+        "d7": 99.6,
+        "d30": 527.7,
+        "d90": 1926.4,
+        "lifetime": 6963.86
+      },
+      "indirect_sells": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 0
       }
     },
     {
@@ -665,7 +663,7 @@
       "indirect_sells": {
         "d1": 14.34,
         "d7": 93.23,
-        "d30": 494.39,
+        "d30": 486.73,
         "d90": 1417.7,
         "lifetime": 3523.8
       }
@@ -717,52 +715,6 @@
       }
     },
     {
-      "sn": 34,
-      "owner_coldkey": "5DthmKBR83sUdudSfgFnsxBkTYtYTFLJUgovNfb1TSKVLiTH",
-      "sell_pressure": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 1.25
-      },
-      "buyback": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 53.8
-      },
-      "net_flow": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 52.55
-      },
-      "transferred": {
-        "d1": 0,
-        "d7": 242.95,
-        "d30": 607.92,
-        "d90": 1629.26,
-        "lifetime": 15410.32
-      },
-      "transfers_out": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 5249.13
-      },
-      "indirect_sells": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
-      }
-    },
-    {
       "sn": 61,
       "owner_coldkey": "5ECEsYL82fbXx9KfTZy7G2KXSurnScciJyAVMHZjekc8jUbn",
       "sell_pressure": {
@@ -806,6 +758,52 @@
         "d30": 0,
         "d90": 3257.56,
         "lifetime": 3257.56
+      }
+    },
+    {
+      "sn": 34,
+      "owner_coldkey": "5DthmKBR83sUdudSfgFnsxBkTYtYTFLJUgovNfb1TSKVLiTH",
+      "sell_pressure": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 1.25
+      },
+      "buyback": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 53.8
+      },
+      "net_flow": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 52.55
+      },
+      "transferred": {
+        "d1": 0,
+        "d7": 242.95,
+        "d30": 607.92,
+        "d90": 1629.26,
+        "lifetime": 15410.32
+      },
+      "transfers_out": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 5249.13
+      },
+      "indirect_sells": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 0
       }
     },
     {
@@ -892,7 +890,6 @@
         "d90": 0,
         "lifetime": 0
       },
-      "transfer_recipients": [],
       "indirect_sells": {}
     },
     {
@@ -981,7 +978,7 @@
       },
       "indirect_sells": {
         "d1": 10.43,
-        "d7": 84.36,
+        "d7": 73.82,
         "d30": 600.74,
         "d90": 629.85,
         "lifetime": 629.85
@@ -994,7 +991,7 @@
         "d1": 0,
         "d7": 99.65,
         "d30": 497.81,
-        "d90": 1627.9,
+        "d90": 1478.61,
         "lifetime": 3928.99
       },
       "buyback": {
@@ -1008,7 +1005,7 @@
         "d1": 0,
         "d7": -99.65,
         "d30": -497.81,
-        "d90": -1627.9,
+        "d90": -1478.61,
         "lifetime": -3928.99
       },
       "transferred": {
@@ -1022,8 +1019,48 @@
         "d1": 0,
         "d7": 99.7,
         "d30": 497.8,
-        "d90": 1628.2,
+        "d90": 1478.7,
         "lifetime": 3930.54
+      },
+      "indirect_sells": {}
+    },
+    {
+      "sn": 25,
+      "owner_coldkey": "5F6aRdsBHajN2NhZHBTB6ibBFu7YuZZEWruWzB8x6B6GiZ4D",
+      "sell_pressure": {
+        "d1": 0,
+        "d7": 0.46,
+        "d30": 0.46,
+        "d90": 0.46,
+        "lifetime": 0.46
+      },
+      "buyback": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 0
+      },
+      "net_flow": {
+        "d1": 0,
+        "d7": -0.46,
+        "d30": -0.46,
+        "d90": -0.46,
+        "lifetime": -0.46
+      },
+      "transferred": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 1161.87
+      },
+      "transfers_out": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 7711.96
       },
       "indirect_sells": {}
     },
@@ -1072,46 +1109,6 @@
         "d90": 1032.4,
         "lifetime": 1796.35
       }
-    },
-    {
-      "sn": 25,
-      "owner_coldkey": "5F6aRdsBHajN2NhZHBTB6ibBFu7YuZZEWruWzB8x6B6GiZ4D",
-      "sell_pressure": {
-        "d1": 0,
-        "d7": 0.46,
-        "d30": 0.46,
-        "d90": 0.46,
-        "lifetime": 0.46
-      },
-      "buyback": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
-      },
-      "net_flow": {
-        "d1": 0,
-        "d7": -0.46,
-        "d30": -0.46,
-        "d90": -0.46,
-        "lifetime": -0.46
-      },
-      "transferred": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 1161.87
-      },
-      "transfers_out": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 7711.96
-      },
-      "indirect_sells": {}
     },
     {
       "sn": 124,
@@ -1238,7 +1235,7 @@
         "lifetime": 12854.12
       },
       "indirect_sells": {
-        "d1": 19.65,
+        "d1": 0,
         "d7": 58.14,
         "d30": 310.79,
         "d90": 968.51,
@@ -1286,52 +1283,6 @@
       "indirect_sells": {}
     },
     {
-      "sn": 110,
-      "owner_coldkey": "5D53sX6AwAzXUB24G85Ch35hYr5rCpXjYFWpFTe4uzBb75sL",
-      "sell_pressure": {
-        "d1": 0,
-        "d7": 0.05,
-        "d30": 0.15,
-        "d90": 0.56,
-        "lifetime": 1.11
-      },
-      "buyback": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
-      },
-      "net_flow": {
-        "d1": 0,
-        "d7": -0.05,
-        "d30": -0.15,
-        "d90": -0.56,
-        "lifetime": -1.11
-      },
-      "transferred": {
-        "d1": 20.22,
-        "d7": 135.17,
-        "d30": 461.34,
-        "d90": 1274.74,
-        "lifetime": 3172.3
-      },
-      "transfers_out": {
-        "d1": 0.17,
-        "d7": 1.23,
-        "d30": 3.82,
-        "d90": 4.23,
-        "lifetime": 5.13
-      },
-      "indirect_sells": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0.51,
-        "d90": 7.76,
-        "lifetime": 23.41
-      }
-    },
-    {
       "sn": 97,
       "owner_coldkey": "5GnW8owmMGn83WqL9JNYytmw458UYrTT6Ra5fH8TTUkzEbTb",
       "sell_pressure": {
@@ -1371,6 +1322,52 @@
       },
       "indirect_sells": {},
       "_incomplete": true
+    },
+    {
+      "sn": 110,
+      "owner_coldkey": "5D53sX6AwAzXUB24G85Ch35hYr5rCpXjYFWpFTe4uzBb75sL",
+      "sell_pressure": {
+        "d1": 0,
+        "d7": 0.05,
+        "d30": 0.15,
+        "d90": 0.56,
+        "lifetime": 1.11
+      },
+      "buyback": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 0
+      },
+      "net_flow": {
+        "d1": 0,
+        "d7": -0.05,
+        "d30": -0.15,
+        "d90": -0.56,
+        "lifetime": -1.11
+      },
+      "transferred": {
+        "d1": 18.94,
+        "d7": 136.79,
+        "d30": 480.28,
+        "d90": 1282.42,
+        "lifetime": 3191.24
+      },
+      "transfers_out": {
+        "d1": 0.16,
+        "d7": 1.25,
+        "d30": 3.99,
+        "d90": 4.4,
+        "lifetime": 5.3
+      },
+      "indirect_sells": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0.51,
+        "d90": 7.76,
+        "lifetime": 23.41
+      }
     },
     {
       "sn": 10,
@@ -1537,7 +1534,7 @@
         "lifetime": 7918.07
       },
       "indirect_sells": {
-        "d1": 19.37,
+        "d1": 0,
         "d7": 48.58,
         "d30": 252.17,
         "d90": 710.57,
@@ -1592,21 +1589,21 @@
         "d1": 0,
         "d7": 0,
         "d30": 0,
-        "d90": 2610.33,
+        "d90": 2587.01,
         "lifetime": 6236.65
       },
       "buyback": {
         "d1": 0,
         "d7": 0,
         "d30": 0,
-        "d90": 4005.42,
+        "d90": 3904.33,
         "lifetime": 10625.09
       },
       "net_flow": {
         "d1": 0,
         "d7": 0,
         "d30": 0,
-        "d90": 1395.09,
+        "d90": 1317.31,
         "lifetime": 4388.44
       },
       "transferred": {
@@ -1703,7 +1700,6 @@
         "d90": 0,
         "lifetime": 0.2
       },
-      "transfer_recipients": [],
       "indirect_sells": {}
     },
     {
@@ -1799,6 +1795,142 @@
       }
     },
     {
+      "sn": 111,
+      "owner_coldkey": "5CGTryXjAmwmb3mAFD6B5ba2iBXZBcS5dN9pHLBxRoeonigv",
+      "sell_pressure": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 0
+      },
+      "buyback": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 0
+      },
+      "net_flow": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 0
+      },
+      "transferred": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 0
+      },
+      "transfers_out": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 0
+      },
+      "indirect_sells": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 0
+      }
+    },
+    {
+      "sn": 118,
+      "owner_coldkey": null,
+      "sell_pressure": {},
+      "buyback": {},
+      "net_flow": {},
+      "transferred": {},
+      "transfers_out": {},
+      "indirect_sells": {}
+    },
+    {
+      "sn": 85,
+      "owner_coldkey": "5GTPBjA4uXhuQ51SJB7Jd55JwY6dKEnbnjCrsSSEXy3MN63z",
+      "sell_pressure": {
+        "d1": 0,
+        "d7": 59.68,
+        "d30": 312.14,
+        "d90": 1201.75,
+        "lifetime": 4618.54
+      },
+      "buyback": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 1124.94
+      },
+      "net_flow": {
+        "d1": 0,
+        "d7": -59.68,
+        "d30": -312.14,
+        "d90": -1201.75,
+        "lifetime": -3493.6
+      },
+      "transferred": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 814.66
+      },
+      "transfers_out": {
+        "d1": 0,
+        "d7": 60,
+        "d30": 314.5,
+        "d90": 1204.2,
+        "lifetime": 4946.62
+      },
+      "indirect_sells": {}
+    },
+    {
+      "sn": 43,
+      "owner_coldkey": "5HjMs5JDrLH3Hknmfm1gDq7nFYAv6M7t9v3EWMctSRXJS9HC",
+      "sell_pressure": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 0.01
+      },
+      "buyback": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 0
+      },
+      "net_flow": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": -0.01
+      },
+      "transferred": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 6547.89
+      },
+      "transfers_out": {
+        "d1": 0,
+        "d7": 0,
+        "d30": 0,
+        "d90": 0,
+        "lifetime": 5541.46
+      },
+      "indirect_sells": {}
+    },
+    {
       "sn": 60,
       "owner_coldkey": "5CXLwkK1Scd1uiMUrXYjJUTTPxqqyH2FTJQNLp9uXQhA9rhR",
       "sell_pressure": {
@@ -1845,181 +1977,6 @@
       }
     },
     {
-      "sn": 118,
-      "owner_coldkey": "5HGXqHbQjEmwnQsnnMa8pm13VUv9PP2jB4Vuv9nw7NwUYiAN",
-      "sell_pressure": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
-      },
-      "buyback": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
-      },
-      "net_flow": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
-      },
-      "transferred": {
-        "d1": 406.9,
-        "d7": 406.9,
-        "d30": 406.9,
-        "d90": 406.9,
-        "lifetime": 406.9
-      },
-      "transfers_out": {
-        "d1": 0,
-        "d7": 21,
-        "d30": 21,
-        "d90": 21,
-        "lifetime": 21
-      },
-      "indirect_sells": {
-        "d1": 48.78,
-        "d7": 48.78,
-        "d30": 602.38,
-        "d90": 602.38,
-        "lifetime": 677.76
-      }
-    },
-    {
-      "sn": 111,
-      "owner_coldkey": "5CGTryXjAmwmb3mAFD6B5ba2iBXZBcS5dN9pHLBxRoeonigv",
-      "sell_pressure": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
-      },
-      "buyback": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
-      },
-      "net_flow": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
-      },
-      "transferred": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
-      },
-      "transfers_out": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
-      },
-      "transfer_recipients": [
-        "5EyBH8EkBKnzfB9PKXJYGzfTY7E8JbDrDvbFtFYtJzLRoj7R"
-      ],
-      "indirect_sells": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
-      }
-    },
-    {
-      "sn": 85,
-      "owner_coldkey": "5GTPBjA4uXhuQ51SJB7Jd55JwY6dKEnbnjCrsSSEXy3MN63z",
-      "sell_pressure": {
-        "d1": 0,
-        "d7": 59.68,
-        "d30": 312.14,
-        "d90": 1349.51,
-        "lifetime": 4618.54
-      },
-      "buyback": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 1124.94
-      },
-      "net_flow": {
-        "d1": 0,
-        "d7": -59.68,
-        "d30": -312.14,
-        "d90": -1349.51,
-        "lifetime": -3493.6
-      },
-      "transferred": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 814.66
-      },
-      "transfers_out": {
-        "d1": 0,
-        "d7": 60,
-        "d30": 314.5,
-        "d90": 1351.7,
-        "lifetime": 4946.62
-      },
-      "indirect_sells": {}
-    },
-    {
-      "sn": 43,
-      "owner_coldkey": "5HjMs5JDrLH3Hknmfm1gDq7nFYAv6M7t9v3EWMctSRXJS9HC",
-      "sell_pressure": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0.01
-      },
-      "buyback": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 0
-      },
-      "net_flow": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": -0.01
-      },
-      "transferred": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 6547.89
-      },
-      "transfers_out": {
-        "d1": 0,
-        "d7": 0,
-        "d30": 0,
-        "d90": 0,
-        "lifetime": 5541.46
-      },
-      "indirect_sells": {}
-    },
-    {
       "sn": 33,
       "owner_coldkey": "5HinUfk5SqBUAbkMtgdNoum3VJvwrLgdvwW5sbXA1UPYZ8uB",
       "sell_pressure": {
@@ -2044,7 +2001,7 @@
         "lifetime": 52.76
       },
       "transferred": {
-        "d1": 322.39,
+        "d1": 0,
         "d7": 322.39,
         "d30": 715.46,
         "d90": 1001.55,
@@ -2058,11 +2015,11 @@
         "lifetime": 7720.7
       },
       "indirect_sells": {
-        "d1": 24.79,
-        "d7": 113.3,
-        "d30": 340.15,
-        "d90": 546.08,
-        "lifetime": 974.24
+        "d1": 24.69,
+        "d7": 118.34,
+        "d30": 364.84,
+        "d90": 570.77,
+        "lifetime": 998.93
       }
     },
     {
@@ -2137,7 +2094,7 @@
         "lifetime": 1523.19
       },
       "transfers_out": {
-        "d1": 2.1,
+        "d1": 0,
         "d7": 2.1,
         "d30": 2.2,
         "d90": 2.2,

@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-09-05T09:42:34.276Z",
+  "updated_at": "2026-09-05T17:15:39.715Z",
   "summary": {
-    "daily_txns": 148886,
+    "daily_txns": 142294,
     "daily_vol": 41074,
-    "avg_tx": 0.28,
+    "avg_tx": 0.29,
     "txns_d": 376.32112404385197,
     "vol_d": -62.130524949816,
     "avg_tx_d": -92.04959151744495,
@@ -13,11 +13,6 @@
     "sellers_d": 4.890124207417702
   },
   "timeseries": [
-    {
-      "d": "03/08",
-      "tx": 42794,
-      "vol": 0
-    },
     {
       "d": "03/09",
       "tx": 45524,
@@ -910,8 +905,13 @@
     },
     {
       "d": "09/03",
-      "tx": 868,
+      "tx": 927,
       "vol": 16888
+    },
+    {
+      "d": "09/04",
+      "tx": 608,
+      "vol": 0
     }
   ],
   "servers": [
@@ -1292,29 +1292,29 @@
   ],
   "chains": {
     "base": {
-      "real_volume_30d": 388871,
-      "real_txns_30d": 8034011,
-      "pct_of_volume": 53.31
+      "real_volume_30d": 399980,
+      "real_txns_30d": 8126763,
+      "pct_of_volume": 53.1
     },
     "solana": {
-      "real_volume_30d": 251662,
-      "real_txns_30d": 19654365,
-      "pct_of_volume": 34.5
+      "real_volume_30d": 259348,
+      "real_txns_30d": 20992483,
+      "pct_of_volume": 34.43
     },
     "sei": {
       "real_volume_30d": 0,
-      "real_txns_30d": 53,
+      "real_txns_30d": 57,
       "pct_of_volume": 0
     },
     "ripple": {
-      "real_volume_30d": 2397,
-      "real_txns_30d": 1842845,
-      "pct_of_volume": 0.33
+      "real_volume_30d": 2588,
+      "real_txns_30d": 2046686,
+      "pct_of_volume": 0.34
     },
     "polygon": {
-      "real_volume_30d": 86518,
-      "real_txns_30d": 1106166,
-      "pct_of_volume": 11.86
+      "real_volume_30d": 91340,
+      "real_txns_30d": 1291314,
+      "pct_of_volume": 12.13
     },
     "bsc": {
       "real_volume_30d": 3,
@@ -1322,8 +1322,8 @@
       "pct_of_volume": 0
     },
     "avalanche": {
-      "real_volume_30d": 2,
-      "real_txns_30d": 127,
+      "real_volume_30d": 3,
+      "real_txns_30d": 186,
       "pct_of_volume": 0
     }
   }

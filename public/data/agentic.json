@@ -1,23 +1,18 @@
 {
-  "updated_at": "2026-09-18T10:17:55.121Z",
+  "updated_at": "2026-09-18T18:17:48.980Z",
   "summary": {
-    "daily_txns": 107493,
-    "daily_vol": 29850,
-    "avg_tx": 0.28,
-    "txns_d": -99.40587573116859,
-    "vol_d": -99.39106974237995,
-    "avg_tx_d": 2.492069347336829,
+    "daily_txns": 101114,
+    "daily_vol": 28855,
+    "avg_tx": 0.29,
+    "txns_d": null,
+    "vol_d": null,
+    "avg_tx_d": null,
     "cum_buyers": 751488,
     "cum_sellers": 12239,
     "buyers_d": 1.3174853987240398,
     "sellers_d": 2.78827580414882
   },
   "timeseries": [
-    {
-      "d": "03/21",
-      "tx": 36409,
-      "vol": 0
-    },
     {
       "d": "03/22",
       "tx": 21640,
@@ -912,6 +907,11 @@
       "d": "09/16",
       "tx": 0,
       "vol": 190
+    },
+    {
+      "d": "09/17",
+      "tx": 0,
+      "vol": 0
     }
   ],
   "servers": [

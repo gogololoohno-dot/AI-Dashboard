@@ -1,23 +1,18 @@
 {
-  "updated_at": "2026-09-20T10:20:44.912Z",
+  "updated_at": "2026-09-20T18:11:18.082Z",
   "summary": {
     "daily_txns": 94491,
-    "daily_vol": 27610,
-    "avg_tx": 0.29,
+    "daily_vol": 26689,
+    "avg_tx": 0.28,
     "txns_d": null,
     "vol_d": null,
     "avg_tx_d": null,
-    "cum_buyers": 751488,
+    "cum_buyers": 0,
     "cum_sellers": 0,
-    "buyers_d": 1.2489592006661114,
+    "buyers_d": null,
     "sellers_d": null
   },
   "timeseries": [
-    {
-      "d": "03/23",
-      "tx": 23086,
-      "vol": 0
-    },
     {
       "d": "03/24",
       "tx": 22693,
@@ -910,6 +905,11 @@
     },
     {
       "d": "09/18",
+      "tx": 0,
+      "vol": 0
+    },
+    {
+      "d": "09/19",
       "tx": 0,
       "vol": 0
     }

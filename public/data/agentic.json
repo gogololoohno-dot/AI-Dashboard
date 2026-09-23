@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-09-22T23:24:13.352Z",
+  "updated_at": "2026-09-23T08:29:25.848Z",
   "summary": {
     "daily_txns": 83276,
-    "daily_vol": 25676,
+    "daily_vol": 25687,
     "avg_tx": 0.31,
-    "txns_d": -76.75430207980854,
-    "vol_d": -31.78616728630772,
-    "avg_tx_d": 193.44712706793385,
+    "txns_d": -47.69039769357041,
+    "vol_d": -14.930848467627056,
+    "avg_tx_d": 62.626263212704146,
     "cum_buyers": 753156,
     "cum_sellers": 12289,
-    "buyers_d": 1.4246334050206242,
-    "sellers_d": 2.9746941511647393
+    "buyers_d": 1.3896797799774647,
+    "sellers_d": 2.8626433414246257
   },
   "timeseries": [
     {
@@ -766,7 +766,7 @@
     {
       "d": "08/23",
       "tx": 2306,
-      "vol": 25360
+      "vol": 0
     },
     {
       "d": "08/24",
@@ -1292,29 +1292,29 @@
   ],
   "chains": {
     "base": {
-      "real_volume_30d": 238426,
-      "real_txns_30d": 1802225,
-      "pct_of_volume": 40.44
+      "real_volume_30d": 230607,
+      "real_txns_30d": 1739875,
+      "pct_of_volume": 39.85
     },
     "solana": {
-      "real_volume_30d": 293856,
-      "real_txns_30d": 22031101,
-      "pct_of_volume": 49.85
+      "real_volume_30d": 290954,
+      "real_txns_30d": 21967994,
+      "pct_of_volume": 50.28
     },
     "sei": {
       "real_volume_30d": 0,
-      "real_txns_30d": 65,
+      "real_txns_30d": 64,
       "pct_of_volume": 0
     },
     "ripple": {
-      "real_volume_30d": 4034,
-      "real_txns_30d": 3593816,
-      "pct_of_volume": 0.68
+      "real_volume_30d": 3971,
+      "real_txns_30d": 3542744,
+      "pct_of_volume": 0.69
     },
     "polygon": {
-      "real_volume_30d": 53202,
-      "real_txns_30d": 1902939,
-      "pct_of_volume": 9.02
+      "real_volume_30d": 53096,
+      "real_txns_30d": 1902862,
+      "pct_of_volume": 9.18
     },
     "bsc": {
       "real_volume_30d": 2,
@@ -1323,7 +1323,7 @@
     },
     "avalanche": {
       "real_volume_30d": 7,
-      "real_txns_30d": 401,
+      "real_txns_30d": 400,
       "pct_of_volume": 0
     }
   }

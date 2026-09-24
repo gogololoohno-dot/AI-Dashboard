@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-09-23T23:22:27.252Z",
+  "updated_at": "2026-09-24T08:21:52.768Z",
   "summary": {
     "daily_txns": 87724,
-    "daily_vol": 25536,
+    "daily_vol": 25715,
     "avg_tx": 0.29,
-    "txns_d": 43.13023326390134,
-    "vol_d": 4.080440376462148,
-    "avg_tx_d": -27.28270051474016,
+    "txns_d": -71.52986692276032,
+    "vol_d": -32.864832753989944,
+    "avg_tx_d": 135.80910937041233,
     "cum_buyers": 753556,
     "cum_sellers": 12300,
-    "buyers_d": 1.4435276838804953,
-    "sellers_d": 2.9547166652716164
+    "buyers_d": 1.3999827760673456,
+    "sellers_d": 2.842809364548495
   },
   "timeseries": [
     {
@@ -766,7 +766,7 @@
     {
       "d": "08/24",
       "tx": 185857,
-      "vol": 20335
+      "vol": 0
     },
     {
       "d": "08/25",
@@ -1292,29 +1292,29 @@
   ],
   "chains": {
     "base": {
-      "real_volume_30d": 241033,
-      "real_txns_30d": 1823145,
-      "pct_of_volume": 40.89
+      "real_volume_30d": 233446,
+      "real_txns_30d": 1756701,
+      "pct_of_volume": 41.19
     },
     "solana": {
-      "real_volume_30d": 291089,
-      "real_txns_30d": 21974062,
-      "pct_of_volume": 49.38
+      "real_volume_30d": 276222,
+      "real_txns_30d": 20450720,
+      "pct_of_volume": 48.74
     },
     "sei": {
       "real_volume_30d": 0,
-      "real_txns_30d": 70,
+      "real_txns_30d": 69,
       "pct_of_volume": 0
     },
     "ripple": {
-      "real_volume_30d": 4273,
-      "real_txns_30d": 3836411,
-      "pct_of_volume": 0.72
+      "real_volume_30d": 4216,
+      "real_txns_30d": 3791760,
+      "pct_of_volume": 0.74
     },
     "polygon": {
-      "real_volume_30d": 53097,
-      "real_txns_30d": 1902889,
-      "pct_of_volume": 9.01
+      "real_volume_30d": 52822,
+      "real_txns_30d": 1902837,
+      "pct_of_volume": 9.32
     },
     "bsc": {
       "real_volume_30d": 2,
@@ -1323,7 +1323,7 @@
     },
     "avalanche": {
       "real_volume_30d": 7,
-      "real_txns_30d": 410,
+      "real_txns_30d": 409,
       "pct_of_volume": 0
     }
   }

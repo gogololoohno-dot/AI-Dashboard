@@ -1,23 +1,18 @@
 {
-  "updated_at": "2026-09-25T10:53:25.628Z",
+  "updated_at": "2026-09-25T19:13:22.943Z",
   "summary": {
-    "daily_txns": 88178,
-    "daily_vol": 25357,
-    "avg_tx": 0.29,
-    "txns_d": -63.34483211572013,
-    "vol_d": -51.075423326530334,
-    "avg_tx_d": 33.47252105876104,
-    "cum_buyers": 754166,
-    "cum_sellers": 12311,
-    "buyers_d": 1.4490297204443403,
-    "sellers_d": 2.7629382303839733
+    "daily_txns": 88596,
+    "daily_vol": 25145,
+    "avg_tx": 0.28,
+    "txns_d": -78.46534893500352,
+    "vol_d": -56.062754895356626,
+    "avg_tx_d": 104.03044828555971,
+    "cum_buyers": 754909,
+    "cum_sellers": 12324,
+    "buyers_d": 1.5489767202856088,
+    "sellers_d": 2.8714524207011687
   },
   "timeseries": [
-    {
-      "d": "03/28",
-      "tx": 20970,
-      "vol": 0
-    },
     {
       "d": "03/29",
       "tx": 18737,
@@ -911,7 +906,12 @@
     {
       "d": "09/23",
       "tx": 199458,
-      "vol": 21135
+      "vol": 21139
+    },
+    {
+      "d": "09/24",
+      "tx": 200300,
+      "vol": 18981
     }
   ],
   "servers": [
@@ -1292,29 +1292,29 @@
   ],
   "chains": {
     "base": {
-      "real_volume_30d": 235850,
-      "real_txns_30d": 1943830,
-      "pct_of_volume": 42.97
+      "real_volume_30d": 244448,
+      "real_txns_30d": 2004828,
+      "pct_of_volume": 43.82
     },
     "solana": {
-      "real_volume_30d": 255840,
-      "real_txns_30d": 18483863,
-      "pct_of_volume": 46.61
+      "real_volume_30d": 255977,
+      "real_txns_30d": 18492641,
+      "pct_of_volume": 45.89
     },
     "sei": {
       "real_volume_30d": 0,
-      "real_txns_30d": 64,
+      "real_txns_30d": 69,
       "pct_of_volume": 0
     },
     "ripple": {
-      "real_volume_30d": 4547,
-      "real_txns_30d": 4122629,
-      "pct_of_volume": 0.83
+      "real_volume_30d": 4771,
+      "real_txns_30d": 4341045,
+      "pct_of_volume": 0.86
     },
     "polygon": {
-      "real_volume_30d": 52619,
-      "real_txns_30d": 1902787,
-      "pct_of_volume": 9.59
+      "real_volume_30d": 52625,
+      "real_txns_30d": 1902818,
+      "pct_of_volume": 9.43
     },
     "bsc": {
       "real_volume_30d": 2,
@@ -1323,7 +1323,7 @@
     },
     "avalanche": {
       "real_volume_30d": 8,
-      "real_txns_30d": 417,
+      "real_txns_30d": 434,
       "pct_of_volume": 0
     }
   }

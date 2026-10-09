@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-09T10:45:19.033Z",
+  "updated_at": "2026-10-09T20:25:35.831Z",
   "subnets": [
     {
       "sn": 51,
@@ -34,19 +34,19 @@
       "daily_owner_alpha": null
     },
     {
-      "sn": 120,
-      "flow_7d": -624.36,
-      "flow_30d": 0,
-      "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 325.58,
-      "daily_owner_alpha": 1296
-    },
-    {
       "sn": 53,
       "flow_7d": -613.4,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 246.57,
+      "daily_tao_equivalent": 257.57,
+      "daily_owner_alpha": 1296
+    },
+    {
+      "sn": 120,
+      "flow_7d": -624.36,
+      "flow_30d": 0,
+      "daily_alpha_emission": 7200,
+      "daily_tao_equivalent": 324.81,
       "daily_owner_alpha": 1296
     },
     {
@@ -62,7 +62,7 @@
       "flow_7d": 92.19,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 184.74,
+      "daily_tao_equivalent": 184.02,
       "daily_owner_alpha": 1296
     },
     {
@@ -78,7 +78,7 @@
       "flow_7d": 1282.52,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 171.89,
+      "daily_tao_equivalent": 166.59,
       "daily_owner_alpha": 1296
     },
     {
@@ -94,8 +94,16 @@
       "flow_7d": 1026.93,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 243.3,
+      "daily_tao_equivalent": 241.85,
       "daily_owner_alpha": 1296
+    },
+    {
+      "sn": 75,
+      "flow_7d": -334.29,
+      "flow_30d": 0,
+      "daily_alpha_emission": null,
+      "daily_tao_equivalent": null,
+      "daily_owner_alpha": null
     },
     {
       "sn": 93,
@@ -114,22 +122,6 @@
       "daily_owner_alpha": null
     },
     {
-      "sn": 75,
-      "flow_7d": -334.29,
-      "flow_30d": 0,
-      "daily_alpha_emission": null,
-      "daily_tao_equivalent": null,
-      "daily_owner_alpha": null
-    },
-    {
-      "sn": 107,
-      "flow_7d": -59.67,
-      "flow_30d": 0,
-      "daily_alpha_emission": null,
-      "daily_tao_equivalent": null,
-      "daily_owner_alpha": null
-    },
-    {
       "sn": 61,
       "flow_7d": 1092.5,
       "flow_30d": 0,
@@ -142,12 +134,12 @@
       "flow_7d": 484.34,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 87.48,
+      "daily_tao_equivalent": 87.53,
       "daily_owner_alpha": 1296
     },
     {
-      "sn": 5,
-      "flow_7d": 102.29,
+      "sn": 107,
+      "flow_7d": -59.67,
       "flow_30d": 0,
       "daily_alpha_emission": null,
       "daily_tao_equivalent": null,
@@ -156,6 +148,14 @@
     {
       "sn": 110,
       "flow_7d": 427.62,
+      "flow_30d": 0,
+      "daily_alpha_emission": null,
+      "daily_tao_equivalent": null,
+      "daily_owner_alpha": null
+    },
+    {
+      "sn": 5,
+      "flow_7d": 102.29,
       "flow_30d": 0,
       "daily_alpha_emission": null,
       "daily_tao_equivalent": null,
@@ -186,6 +186,14 @@
       "daily_owner_alpha": null
     },
     {
+      "sn": 114,
+      "flow_7d": 302.33,
+      "flow_30d": 0,
+      "daily_alpha_emission": null,
+      "daily_tao_equivalent": null,
+      "daily_owner_alpha": null
+    },
+    {
       "sn": 19,
       "flow_7d": -26.7,
       "flow_30d": 0,
@@ -202,19 +210,11 @@
       "daily_owner_alpha": null
     },
     {
-      "sn": 114,
-      "flow_7d": 302.33,
-      "flow_30d": 0,
-      "daily_alpha_emission": null,
-      "daily_tao_equivalent": null,
-      "daily_owner_alpha": null
-    },
-    {
       "sn": 14,
       "flow_7d": -60.16,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 62.91,
+      "daily_tao_equivalent": 63.52,
       "daily_owner_alpha": 1296
     },
     {
@@ -222,7 +222,7 @@
       "flow_7d": -75.87,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 143.35,
+      "daily_tao_equivalent": 140.87,
       "daily_owner_alpha": 1296
     },
     {
@@ -230,7 +230,7 @@
       "flow_7d": 235.97,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 69.05,
+      "daily_tao_equivalent": 68.14,
       "daily_owner_alpha": 1296
     },
     {
@@ -246,7 +246,7 @@
       "flow_7d": 1383.25,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 58.23,
+      "daily_tao_equivalent": 58.24,
       "daily_owner_alpha": 1296
     },
     {
@@ -266,6 +266,14 @@
       "daily_owner_alpha": null
     },
     {
+      "sn": 54,
+      "flow_7d": -30.55,
+      "flow_30d": 0,
+      "daily_alpha_emission": 7200,
+      "daily_tao_equivalent": 44.41,
+      "daily_owner_alpha": 1296
+    },
+    {
       "sn": 25,
       "flow_7d": -83.82,
       "flow_30d": 0,
@@ -274,19 +282,11 @@
       "daily_owner_alpha": null
     },
     {
-      "sn": 54,
-      "flow_7d": -30.55,
-      "flow_30d": 0,
-      "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 43.92,
-      "daily_owner_alpha": 1296
-    },
-    {
       "sn": 10,
       "flow_7d": -129.49,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 45.03,
+      "daily_tao_equivalent": 44.04,
       "daily_owner_alpha": 1296
     },
     {
@@ -294,7 +294,7 @@
       "flow_7d": -57.62,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 43.36,
+      "daily_tao_equivalent": 43.35,
       "daily_owner_alpha": 1296
     },
     {
@@ -302,7 +302,7 @@
       "flow_7d": -38.14,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 42.78,
+      "daily_tao_equivalent": 42.29,
       "daily_owner_alpha": 1296
     },
     {
@@ -310,7 +310,7 @@
       "flow_7d": -61.07,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 56.89,
+      "daily_tao_equivalent": 56.83,
       "daily_owner_alpha": 1296
     },
     {
@@ -318,7 +318,7 @@
       "flow_7d": -118.56,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 109.13,
+      "daily_tao_equivalent": 107.81,
       "daily_owner_alpha": 1296
     },
     {
@@ -326,7 +326,7 @@
       "flow_7d": -48.25,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 36.11,
+      "daily_tao_equivalent": 36.05,
       "daily_owner_alpha": 1296
     },
     {
@@ -334,7 +334,7 @@
       "flow_7d": 255.46,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 37.32,
+      "daily_tao_equivalent": 37.13,
       "daily_owner_alpha": 1296
     },
     {
@@ -346,16 +346,32 @@
       "daily_owner_alpha": null
     },
     {
+      "sn": 50,
+      "flow_7d": 670.58,
+      "flow_30d": 0,
+      "daily_alpha_emission": null,
+      "daily_tao_equivalent": null,
+      "daily_owner_alpha": null
+    },
+    {
       "sn": 23,
       "flow_7d": -282.37,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 36.1,
+      "daily_tao_equivalent": 35.95,
       "daily_owner_alpha": 1296
     },
     {
-      "sn": 50,
-      "flow_7d": 670.58,
+      "sn": 13,
+      "flow_7d": -542.51,
+      "flow_30d": 0,
+      "daily_alpha_emission": 7200,
+      "daily_tao_equivalent": 31.97,
+      "daily_owner_alpha": 1296
+    },
+    {
+      "sn": 48,
+      "flow_7d": -6.72,
       "flow_30d": 0,
       "daily_alpha_emission": null,
       "daily_tao_equivalent": null,
@@ -370,28 +386,12 @@
       "daily_owner_alpha": null
     },
     {
-      "sn": 13,
-      "flow_7d": -542.51,
-      "flow_30d": 0,
-      "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 31.98,
-      "daily_owner_alpha": 1296
-    },
-    {
       "sn": 71,
       "flow_7d": 671.98,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 35.35,
+      "daily_tao_equivalent": 35.54,
       "daily_owner_alpha": 1296
-    },
-    {
-      "sn": 12,
-      "flow_7d": 34.88,
-      "flow_30d": 0,
-      "daily_alpha_emission": null,
-      "daily_tao_equivalent": null,
-      "daily_owner_alpha": null
     }
   ]
 }

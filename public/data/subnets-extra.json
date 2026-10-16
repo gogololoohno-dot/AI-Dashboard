@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15T19:24:49.270Z",
+  "updated_at": "2026-10-16T08:28:22.592Z",
   "subnets": [
     {
       "sn": 51,
@@ -30,7 +30,7 @@
       "flow_7d": 1976.35,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 281.38,
+      "daily_tao_equivalent": 293.04,
       "daily_owner_alpha": 1296
     },
     {
@@ -46,7 +46,15 @@
       "flow_7d": -1630.09,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 303.91,
+      "daily_tao_equivalent": 305.63,
+      "daily_owner_alpha": 1296
+    },
+    {
+      "sn": 28,
+      "flow_7d": 4872.8,
+      "flow_30d": 0,
+      "daily_alpha_emission": 7200,
+      "daily_tao_equivalent": 247.7,
       "daily_owner_alpha": 1296
     },
     {
@@ -58,19 +66,11 @@
       "daily_owner_alpha": null
     },
     {
-      "sn": 28,
-      "flow_7d": 4872.8,
-      "flow_30d": 0,
-      "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 230.7,
-      "daily_owner_alpha": 1296
-    },
-    {
       "sn": 3,
       "flow_7d": -742.11,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 175.89,
+      "daily_tao_equivalent": 175.87,
       "daily_owner_alpha": 1296
     },
     {
@@ -82,20 +82,20 @@
       "daily_owner_alpha": null
     },
     {
-      "sn": 95,
-      "flow_7d": 482.86,
-      "flow_30d": 0,
-      "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 281.85,
-      "daily_owner_alpha": 1296
-    },
-    {
       "sn": 68,
       "flow_7d": -530.74,
       "flow_30d": 0,
       "daily_alpha_emission": null,
       "daily_tao_equivalent": null,
       "daily_owner_alpha": null
+    },
+    {
+      "sn": 95,
+      "flow_7d": 482.86,
+      "flow_30d": 0,
+      "daily_alpha_emission": 7200,
+      "daily_tao_equivalent": 271.01,
+      "daily_owner_alpha": 1296
     },
     {
       "sn": 75,
@@ -122,16 +122,16 @@
       "daily_owner_alpha": null
     },
     {
-      "sn": 107,
-      "flow_7d": -33.92,
+      "sn": 110,
+      "flow_7d": 1238.85,
       "flow_30d": 0,
       "daily_alpha_emission": null,
       "daily_tao_equivalent": null,
       "daily_owner_alpha": null
     },
     {
-      "sn": 110,
-      "flow_7d": 1238.85,
+      "sn": 107,
+      "flow_7d": -33.92,
       "flow_30d": 0,
       "daily_alpha_emission": null,
       "daily_tao_equivalent": null,
@@ -142,7 +142,7 @@
       "flow_7d": 61.55,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 87.2,
+      "daily_tao_equivalent": 87.16,
       "daily_owner_alpha": 1296
     },
     {
@@ -178,28 +178,12 @@
       "daily_owner_alpha": null
     },
     {
-      "sn": 17,
-      "flow_7d": -287.33,
-      "flow_30d": 0,
-      "daily_alpha_emission": null,
-      "daily_tao_equivalent": null,
-      "daily_owner_alpha": null
-    },
-    {
       "sn": 19,
       "flow_7d": -177.51,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 64.6,
+      "daily_tao_equivalent": 64.95,
       "daily_owner_alpha": 1296
-    },
-    {
-      "sn": 14,
-      "flow_7d": -81.53,
-      "flow_30d": 0,
-      "daily_alpha_emission": null,
-      "daily_tao_equivalent": null,
-      "daily_owner_alpha": null
     },
     {
       "sn": 114,
@@ -208,6 +192,22 @@
       "daily_alpha_emission": null,
       "daily_tao_equivalent": null,
       "daily_owner_alpha": null
+    },
+    {
+      "sn": 17,
+      "flow_7d": -287.33,
+      "flow_30d": 0,
+      "daily_alpha_emission": null,
+      "daily_tao_equivalent": null,
+      "daily_owner_alpha": null
+    },
+    {
+      "sn": 14,
+      "flow_7d": -81.53,
+      "flow_30d": 0,
+      "daily_alpha_emission": 7200,
+      "daily_tao_equivalent": 62.41,
+      "daily_owner_alpha": 1296
     },
     {
       "sn": 15,
@@ -222,15 +222,7 @@
       "flow_7d": 1157.16,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 64.45,
-      "daily_owner_alpha": 1296
-    },
-    {
-      "sn": 38,
-      "flow_7d": 226.39,
-      "flow_30d": 0,
-      "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 139.85,
+      "daily_tao_equivalent": 64.28,
       "daily_owner_alpha": 1296
     },
     {
@@ -238,7 +230,15 @@
       "flow_7d": 2402.89,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 50.29,
+      "daily_tao_equivalent": 53.21,
+      "daily_owner_alpha": 1296
+    },
+    {
+      "sn": 38,
+      "flow_7d": 226.39,
+      "flow_30d": 0,
+      "daily_alpha_emission": 7200,
+      "daily_tao_equivalent": 140.56,
       "daily_owner_alpha": 1296
     },
     {
@@ -246,20 +246,12 @@
       "flow_7d": -242.36,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 66.19,
+      "daily_tao_equivalent": 66.7,
       "daily_owner_alpha": 1296
     },
     {
       "sn": 41,
       "flow_7d": -479.78,
-      "flow_30d": 0,
-      "daily_alpha_emission": null,
-      "daily_tao_equivalent": null,
-      "daily_owner_alpha": null
-    },
-    {
-      "sn": 11,
-      "flow_7d": -855.02,
       "flow_30d": 0,
       "daily_alpha_emission": null,
       "daily_tao_equivalent": null,
@@ -274,19 +266,19 @@
       "daily_owner_alpha": null
     },
     {
+      "sn": 11,
+      "flow_7d": -855.02,
+      "flow_30d": 0,
+      "daily_alpha_emission": null,
+      "daily_tao_equivalent": null,
+      "daily_owner_alpha": null
+    },
+    {
       "sn": 54,
       "flow_7d": -183.82,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 40.41,
-      "daily_owner_alpha": 1296
-    },
-    {
-      "sn": 10,
-      "flow_7d": -852.67,
-      "flow_30d": 0,
-      "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 40.58,
+      "daily_tao_equivalent": 40.82,
       "daily_owner_alpha": 1296
     },
     {
@@ -298,11 +290,19 @@
       "daily_owner_alpha": 1296
     },
     {
+      "sn": 10,
+      "flow_7d": -852.67,
+      "flow_30d": 0,
+      "daily_alpha_emission": 7200,
+      "daily_tao_equivalent": 39.12,
+      "daily_owner_alpha": 1296
+    },
+    {
       "sn": 83,
       "flow_7d": -47,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 55.16,
+      "daily_tao_equivalent": 55.02,
       "daily_owner_alpha": 1296
     },
     {
@@ -310,7 +310,7 @@
       "flow_7d": -1079.08,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 38.97,
+      "daily_tao_equivalent": 39.15,
       "daily_owner_alpha": 1296
     },
     {
@@ -318,7 +318,7 @@
       "flow_7d": -99.34,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 35.24,
+      "daily_tao_equivalent": 35.2,
       "daily_owner_alpha": 1296
     },
     {
@@ -326,16 +326,8 @@
       "flow_7d": -568.31,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 39.45,
+      "daily_tao_equivalent": 39.57,
       "daily_owner_alpha": 1296
-    },
-    {
-      "sn": 21,
-      "flow_7d": 66.43,
-      "flow_30d": 0,
-      "daily_alpha_emission": null,
-      "daily_tao_equivalent": null,
-      "daily_owner_alpha": null
     },
     {
       "sn": 48,
@@ -346,11 +338,19 @@
       "daily_owner_alpha": null
     },
     {
+      "sn": 21,
+      "flow_7d": 66.43,
+      "flow_30d": 0,
+      "daily_alpha_emission": null,
+      "daily_tao_equivalent": null,
+      "daily_owner_alpha": null
+    },
+    {
       "sn": 81,
       "flow_7d": -667.61,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 37.93,
+      "daily_tao_equivalent": 37.91,
       "daily_owner_alpha": 1296
     },
     {
@@ -358,7 +358,7 @@
       "flow_7d": 525.22,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 36.16,
+      "daily_tao_equivalent": 35.66,
       "daily_owner_alpha": 1296
     },
     {
@@ -366,7 +366,7 @@
       "flow_7d": -783.49,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 90.2,
+      "daily_tao_equivalent": 90.1,
       "daily_owner_alpha": 1296
     },
     {
@@ -374,7 +374,7 @@
       "flow_7d": -473.02,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 33.52,
+      "daily_tao_equivalent": 33.48,
       "daily_owner_alpha": 1296
     },
     {
@@ -382,7 +382,7 @@
       "flow_7d": -579.68,
       "flow_30d": 0,
       "daily_alpha_emission": 7200,
-      "daily_tao_equivalent": 30.04,
+      "daily_tao_equivalent": 30.03,
       "daily_owner_alpha": 1296
     },
     {

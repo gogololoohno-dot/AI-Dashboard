@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-10-19T21:53:23.264Z",
+  "updated_at": "2026-10-20T08:25:01.132Z",
   "summary": {
     "daily_txns": 127916,
-    "daily_vol": 32836,
+    "daily_vol": 33440,
     "avg_tx": 0.26,
-    "txns_d": -34.300954490042535,
-    "vol_d": 189.22916599111002,
-    "avg_tx_d": 340.2334367966943,
+    "txns_d": -35.315390864540475,
+    "vol_d": 193.67022548146406,
+    "avg_tx_d": 354.0032465319121,
     "cum_buyers": 776543,
     "cum_sellers": 12849,
-    "buyers_d": 3.178766414347764,
-    "sellers_d": 4.684699364510347
+    "buyers_d": 3.139298744732085,
+    "sellers_d": 4.633550488599349
   },
   "timeseries": [
     {
@@ -766,7 +766,7 @@
     {
       "d": "09/19",
       "tx": 41,
-      "vol": 15305
+      "vol": 0
     },
     {
       "d": "09/20",
@@ -1274,29 +1274,29 @@
   ],
   "chains": {
     "base": {
-      "real_volume_30d": 194013,
-      "real_txns_30d": 2143200,
-      "pct_of_volume": 29.63
+      "real_volume_30d": 185961,
+      "real_txns_30d": 2066248,
+      "pct_of_volume": 28.79
     },
     "solana": {
-      "real_volume_30d": 125428,
-      "real_txns_30d": 625980,
-      "pct_of_volume": 19.15
+      "real_volume_30d": 124571,
+      "real_txns_30d": 610648,
+      "pct_of_volume": 19.29
     },
     "sei": {
       "real_volume_30d": 0,
-      "real_txns_30d": 70,
+      "real_txns_30d": 69,
       "pct_of_volume": 0
     },
     "ripple": {
-      "real_volume_30d": 8978,
-      "real_txns_30d": 8498251,
+      "real_volume_30d": 8876,
+      "real_txns_30d": 8403971,
       "pct_of_volume": 1.37
     },
     "polygon": {
-      "real_volume_30d": 326437,
-      "real_txns_30d": 202394,
-      "pct_of_volume": 49.85
+      "real_volume_30d": 326432,
+      "real_txns_30d": 202374,
+      "pct_of_volume": 50.54
     },
     "bsc": {
       "real_volume_30d": 12,
@@ -1305,7 +1305,7 @@
     },
     "avalanche": {
       "real_volume_30d": 6,
-      "real_txns_30d": 187,
+      "real_txns_30d": 186,
       "pct_of_volume": 0
     }
   }
